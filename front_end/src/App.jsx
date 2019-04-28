@@ -3,24 +3,26 @@ import axios from 'axios';
 import logo from './logo.svg';
 import './App.css';
 
+import Senador from './components/Senador';
+
 class App extends Component {
   state = {
-    koaMessage: '...',
+    senador: null,
   };
 
   async componentDidMount() {
-    const { data } = await axios.get('/main');
+    const { data } = await axios.get('/senador');
     this.setState({
-      koaMessage: data.message,
+      senador: data,
     });
   }
 
   render() {
-    const { koaMessage } = this.state;
+    const { senador } = this.state;
     return (
       <div className="App">
         <header className="App-header">
-          <h2>{koaMessage}</h2>
+          {senador ? <Senador data={senador} /> : null}
           <img src={logo} className="App-logo" alt="logo" />
           <p>
             Edit <code> src / App.jsx </code> and save to reload.

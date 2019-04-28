@@ -1,5 +1,7 @@
-module.exports = (sequelize, type) => (
-  sequelize.define('senadores', {
+module.exports = (sequelize, type) => {
+  class Senador extends type.Model {}
+
+  return Senador.init({
     sid: {
       type: type.INTEGER,
       primaryKey: true,
@@ -22,5 +24,9 @@ module.exports = (sequelize, type) => (
     curriculum_url: type.STRING(255),
     foto_url: type.STRING(255),
     twitter_url: type.STRING(255),
+  }, {
+    sequelize,
+    modelName: 'senadores',
+    timestamps: false,
   })
-)
+}

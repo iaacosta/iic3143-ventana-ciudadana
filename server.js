@@ -7,12 +7,12 @@ const cors = require('koa2-cors');
 
 /* Routers and DB */
 require('./sequelize');
-const mainRouter = require('./routes/main');
+const senadorRouter = require('./routes/senadores');
 
 /* App and middleware */
 const app = new Koa();
 app.use(cors());
-app.use(mainRouter.routes()).use(mainRouter.allowedMethods());
+app.use(senadorRouter.routes()).use(senadorRouter.allowedMethods());
 
 /* Mount */
 app.listen(process.env.PORT, () => console.log(`Koa running in port ${process.env.PORT}`));
