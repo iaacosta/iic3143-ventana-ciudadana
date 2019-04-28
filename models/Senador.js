@@ -1,10 +1,7 @@
-module.exports = (sequelize, type) => {
-  class Senador extends type.Model {}
-
-  Senador.init({
+module.exports = (sequelize, type) => (
+  sequelize.define('senadores', {
     id: {
       type: type.INTEGER,
-      autoIncrement: true,
       primaryKey: true,
     },
     nombre: {
@@ -27,13 +24,10 @@ module.exports = (sequelize, type) => {
       type: type.STRING,
       allowNull: false,
     },
-    photo_uri: {
-      type: type.INTEGER,
+    url_foto: {
+      type: type.STRING,
       allowNull: false,
     },
     telefono: type.STRING,
-  }, {
-    sequelize,
-    modelName: 'senadores'
-  });
-}
+  })
+)

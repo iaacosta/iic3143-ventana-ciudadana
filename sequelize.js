@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const Senador = require('./models/Senador');
+const SenadorModel = require('./models/Senador');
 
 const sequelize = new Sequelize(process.env.PSQL_URI, {
   logging: false,
@@ -11,13 +11,13 @@ const sequelize = new Sequelize(process.env.PSQL_URI, {
   }
 });
 
-Senador(sequelize, Sequelize);
-
-sequelize
-  .authenticate()
-  .then(() => console.log('PostgreSQL connection established'))
-  .catch(err => console.error(err));
+const Senador = SenadorModel(sequelize, Sequelize);
 
 sequelize
   .sync()
-  .then(() => console.log('PostgreSQL database online'))
+  .then(() => console.log('PostgreSQL connection established'))
+  .catch(err => console.error(err));
+
+module.exports = {
+  Senador,
+};
