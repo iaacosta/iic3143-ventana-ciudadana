@@ -22,7 +22,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          {senador ? <Senador data={senador} /> : null}
+          {senador ? <Senador data={this.state.senador} /> : null}
           <img src={logo} className="App-logo" alt="logo" />
           <p>
             Edit <code> src / App.jsx </code> and save to reload.
