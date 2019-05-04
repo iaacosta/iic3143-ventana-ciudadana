@@ -1,0 +1,26 @@
+.detalle-aprobados {
+  width: 30%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  
+  &__box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__cifra {
+    font-size: 8rem;
+    font-weight: 500;
+
+    &--no-aprobado {
+      color: $color-red-regular;
+    }
+
+    &--aprobado {
+      color: $color-primary-regular;
+    }
+  }
+
+}
