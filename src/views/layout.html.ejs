@@ -3,19 +3,29 @@
 
   <head>
     <meta charset="utf-8">
-    <title>IIC2513 - CHANGE-ME</title>
+    <title>Ventana Ciudadana</title>
     <% if (env !== 'development') { %>
       <link rel="stylesheet" href="<%= assetPath('app.css') %>">
     <% } %>
   </head>
 
   <body>
+    
     <header>
-      <div id="logo">
-        <img src="<%= assetPath('logo.png') %>" alt="Logo" />
-      </div>
+      <nav>
+        <h1 class="logo">Ventana<span class="logo__strong">Ciudadana</span></h1>
+        <ul class="nav-items">
+          <li class="nav-items__item">Inicio</li>
+          <li class="nav-items__item">Parlamentarios</li>
+          <li class="nav-items__item">Proyectos de ley</li>
+        </ul>
+      </nav>
     </header>
-    <%- body %>
+
+    <main>
+      <%- body %>
+    </main>
+    
     <script src="<%= assetPath('app.js') %>"></script>
   </body>
 
