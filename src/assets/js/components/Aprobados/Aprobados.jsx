@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const fetchData = async () => {
+import Cifras from './Cifras/Cifras';
+
+export const fetchData = async () => {
   const { data: { proyectos } } = await axios.get('/proyectos-ley/aprobados');
   return proyectos;
 };
 
-const Aprobados = () => {
+export const Aprobados = () => {
   const [proyectos, setProyectos] = useState([]);
 
   useEffect(() => {
@@ -20,14 +22,7 @@ const Aprobados = () => {
 
   return (
     <div className="detalle-aprobados">
-      <div className="detalle-aprobados__box">
-        <p className="detalle-aprobados__cifra detalle-aprobados__cifra--aprobado">{totalAprobados}</p>
-        <p className="detalle-aprobados__box-label">Proyectos aprobados</p>
-      </div>
-      <div className="detalle-aprobados__box">
-        <p className="detalle-aprobados__cifra detalle-aprobados__cifra--no-aprobado">{totalNoAprobados}</p>
-        <p className="detalle-aprobados__box-label">Proyectos no aprobados</p>
-      </div>
+      <Cifras aprobados={totalAprobados} noAprobados={totalNoAprobados} />
     </div>
   );
 };

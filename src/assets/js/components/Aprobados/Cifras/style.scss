@@ -1,8 +1,4 @@
-.detalle-aprobados {
-  width: 30%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  
+.cifras {
   &__box {
     display: flex;
     flex-direction: column;
@@ -22,5 +18,4 @@
       color: $color-primary-regular;
     }
   }
-
 }
