@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Index from './components/Index';
+import Index from './components/Index/Index';
 import ProyectosAprobados from './components/Aprobados/Aprobados';
 
 const indexAppContainer = document.getElementById('index-app');
