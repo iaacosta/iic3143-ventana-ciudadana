@@ -24,19 +24,19 @@ describe('<ScrollList />', () => {
     expect(wrapper.find('ul').length).toBe(1);
 
     expect(wrapper.find('ul').prop('style')).toMatchObject({
-      height: '2rem',
+      height: '20rem',
     });
   });
 
   test('debe ejecutar tres veces mapFn', () => {
     wrapper = shallow(factory());
-    expect(defaultProps.mapFn).toHaveBeenCalledTimes(3);
+    expect(defaultProps.mapFn).toHaveBeenCalledTimes(1);
   });
 
   test('debe setear la height si se le pasa argumento', () => {
-    wrapper = shallow(factory({ height: '3rem' }));
+    wrapper = shallow(factory({ height: '30rem' }));
     expect(wrapper.find('ul').prop('style')).toMatchObject({
-      height: '3rem',
+      height: '30rem',
     });
   });
 });

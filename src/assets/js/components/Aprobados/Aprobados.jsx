@@ -43,9 +43,9 @@ export const Aprobados = () => {
         label="Proyectos rechazados"
         estado="rechazado"
       />
-      <ScrollList items={aprobados} height="20rem" mapFn={mapProyectoDeLey} />
-      <ScrollList items={tramitacion} height="20rem" mapFn={mapProyectoDeLey} />
-      <ScrollList items={rechazados} height="20rem" mapFn={mapProyectoDeLey} />
+      <ScrollList items={aprobados} mapFn={mapProyectoDeLey} />
+      <ScrollList items={tramitacion} mapFn={mapProyectoDeLey} />
+      <ScrollList items={rechazados} mapFn={mapProyectoDeLey} />
     </div>
   );
 };
