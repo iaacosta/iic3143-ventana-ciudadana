@@ -6,7 +6,7 @@ module.exports = function babelConfig(api) {
         ie: '9',
         browsers: ['>1%', 'last 3 versions'],
       },
-      modules: false,
+      // modules: true,
       useBuiltIns: 'usage',
     }],
     ['@babel/preset-react', {
@@ -17,5 +17,8 @@ module.exports = function babelConfig(api) {
   const plugins = [
     'react-hot-loader/babel',
   ];
-  return { presets, plugins };
-}
+  return {
+    presets,
+    plugins,
+  };
+};
