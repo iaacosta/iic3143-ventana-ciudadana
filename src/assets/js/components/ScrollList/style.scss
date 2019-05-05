@@ -1,0 +1,16 @@
+.scroll-list {
+  list-style: none;
+  overflow: auto;
+}
+
+::-webkit-scrollbar {
+  width: 1rem;
+}
+
+::-webkit-scrollbar-track {
+  background: $color-grey-light-2;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $color-grey-light-4;
+}

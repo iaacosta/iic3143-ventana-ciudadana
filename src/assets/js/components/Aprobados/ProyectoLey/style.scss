@@ -1,0 +1,34 @@
+.ley-item {
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+
+  &:nth-child(even) {
+    background-color: $color-grey-light;
+  }
+
+  &:nth-child(odd) {
+    background-color: $color-grey-light-1;
+  }
+
+  &__boletin {
+    flex: 2;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: $color-primary-darkest;
+  }
+
+  &__resumen {
+    flex: 7;
+  }
+
+  &__url {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+
+    i {
+      color: $color-primary-darkest;
+    }
+  }
+}
