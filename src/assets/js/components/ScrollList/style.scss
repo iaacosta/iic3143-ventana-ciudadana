@@ -1,6 +1,7 @@
 .scroll-list {
   list-style: none;
   overflow: auto;
+  background-color: $color-grey-light;
 }
 
 ::-webkit-scrollbar {

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-import Cifras from './Cifras/Cifras';
+import CifrasBox from './CifrasBox/CifrasBox';
 import ScrollList from '../ScrollList/ScrollList';
 import ProyectoLey from './ProyectoLey/ProyectoLey';
 
@@ -23,14 +23,18 @@ export const Aprobados = () => {
       .catch(() => null);
   }, []);
 
-  const aprobados = proyectos.filter(({ aprobado }) => aprobado);
-  const noAprobados = proyectos.filter(({ aprobado }) => !aprobado);
+  const aprobados = proyectos.filter(({ estado }) => estado === 'aprobado');
+  const rechazados = proyectos.filter(({ estado }) => estado === 'rechazado');
+  const tramitacion = proyectos.filter(({ estado }) => estado === 'tramitacion');
 
   return (
     <div className="detalle-aprobados">
-      <Cifras aprobados={aprobados.length} noAprobados={noAprobados.length} />
+      <CifrasBox cifra={aprobados.length} label="Proyectos aprobados" estado="aprobado" />
+      <CifrasBox cifra={tramitacion.length} label="Proyectos en tramitación" estado="tramitacion" />
+      <CifrasBox cifra={rechazados.length} label="Proyectos rechazados" estado="rechazado" />
       <ScrollList items={aprobados} height="20rem" mapFn={mapProyectoDeLey} />
-      <ScrollList items={noAprobados} height="20rem" mapFn={mapProyectoDeLey} />
+      <ScrollList items={tramitacion} height="20rem" mapFn={mapProyectoDeLey} />
+      <ScrollList items={rechazados} height="20rem" mapFn={mapProyectoDeLey} />
     </div>
   );
 };

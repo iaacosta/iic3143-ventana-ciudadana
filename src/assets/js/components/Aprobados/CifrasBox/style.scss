@@ -10,12 +10,16 @@
     font-size: 8rem;
     font-weight: 500;
 
-    &--no-aprobado {
+    &--rechazado {
       color: $color-red-regular;
     }
 
     &--aprobado {
       color: $color-primary-dark;
+    }
+
+    &--tramitacion {
+      color: $color-grey-dark-2;
     }
   }
 }
