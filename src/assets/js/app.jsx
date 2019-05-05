@@ -1,9 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App';
+import Index from './components/Index/Index';
+import ProyectosAprobados from './components/Aprobados/Aprobados';
 
-const reactAppContainer = document.getElementById('react-app');
+const indexAppContainer = document.getElementById('index-app');
+if (indexAppContainer) {
+  ReactDOM.render(<Index />, indexAppContainer);
+}
 
-if (reactAppContainer) {
-  ReactDOM.render(<App />, reactAppContainer);
+const proyectosAprobadosContainer = document.getElementById('proyectos-aprobados-react');
+if (proyectosAprobadosContainer) {
+  ReactDOM.render(<ProyectosAprobados />, proyectosAprobadosContainer);
 }
