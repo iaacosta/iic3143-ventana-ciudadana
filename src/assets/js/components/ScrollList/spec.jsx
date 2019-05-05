@@ -6,24 +6,37 @@ describe('<ScrollList />', () => {
   let wrapper;
 
   const defaultProps = {
-    items: [
-      { id: 'testId0', content: 'Test content 0' },
-      { id: 'testId1', content: 'Test content 1' },
-      { id: 'testId2', content: 'Test content 2' },
-    ],
-    mapFn: item => (
-      <div key={item.id} id={item.id}>
-        {item.content}
-      </div>
-    ),
+    items: [{ id: 'testId0', content: 'Test content 0' }],
+    mapFn: jest.fn(),
   };
 
   const factory = props => <ScrollList {...defaultProps} {...props} />;
 
-  it('should match snapshot', () => {
+  test('debe mantener snapshot', () => {
     wrapper = shallow(factory());
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should render correctly', () => {});
+  test('debe renderear correctamente', () => {
+    wrapper = shallow(factory());
+
+    expect(wrapper.find('ul').exists()).toBe(true);
+    expect(wrapper.find('ul').length).toBe(1);
+
+    expect(wrapper.find('ul').prop('style')).toMatchObject({
+      height: '2rem',
+    });
+  });
+
+  test('debe ejecutar tres veces mapFn', () => {
+    wrapper = shallow(factory());
+    expect(defaultProps.mapFn).toHaveBeenCalledTimes(3);
+  });
+
+  test('debe setear la height si se le pasa argumento', () => {
+    wrapper = shallow(factory({ height: '3rem' }));
+    expect(wrapper.find('ul').prop('style')).toMatchObject({
+      height: '3rem',
+    });
+  });
 });

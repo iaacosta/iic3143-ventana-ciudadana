@@ -5,6 +5,7 @@
   "repository": "https://github.com/IIC2513-2017-2/template.git",
   "license": "MIT",
   "jest": {
+    "clearMocks": true,
     "setupFilesAfterEnv": [
       "./src/setupTests.js"
     ],
