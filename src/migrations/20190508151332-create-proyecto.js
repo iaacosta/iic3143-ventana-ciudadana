@@ -1,38 +1,27 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Senadors', {
+    return queryInterface.createTable('Proyectos', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      nombre: {
+      boletin: {
+        allowNull: false,
         type: Sequelize.STRING,
       },
-      apellido_paterno: {
+      fecha: {
+        type: Sequelize.DATE,
+      },
+      resumen: {
+        type: Sequelize.TEXT,
+      },
+      estado: {
         type: Sequelize.STRING,
       },
-      apellido_materno: {
-        type: Sequelize.STRING,
-      },
-      partido_politico: {
-        type: Sequelize.STRING,
-      },
-      email: {
-        type: Sequelize.STRING,
-      },
-      telefono: {
-        type: Sequelize.STRING,
-      },
-      url_foto: {
-        type: Sequelize.STRING,
-      },
-      url_twitter: {
-        type: Sequelize.STRING,
-      },
-      url_curriculum: {
+      url: {
         type: Sequelize.STRING,
       },
       createdAt: {
@@ -46,6 +35,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Senadors');
+    return queryInterface.dropTable('Proyectos');
   },
 };
