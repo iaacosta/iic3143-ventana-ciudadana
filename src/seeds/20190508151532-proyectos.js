@@ -4,10 +4,10 @@ const data = require('./json/proyectos.json');
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('proyectos', data, {});
+    return queryInterface.bulkInsert('Proyectos', data, {});
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete('proyectos', null, {});
+    return queryInterface.bulkDelete('Proyectos', null, {});
   },
 };

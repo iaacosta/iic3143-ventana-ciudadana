@@ -1,13 +1,15 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const periodos = sequelize.define('periodo', {
+  const Periodos = sequelize.define('Periodo', {
     sid: DataTypes.INTEGER,
     cargo: DataTypes.STRING,
     inicio: DataTypes.INTEGER,
     final: DataTypes.INTEGER,
   });
-  periodos.associate = function(models) {
-    periodos.belongsTo(models.senador, { foreignKey: 'sid' });
+  Periodos.associate = function (models) {
+    Periodos.belongsTo(models.Senador, {
+      foreignKey: 'sid'
+    });
   };
-  return periodos;
+  return Periodos;
 };

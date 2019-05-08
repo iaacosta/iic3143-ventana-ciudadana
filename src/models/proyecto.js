@@ -1,21 +1,19 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const proyecto = sequelize.define(
-    'proyecto',
-    {
+  const Proyecto = sequelize.define(
+    'Proyecto', {
       boletin: DataTypes.STRING,
       fecha: DataTypes.DATE,
       resumen: DataTypes.TEXT,
       estado: DataTypes.STRING,
       url: DataTypes.STRING,
-    },
-    {},
+    }, {},
   );
-  proyecto.associate = function(models) {
-    proyecto.belongsToMany(models.senador, {
-      through: models.senador_proyecto,
+  Proyecto.associate = function (models) {
+    Proyecto.belongsToMany(models.Senador, {
+      through: models.SenadorProyecto,
       foreignKey: 'pid',
     });
   };
-  return proyecto;
+  return Proyecto;
 };
