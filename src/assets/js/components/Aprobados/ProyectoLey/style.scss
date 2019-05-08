@@ -21,6 +21,8 @@
 
   &__resumen {
     flex: 7;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
 
   &__url {

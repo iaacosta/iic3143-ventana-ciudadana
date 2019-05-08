@@ -1,15 +1,17 @@
 const KoaRouter = require('koa-router');
-const fakeData = require('../assets/fakeData/proyectosLey.json');
+const { Proyecto } = require('../models');
 
 const router = new KoaRouter();
 
-router.get('aprobados', '/', async (ctx) => {
+router.get('aprobados', '/', async ctx => {
   await ctx.render('proyectos-ley/index');
 });
 
-router.get('api-aprobados', '/aprobados', async (ctx) => {
+router.get('api-aprobados', '/aprobados', async ctx => {
   ctx.body = {
-    proyectos: fakeData,
+    proyectos: await Proyecto.findAll({
+      attributes: ['id', 'boletin', 'resumen', 'estado'],
+    }),
   };
 });
 

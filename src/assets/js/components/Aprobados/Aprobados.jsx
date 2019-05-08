@@ -6,8 +6,8 @@ import CifrasBox from './CifrasBox/CifrasBox';
 import ScrollList from '../ScrollList/ScrollList';
 import ProyectoLey from './ProyectoLey/ProyectoLey';
 
-export const mapProyectoDeLey = ({ boletin, resumen, url }) => (
-  <ProyectoLey boletin={boletin} resumen={resumen} url={url} key={uuid()} />
+export const mapProyectoDeLey = ({ id, boletin, resumen }) => (
+  <ProyectoLey boletin={boletin} resumen={resumen} url={`/proyectos-ley/${id}`} key={uuid()} />
 );
 
 class Aprobados extends Component {
@@ -32,8 +32,9 @@ class Aprobados extends Component {
     const { proyectos } = this.state;
 
     const aprobados = proyectos.filter(({ estado }) => estado === 'aprobado');
-    const rechazados = proyectos.filter(({ estado }) => estado === 'rechazado');
     const tramitacion = proyectos.filter(({ estado }) => estado === 'tramitacion');
+    const suspendidos = proyectos.filter(({ estado }) => estado === 'suspendido');
+    const rechazados = proyectos.filter(({ estado }) => estado === 'rechazado');
 
     return (
       <div className="detalle-aprobados">
@@ -48,12 +49,18 @@ class Aprobados extends Component {
           estado="tramitacion"
         />
         <CifrasBox
+          cifra={suspendidos.length}
+          label="Proyectos suspendidos"
+          estado="suspendidos"
+        />
+        <CifrasBox
           cifra={rechazados.length}
           label="Proyectos rechazados"
           estado="rechazado"
         />
         <ScrollList items={aprobados} mapFn={mapProyectoDeLey} />
         <ScrollList items={tramitacion} mapFn={mapProyectoDeLey} />
+        <ScrollList items={suspendidos} mapFn={mapProyectoDeLey} />
         <ScrollList items={rechazados} mapFn={mapProyectoDeLey} />
       </div>
     );
