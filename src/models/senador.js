@@ -16,7 +16,10 @@ module.exports = (sequelize, DataTypes) => {
     {},
   );
   senador.associate = function(models) {
-    // associations can be defined here
+    senador.belongsToMany(models.proyecto, {
+      through: models.senador_proyecto,
+      foreignKey: 'sid',
+    });
   };
   return senador;
 };

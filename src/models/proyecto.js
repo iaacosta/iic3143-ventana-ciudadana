@@ -12,7 +12,10 @@ module.exports = (sequelize, DataTypes) => {
     {},
   );
   proyecto.associate = function(models) {
-    // associations can be defined here
+    proyecto.belongsToMany(models.senador, {
+      through: models.senador_proyecto,
+      foreignKey: 'pid',
+    });
   };
   return proyecto;
 };
