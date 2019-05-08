@@ -1,7 +1,8 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Senador = sequelize.define(
-    'Senador', {
+    'Senador',
+    {
       nombre: DataTypes.STRING,
       apellido_paterno: DataTypes.STRING,
       apellido_materno: DataTypes.STRING,
@@ -11,13 +12,16 @@ module.exports = (sequelize, DataTypes) => {
       url_foto: DataTypes.STRING,
       url_twitter: DataTypes.STRING,
       url_curriculum: DataTypes.STRING,
-    }, {},
+    },
+    {},
   );
-  Senador.associate = function (models) {
+  Senador.associate = function(models) {
     Senador.belongsToMany(models.Proyecto, {
       through: models.SenadorProyecto,
       foreignKey: 'sid',
     });
+
+    Senador.hasMany(models.Periodo, { foreignKey: 'sid' });
   };
   return Senador;
 };
