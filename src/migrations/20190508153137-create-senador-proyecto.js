@@ -4,10 +4,12 @@ module.exports = {
     return queryInterface.createTable('senador_proyectos', {
       sid: {
         allowNull: false,
+        primaryKey: true,
         type: Sequelize.INTEGER,
       },
       pid: {
         allowNull: false,
+        primaryKey: true,
         type: Sequelize.INTEGER,
       },
       createdAt: {
