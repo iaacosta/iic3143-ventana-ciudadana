@@ -51,7 +51,7 @@ class Aprobados extends Component {
         <CifrasBox
           cifra={suspendidos.length}
           label="Proyectos suspendidos"
-          estado="suspendidos"
+          estado="suspendido"
         />
         <CifrasBox
           cifra={rechazados.length}
