@@ -1,2 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600');
+
+@import './responsive';
+@import './colors';
 @import './layout';
-@import './hello';
+@import './typography';
+
+/* Componentes React */
+@import '../js/components/Aprobados/style.scss';
+@import '../js/components/Aprobados/CifrasBox/style.scss';
+@import '../js/components/Aprobados/ProyectoLey/style.scss';
+@import '../js/components/ScrollList/style.scss';

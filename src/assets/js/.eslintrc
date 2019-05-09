@@ -1,6 +1,15 @@
 {
-  "extends": "airbnb",
+  "extends": ["airbnb", "prettier"],
+  "parser": "babel-eslint",
   "env": {
-    "browser": true
+    "browser": true,
+    "jest": true
+  },
+  "rules": {
+    "react/prop-types": 0,
+    "import/no-named-as-default": 0,
+    "import/no-extraneous-dependencies": ["error", {
+      "devDependencies": true
+    }]
   }
 }

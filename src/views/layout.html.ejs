@@ -3,19 +3,30 @@
 
   <head>
     <meta charset="utf-8">
-    <title>IIC2513 - CHANGE-ME</title>
+    <title>Ventana Ciudadana</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <% if (env !== 'development') { %>
       <link rel="stylesheet" href="<%= assetPath('app.css') %>">
     <% } %>
   </head>
 
   <body>
+    
     <header>
-      <div id="logo">
-        <img src="<%= assetPath('logo.png') %>" alt="Logo" />
-      </div>
+      <nav>
+        <h1 class="logo">Ventana<span class="logo__strong">Ciudadana</span></h1>
+        <ul class="nav-items">
+          <a href="/"><li class="nav-items__item">Inicio</li></a>
+          <a href="#"><li class="nav-items__item">Parlamentarios</li></a>
+          <a href="/proyectos-ley"><li class="nav-items__item">Proyectos de ley</li></a>
+        </ul>
+      </nav>
     </header>
-    <%- body %>
+
+    <main>
+      <%- body %>
+    </main>
+    
     <script src="<%= assetPath('app.js') %>"></script>
   </body>
 
