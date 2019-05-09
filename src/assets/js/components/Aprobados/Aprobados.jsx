@@ -6,55 +6,94 @@ import CifrasBox from './CifrasBox/CifrasBox';
 import ScrollList from '../ScrollList/ScrollList';
 import ProyectoLey from './ProyectoLey/ProyectoLey';
 
-export const mapProyectoDeLey = ({ boletin, resumen, url }) => (
-  <ProyectoLey boletin={boletin} resumen={resumen} url={url} key={uuid()} />
+export const mapProyectoDeLey = ({ id, boletin, resumen }) => (
+  <ProyectoLey
+    boletin={boletin}
+    resumen={resumen}
+    url={`/proyectos-ley/${id}`}
+    key={uuid()}
+  />
 );
 
 class Aprobados extends Component {
   state = {
-    proyectos: [],
+    cifras: {
+      aprobado: 0,
+      tramitacion: 0,
+      suspendido: 0,
+      rechazado: 0,
+    },
+    proyectos: {
+      aprobado: [],
+      tramitacion: [],
+      suspendido: [],
+      rechazado: [],
+    },
   };
 
   componentDidMount() {
-    this.busy = this.fetchProyectos();
+    this.busy = this.fetchData();
   }
 
-  fetchProyectos = async () => {
+  fetchData = async () => {
+    await this.fetchCifras();
+    await this.fetchProyectos('aprobado');
+    await this.fetchProyectos('tramitacion');
+    await this.fetchProyectos('suspendido');
+    await this.fetchProyectos('rechazado');
+  };
+
+  fetchProyectos = async tipo => {
     const {
       data: { proyectos },
-    } = await axios.get('/proyectos-ley/aprobados');
-    this.setState({ proyectos });
+    } = await axios.get(`/proyectos-ley/proyectos?estado=${tipo}`);
+
+    this.setState(prevState => ({
+      proyectos: {
+        ...prevState.proyectos,
+        [tipo]: proyectos,
+      },
+    }));
+  };
+
+  fetchCifras = async () => {
+    const {
+      data: { cifras },
+    } = await axios.get('/proyectos-ley/cifras');
+    this.setState({ cifras });
   };
 
   busy;
 
   render() {
-    const { proyectos } = this.state;
-
-    const aprobados = proyectos.filter(({ estado }) => estado === 'aprobado');
-    const rechazados = proyectos.filter(({ estado }) => estado === 'rechazado');
-    const tramitacion = proyectos.filter(({ estado }) => estado === 'tramitacion');
+    const { cifras, proyectos } = this.state;
 
     return (
       <div className="detalle-aprobados">
         <CifrasBox
-          cifra={aprobados.length}
+          cifra={cifras.aprobado}
           label="Proyectos aprobados"
           estado="aprobado"
         />
         <CifrasBox
-          cifra={tramitacion.length}
+          cifra={cifras.tramitacion}
           label="Proyectos en tramitación"
           estado="tramitacion"
         />
         <CifrasBox
-          cifra={rechazados.length}
+          cifra={cifras.suspendido}
+          label="Proyectos suspendidos"
+          estado="suspendido"
+        />
+        <CifrasBox
+          cifra={cifras.rechazado}
           label="Proyectos rechazados"
           estado="rechazado"
         />
-        <ScrollList items={aprobados} mapFn={mapProyectoDeLey} />
-        <ScrollList items={tramitacion} mapFn={mapProyectoDeLey} />
-        <ScrollList items={rechazados} mapFn={mapProyectoDeLey} />
+        <ScrollList items={proyectos.aprobado} mapFn={mapProyectoDeLey} />
+        <ScrollList items={proyectos.tramitacion} mapFn={mapProyectoDeLey} />
+        <ScrollList items={proyectos.suspendido} mapFn={mapProyectoDeLey} />
+        <ScrollList items={proyectos.rechazado} mapFn={mapProyectoDeLey} />
       </div>
     );
   }
