@@ -60,7 +60,15 @@ class Aprobados extends Component {
     const {
       data: { cifras },
     } = await axios.get('/proyectos-ley/cifras');
-    this.setState({ cifras });
+
+    this.setState({
+      cifras: {
+        aprobado: cifras.aprobado ? cifras.aprobado : 0,
+        tramitacion: cifras.tramitacion ? cifras.tramitacion : 0,
+        suspendido: cifras.suspendido ? cifras.suspendido : 0,
+        rechazado: cifras.rechazado ? cifras.rechazado : 0,
+      },
+    });
   };
 
   busy;
