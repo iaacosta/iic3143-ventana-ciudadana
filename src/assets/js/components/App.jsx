@@ -1,8 +1,8 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
 
-function Index() {
+function App() {
   return <div>Hello React World!</div>;
 }
 
-export default hot(module)(Index);
+export default hot(module)(App);

@@ -1,14 +1,3 @@
 {
-  "extends": ["airbnb-base", "prettier"],
-  "env": {
-    "jest": true
-  },
-  "rules": {
-    "indent": 0,
-    "import/no-extraneous-dependencies": ["error", {
-      "devDependencies": true
-    }],
-    "arrow-parens": 0,
-    "object-curly-newline": 0
-  }
+  "extends": "airbnb-base",
 }
