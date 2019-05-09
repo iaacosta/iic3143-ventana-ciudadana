@@ -9,26 +9,32 @@ describe('<Aprobados />', () => {
   const defaultProps = {};
   const factory = props => <Aprobados {...defaultProps} {...props} />;
 
-  const fakeResponse = {
-    proyectos: [
+  const fakeProyectos = {
+    aprobado: [
       {
         id: 'testId0',
         boletin: 'test-boletin-0',
         resumen: 'Test resumen 0',
         estado: 'aprobado',
       },
+    ],
+    rechazado: [
       {
         id: 'testId1',
         boletin: 'test-boletin-1',
         resumen: 'Test resumen 1',
         estado: 'rechazado',
       },
+    ],
+    tramitacion: [
       {
         id: 'testId2',
         boletin: 'test-boletin-2',
         resumen: 'Test resumen 2',
         estado: 'tramitacion',
       },
+    ],
+    suspendido: [
       {
         id: 'testId3',
         boletin: 'test-boletin-3',
@@ -38,11 +44,29 @@ describe('<Aprobados />', () => {
     ],
   };
 
+  const fakeCifras = { aprobado: 1, rechazado: 1, tramitacion: 1, suspendido: 1 };
+
   beforeEach(() => {
     moxios.install();
-    moxios.stubRequest('/proyectos-ley/aprobados', {
+    moxios.stubRequest('/proyectos-ley/cifras', {
       status: 200,
-      response: fakeResponse,
+      response: { cifras: fakeCifras },
+    });
+    moxios.stubRequest('/proyectos-ley/proyectos?estado=aprobado', {
+      status: 200,
+      response: { proyectos: fakeProyectos.aprobado },
+    });
+    moxios.stubRequest('/proyectos-ley/proyectos?estado=rechazado', {
+      status: 200,
+      response: { proyectos: fakeProyectos.rechazado },
+    });
+    moxios.stubRequest('/proyectos-ley/proyectos?estado=tramitacion', {
+      status: 200,
+      response: { proyectos: fakeProyectos.tramitacion },
+    });
+    moxios.stubRequest('/proyectos-ley/proyectos?estado=suspendido', {
+      status: 200,
+      response: { proyectos: fakeProyectos.suspendido },
     });
     wrapper = shallow(factory());
   });
@@ -62,11 +86,25 @@ describe('<Aprobados />', () => {
 
   test('debe consultar la api por los proyectos y setear estado', async () => {
     await wrapper.instance().busy;
-    expect(wrapper.state('proyectos')).toBe(fakeResponse.proyectos);
+
+    expect(wrapper.state('proyectos')).toMatchObject({
+      aprobado: [...fakeProyectos.aprobado],
+      rechazado: [...fakeProyectos.rechazado],
+      tramitacion: [...fakeProyectos.tramitacion],
+      suspendido: [...fakeProyectos.suspendido],
+    });
+
+    expect(wrapper.state('cifras')).toMatchObject({
+      aprobado: fakeProyectos.aprobado.length,
+      rechazado: fakeProyectos.rechazado.length,
+      tramitacion: fakeProyectos.tramitacion.length,
+      suspendido: fakeProyectos.suspendido.length,
+    });
   });
 
   test('debe renderear las cifras correctamente', async () => {
     await wrapper.instance().busy;
+
     const aprobados = wrapper.find('CifrasBox').at(0);
     const tramitacion = wrapper.find('CifrasBox').at(1);
     const suspendido = wrapper.find('CifrasBox').at(2);
@@ -97,33 +135,36 @@ describe('<Aprobados />', () => {
     const suspendido = wrapper.find('ScrollList').at(2);
     const rechazado = wrapper.find('ScrollList').at(3);
 
-    expect(aprobados.prop('items')).toStrictEqual([fakeResponse.proyectos[0]]);
+    expect(aprobados.prop('items')).toStrictEqual([...fakeProyectos.aprobado]);
     expect(aprobados.prop('mapFn')).toBe(mapProyectoDeLey);
 
-    expect(tramitacion.prop('items')).toStrictEqual([fakeResponse.proyectos[2]]);
+    expect(tramitacion.prop('items')).toStrictEqual([...fakeProyectos.tramitacion]);
     expect(tramitacion.prop('mapFn')).toBe(mapProyectoDeLey);
 
-    expect(suspendido.prop('items')).toStrictEqual([fakeResponse.proyectos[3]]);
+    expect(suspendido.prop('items')).toStrictEqual([...fakeProyectos.suspendido]);
     expect(suspendido.prop('mapFn')).toBe(mapProyectoDeLey);
 
-    expect(rechazado.prop('items')).toStrictEqual([fakeResponse.proyectos[1]]);
+    expect(rechazado.prop('items')).toStrictEqual([...fakeProyectos.rechazado]);
     expect(rechazado.prop('mapFn')).toBe(mapProyectoDeLey);
   });
 
   test('mapProyectoDeLey debe retornar un ProyectoLey con props', () => {
     const returnedWrapper = shallow(
-      <div>{mapProyectoDeLey(fakeResponse.proyectos[0])}</div>,
+      <div>{mapProyectoDeLey(fakeProyectos.aprobado)}</div>,
     );
 
     expect(returnedWrapper.find('ProyectoLey').exists()).toBe(true);
+
     expect(returnedWrapper.find('ProyectoLey').prop('boletin')).toBe(
-      fakeResponse.proyectos[0].boletin,
+      fakeProyectos.aprobado.boletin,
     );
+
     expect(returnedWrapper.find('ProyectoLey').prop('resumen')).toBe(
-      fakeResponse.proyectos[0].resumen,
+      fakeProyectos.aprobado.resumen,
     );
+
     expect(returnedWrapper.find('ProyectoLey').prop('url')).toBe(
-      `/proyectos-ley/${fakeResponse.proyectos[0].id}`,
+      `/proyectos-ley/${fakeProyectos.aprobado.id}`,
     );
   });
 });
