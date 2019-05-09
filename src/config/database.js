@@ -1,20 +1,18 @@
 const config = {
   default: {
-    username: process.env.DB_USERNAME || 'ventana_ciudadana',
-    password: process.env.DB_PASSWORD || 'iic2513',
+    username: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
     dialect: process.env.DB_DIALECT || 'postgres',
-    database: process.env.DB_NAME || 'ventana_ciudadana',
+    database: process.env.DB_NAME,
     host: process.env.DB_HOST || '127.0.0.1',
-    operatorsAliases: false,
   },
   development: {
     extend: 'default',
-    database: process.env.DB_NAME || 'ventana_ciudadana_dev',
+    database: process.env.DB_NAME || 'iic2513template_dev',
   },
   test: {
     extend: 'default',
-    logging: false,
-    database: 'ventana_ciudadana_test',
+    database: 'iic2513template_test',
   },
   production: {
     extend: 'default',
@@ -22,7 +20,7 @@ const config = {
   },
 };
 
-Object.keys(config).forEach(configKey => {
+Object.keys(config).forEach((configKey) => {
   const configValue = config[configKey];
   if (configValue.extend) {
     config[configKey] = Object.assign({}, config[configValue.extend], configValue);
