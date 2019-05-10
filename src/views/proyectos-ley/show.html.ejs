@@ -1,20 +1,39 @@
 
 <div class='proyecto'>
-<h1>HOLA</h1>
+<h1>PROYECTO NRO <%= proy.boletin %> </h1>
 
-<h3> <%= proy.boletin %> </h3>
-<h3> <%= proy.fecha %> </h3>
+
 <h3> <%= proy.resumen %> </h3>
 <h3> <%= proy.estado %> </h3>
 <a href=" <%= proy.url %> "> link en pagina del senado </a>
 
+<!-- Senadores Involucrados -->
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Partido</th>
+      <th>link</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for (i = 0; i < senadores.length; i++) { %>
+      <tr>
+        <td><%= senadores[i].nombre %></td>
+        <td><%= senadores[i].apellido_paterno %></td>
+        <td><%= senadores[i].partido_politico %></td>
+        <td>
+          <a href=" <%= senadores[i].url_twitter %> ">Ver senador</a>
+        </td>
+      </tr>
+    <% } %>
+  </tbody>
+</table>
 
 
-<p> <%= senadores[0].nombre  %> </p>
-
-</div>
-
-
+<!-- Timeline del Proyecto -->
 <div>
   <div class="container">
 
@@ -34,7 +53,8 @@
         </div>
      </div>
 
-
-
   </div>
+</div>
+
+
 </div>
