@@ -1,5 +1,40 @@
+
+<div class='proyecto'>
 <h1>HOLA</h1>
 
-<p> <%= proy.id %> </p>
+<h3> <%= proy.boletin %> </h3>
+<h3> <%= proy.fecha %> </h3>
+<h3> <%= proy.resumen %> </h3>
+<h3> <%= proy.estado %> </h3>
+<a href=" <%= proy.url %> "> link en pagina del senado </a>
+
+
 
 <p> <%= senadores[0].nombre  %> </p>
+
+</div>
+
+
+<div>
+  <div class="container">
+
+     <div class="timeline-block timeline-block-right">
+        <div class="marker"></div>
+        <div class="timeline-content">
+           <h3>Inicio</h3>
+           <span> <%= fecha %> </span>
+        </div>
+     </div>
+
+     <div class="timeline-block timeline-block-left">
+        <div class="marker"></div>
+        <div class="timeline-content">
+           <h3>Estado actual</h3>
+           <span><%= proy.estado %></span>
+        </div>
+     </div>
+
+
+
+  </div>
+</div>
