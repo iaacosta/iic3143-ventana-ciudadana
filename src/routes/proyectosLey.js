@@ -1,5 +1,5 @@
 const KoaRouter = require('koa-router');
-const { Proyecto, Sequelize } = require('../models');
+const { Proyecto, SenadorProyecto, Senador, Sequelize } = require('../models');
 
 const { paginate } = require('../helpers');
 
@@ -45,6 +45,34 @@ router.get('proyectos_por_estado', '/proyectos', async ctx => {
   ctx.body = {
     proyectos,
   };
+});
+
+router.get('proyectos-ley','/show/:id', async (ctx) => {
+  console.log('hola');
+
+  const proy = await Proyecto.findOne({
+    where: { id: ctx.params.id },
+  });
+
+  const senadores_id = await SenadorProyecto.findAll({
+    where: {pid: proy.id},
+  })
+  var senadores = [];
+
+  for (var i = 0; i < senadores_id.length; i++) {
+    const senador = await Senador.findOne({
+      where: { id: senadores_id[i].sid },
+    });
+
+    senadores.push(senador);
+  }
+
+  console.log(senadores);
+
+  await ctx.render('proyectos-ley/show', {
+  proy,
+  senadores,
+ });
 });
 
 module.exports = router;

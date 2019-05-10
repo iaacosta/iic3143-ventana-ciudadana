@@ -9,7 +9,7 @@ const config = {
   },
   development: {
     extend: 'default',
-    database: process.env.DB_NAME || 'ventana_ciudadana_dev',
+    database: process.env.DB_NAME || 'ventana_ciudadana',
   },
   test: {
     extend: 'default',
