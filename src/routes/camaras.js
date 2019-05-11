@@ -7,7 +7,7 @@ const router = new KoaRouter();
 
 router.get('camaras', '/', async ctx => {
   const partidos = await Senador.findAll({
-    attributes: ['partido_politico','id'],
+    attributes: ['partido_politico','id',"nombre","apellido_paterno", "apellido_materno"],
   });
 
   const years_congress = await Periodo.findAll({

@@ -5,10 +5,12 @@
 </head>
 
 <body>
-<svg width="800" height="400"></svg>
+<div id="cam_container">
+<svg></svg>
+</div>
+<p id="nombre_partido"></p>
 </body>
 
-<p id="hola" ></p>
 
 
 
@@ -24,11 +26,11 @@
   var fontSize = 50;
   var iconSpace = 3;
   var legendSpace = 20;
-  var legendX = 700;
+  var legendX = 600;
   var legendY = 20;
   var legendTitle = "Partidos políticos";
   var color = d3.scale.ordinal()
-    .range(["#f0484d", "#ffcc2d", "#0088a6", "#aedfe6", "#255eab", "#c74b57", "#afaeaf", "#f79e95"]);
+    .range(["#f0484d", "#ffcc2d", "#0088a6", "#aedfe6", "#255eab", "#c74b57", "#afaeaf", "#f79e95","#3f3e60"]);
   //var dataRating = [1, 4, 3, 2, 1]
   // var dataIcons = [[dataRating[0], icon], [dataRating[1], icon], [dataRating[2], icon], [dataRating[3], icon], [dataRating[4], icon]];
 
@@ -38,19 +40,8 @@
   console.log(leyenda)
   var dataRating = lista_partidos;
   var dataIcons = leyenda;
-
   var dataText = lista_partidos;
   var data = datos_senadores;
-  // var data = [[dataRating[0], icon, dataText[0]], [dataText[0], icon, dataText[0]], [dataText[0], icon, dataText[0]], [dataText[0], icon, dataText[0]], [dataText[0], icon, dataText[0]], [dataText[0], icon, dataText[0]],
-  //   [dataText[1], icon, dataText[1]], [dataText[1], icon, dataText[1]], [dataText[1], icon, dataText[1]], [dataText[1], icon, dataText[1]], [dataText[1], icon, dataText[1]], [dataText[1], icon, dataText[1]], [dataText[1], icon, dataText[1]], [dataText[1], icon, dataText[1]], [dataText[1], icon, dataText[1]], [dataText[1], icon, dataText[1]], [dataText[1], icon, dataText[1]], [dataText[1], icon, dataText[1]], [dataText[1], icon, dataText[1]], [dataText[1], icon, dataText[1]], [dataText[1], icon, dataText[1]], [dataText[1], icon, dataText[1]], [dataText[1], icon, dataText[1]], [dataText[1], icon, dataText[1]], [dataText[1], icon, dataText[1]], [dataText[1], icon, dataText[1]], [dataText[1], icon, dataText[1]], [dataText[1], icon, dataText[1]], [dataText[1], icon, dataText[1]], [dataText[1], icon, dataText[1]], [dataText[1], icon, dataText[1]], [dataText[1], icon, dataText[1]], [dataText[1], icon, dataText[1]], [dataText[1], icon, dataText[1]], [dataText[1], icon, dataText[1]], [dataText[1], icon, dataText[1]], [dataText[1], icon, dataText[1]], [dataText[1], icon, dataText[1]],	[dataText[1], icon, dataText[1]],	[dataText[1], icon, dataText[1]], [dataText[1], icon, dataText[1]], [dataText[1], icon, dataText[1]], [dataText[1], icon, dataText[1]], [dataText[1], icon, dataText[1]], [dataText[1], icon, dataText[1]], [dataText[1], icon, dataText[1]], [dataText[1], icon, dataText[1]], [dataText[1], icon, dataText[1]], [dataText[1], icon, dataText[1]], [dataText[1], icon, dataText[1]], [dataText[1], icon, dataText[1]], [dataText[1], icon, dataText[1]], [dataText[1], icon, dataText[1]], [dataText[1], icon, dataText[1]], [dataText[1], icon, dataText[1]], [dataText[1], icon, dataText[1]], [dataText[1], icon, dataText[1]], [dataText[1], icon, dataText[1]], [dataText[1], icon, dataText[1]], [dataText[1], icon, dataText[1]],
-  //   [dataText[2], icon, dataText[2]], [dataText[2], icon, dataText[2]], [dataText[2], icon, dataText[2]], [dataText[2], icon, dataText[2]], [dataText[2], icon, dataText[2]], [dataText[2], icon, dataText[2]], [dataText[2], icon, dataText[2]], [dataText[2], icon, dataText[2]], [dataText[2], icon, dataText[2]], [dataText[2], icon, dataText[2]], [dataText[2], icon, dataText[2]], [dataText[2], icon, dataText[2]], [dataText[2], icon, dataText[2]], [dataText[2], icon, dataText[2]], [dataText[2], icon, dataText[2]], [dataText[2], icon, dataText[2]], [dataText[2], icon, dataText[2]], [dataText[2], icon, dataText[2]], [dataText[2], icon, dataText[2]], [dataText[2], icon, dataText[2]], [dataText[2], icon, dataText[2]], [dataText[2], icon, dataText[2]], [dataText[2], icon, dataText[2]], [dataText[2], icon, dataText[2]], [dataText[2], icon, dataText[2]], [dataText[2], icon, dataText[2]],
-  //   [dataText[3], icon, dataText[3]], [dataText[3], icon, dataText[3]], [dataText[3], icon, dataText[3]], [dataText[3], icon, dataText[3]], [dataText[3], icon, dataText[3]], [dataText[3], icon, dataText[3]], [dataText[3], icon, dataText[3]], [dataText[3], icon, dataText[3]], [dataText[3], icon, dataText[3]], [dataText[3], icon, dataText[3]],
-  //   [dataText[4], icon, dataText[4]], [dataText[4], icon, dataText[4]], [dataText[4], icon, dataText[4]], [dataText[4], icon, dataText[4]], [dataText[3], icon, dataText[3]]
-  // ];
-
-
-
-
 
   
   function getPartidos() {
@@ -72,6 +63,7 @@
       const senador_vigente = partidos_senadores.find(({ id }) =>years_congress.sid === id);
     return {...senador_vigente};
     });
+    console.log (senadores_actuales)
 
     // orden alfabetico
     senadores_actuales.sort(function(first, second) {
@@ -86,13 +78,10 @@
 
 
     datos_senadores= senadores_actuales.map(function (senador) {
-      return ([senador.partido_politico, icono,senador.partido_politico])
+      return ([senador.partido_politico, icono,senador.partido_politico ]) //senador.nombre+" "+senador.apellido_paterno+ " - " +senador.partido_politico
     });
     console.log("lalalalalalla",datos_senadores);
-
   }
-
-
 
 
   function updateText(className, newText){
@@ -109,13 +98,16 @@
       .append("g");
 
     icons.append("text")
-      .on("mouseover", function(d){ updateText("p", d[2]); })
+      .on("mouseover",function(d){ updateText("p", d[2]); })
+      .on("click", function(d){ updateText("p", d[2]); })
       .attr("x", function(d, i){ return ((i%10 + 1) * (fontSize + 1 + iconSpace)) - fontSize;})
       .attr("y", function(d, i){ if(i%10 == 0){row++}; return row * fontSize;})
       .attr('font-family', 'FontAwesome')
       .attr('font-size', fontSize)
+      .attr('cursor', 'default')
       .attr("fill", function(d){ return color(d);})
       .text(function(d) { return "\u00A0 " + d[1]; });
+
 
     var legend = chart.append('g')
       .attr('class', 'legend')
@@ -141,5 +133,8 @@
       .text(function(d) { return d[0]; });
   }
 
+
   plotPictogramChart(data);
 </script>
+
+
