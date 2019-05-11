@@ -1,14 +1,15 @@
 
-<div class='proyecto'>
-<h1>PROYECTO NRO <%= proy.boletin %> </h1>
+<div class='proyectos'>
+<h1 class="titulos">
+  PROYECTO NRO <%= proy.boletin %>
+</h1>
 
 
 <h3> <%= proy.resumen %> </h3>
-<h3> <%= proy.estado %> </h3>
-<a href=" <%= proy.url %> "> link en pagina del senado </a>
+<h3> Su estado actual es <%= proy.estado %> </h3>
+<a class="link" href=" <%= proy.url %> "> Ver en pagina del senado </a>
 
 <!-- Senadores Involucrados -->
-
 
 <div style="align: center;">
   <div class="contenedor-cards">
@@ -26,8 +27,6 @@
   <% } %>
   </div>
 </div>
-
-
 
 <!-- Timeline del Proyecto -->
 <div>
@@ -52,9 +51,7 @@
   </div>
 </div>
 
-
 </div>
-
 
 <!-- Timeline sacado de: -->
 <!-- https://codepen.io/hassan-kamal/pen/NNvYEQ -->

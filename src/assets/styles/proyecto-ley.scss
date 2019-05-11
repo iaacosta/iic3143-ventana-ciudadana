@@ -22,6 +22,33 @@ h1 span {
    font-weight: 600;
 }
 
+h3 {
+  margin: 1%;
+  text-align: center;
+  font-size: 15px;
+}
+
+.titulos {
+  color: $color-primary-darkest;
+  font-family: 'Raleway',sans-serif;
+  font-size: 62px;
+  font-weight: 800;
+  line-height: 72px;
+  margin: 0 0 24px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.proyectos{
+  color: $color-grey-dark-4;
+  border-radius: 10px;
+  margin: 5%;
+  padding: 5%;
+  background-color: $color-grey-light-1;
+  align-content: center;
+  align-items: center;
+}
+
 .container {
    width: 80%;
    padding: 50px 0;
@@ -95,10 +122,12 @@ h1 span {
 }
 
 .contenedor-cards{
-  margin: 5%;
+  margin: 5% auto;
+  grid-gap: 5%;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   float: none;
+  border-radius: 10px;
 }
 
 .card-senadores {
@@ -106,8 +135,7 @@ h1 span {
   max-width: 200px;
   text-align: center;
   font-family: Arial;
-  margin: 5%;
-
+  border-radius: 10px;
 }
 
 .title-senadores {
@@ -135,6 +163,16 @@ button {
   padding-top: 30%;
   font-size: 22px;
   color: black;
+}
+
+.link {
+  background-color: $color-primary-dark;
+  padding: 1%;
+  align: center;
+  color: $color-white;
+  border-radius: 10px;
+
+
 }
 
 button:hover, a:hover {
