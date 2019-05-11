@@ -16,7 +16,7 @@ body {
 
   &>* {
     margin: auto;
-    width: 90vw;
+    width: 100vw;
   }
 }
 
@@ -32,7 +32,7 @@ html {
 }
 
 header {
-  height: 7vh;
+  height: $header-size;
   background-color: $color-primary-darkest;
   padding: 0 0 0 2rem;
 
@@ -46,7 +46,7 @@ header {
 
 main {
   padding: 2rem;
-  min-height: 93vh;
+  min-height: calc(100vh - #{$header-size});
   background-color: $color-white;
 }
 
