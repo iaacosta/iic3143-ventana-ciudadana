@@ -9,28 +9,24 @@
 
 <!-- Senadores Involucrados -->
 
-<table>
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Apellido</th>
-      <th>Partido</th>
-      <th>link</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% for (i = 0; i < senadores.length; i++) { %>
-      <tr>
-        <td><%= senadores[i].nombre %></td>
-        <td><%= senadores[i].apellido_paterno %></td>
-        <td><%= senadores[i].partido_politico %></td>
-        <td>
-          <a href=" <%= senadores[i].url_twitter %> ">Ver senador</a>
-        </td>
-      </tr>
-    <% } %>
-  </tbody>
-</table>
+
+<div style="align: center;">
+  <div class="contenedor-cards">
+  <% for (i = 0; i < senadores.length; i++) { %>
+
+    <div class="card-senadores">
+      <img src=" <%= fotos[i] %> " alt="foto" style="width:100%">
+      <h1> <%= senadores[i].nombre %> </h1>
+      <h1> <%= senadores[i].apellido_paterno %> </h1>
+      <p class="title-senadores"> <%= senadores[i].partido_politico %> </p>
+        <a class="link-senadores" href=" <%= senadores[i].url_twitter %> ">Twitter</a>
+      <p><button>Ver Perfil</button></p>
+    </div>
+
+  <% } %>
+  </div>
+</div>
+
 
 
 <!-- Timeline del Proyecto -->
@@ -58,3 +54,7 @@
 
 
 </div>
+
+
+<!-- Timeline sacado de: -->
+<!-- https://codepen.io/hassan-kamal/pen/NNvYEQ -->

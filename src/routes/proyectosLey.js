@@ -48,8 +48,6 @@ router.get('proyectos_por_estado', '/proyectos', async ctx => {
 });
 
 router.get('proyectos-ley','/show/:id', async (ctx) => {
-  console.log('hola');
-
   const proy = await Proyecto.findOne({
     where: { id: ctx.params.id },
   });
@@ -62,16 +60,23 @@ router.get('proyectos-ley','/show/:id', async (ctx) => {
     where: {pid: proy.id},
   })
   var senadores = [];
+  var fotos = [];
 
   for (var i = 0; i < senadores_id.length; i++) {
     const senador = await Senador.findOne({
       where: { id: senadores_id[i].sid },
     });
-
+    if (senador.url_foto == null) {
+      fotos.push("https://d1nhio0ox7pgb.cloudfront.net/_img/o_collection_png/green_dark_grey/256x256/plain/user.png")
+    } else {
+      fotos.push(senador.url_foto);
+    }
+    console.log(fotos);
     senadores.push(senador);
   }
 
   await ctx.render('proyectos-ley/show', {
+  fotos,
   proy,
   fecha,
   senadores,
