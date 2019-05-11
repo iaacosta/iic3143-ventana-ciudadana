@@ -28,13 +28,57 @@
 .options {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2rem;
   padding: 4rem;
 
   &__option {
+    font-size: 1.6rem;
     display: grid;
-    grid-template-rows: repeat(4, 1fr);
-    grid-gap: 1rem;
-    box-shadow: 0rem .5rem .5rem rgba($color-black, .2);
+    grid-template-rows: 12rem min-content 8rem 3.5rem;
+    box-shadow: 0rem .5rem 1rem rgba($color-black, .2);
 
+    &-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      overflow: hidden;
+    }
+
+    &-header {
+      background-color: $color-grey;
+      padding: 1rem;
+      color: $color-white;
+      line-height: 1;
+      font-size: 2.5rem;
+      display: flex;
+      align-items: center;
+    }
+
+    &-text {
+      padding: 1rem;
+      font-size: 1.6rem;
+      align-self: center;
+    }
+
+    &-button {
+      cursor: pointer;
+      background-color: $color-primary-dark;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $color-white;
+      font-size: 2.2rem;
+      transition: background-color .2s ease;
+
+      &:link,
+      &:visited {
+        color: $color-white;
+      }
+
+      &:hover {
+        background-color: $color-primary-darkest;
+      }
+    }
   }
 }
