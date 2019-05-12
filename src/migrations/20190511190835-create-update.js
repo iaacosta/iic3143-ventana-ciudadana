@@ -2,8 +2,13 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('Updates', {
-      createdAt: {
+      id: {
+        allowNull: false,
+        autoIncrement: true,
         primaryKey: true,
+        type: Sequelize.INTEGER,
+      },
+      createdAt: {
         type: Sequelize.DATE,
         defaultValue: Sequelize.literal('NOW()'),
       },
