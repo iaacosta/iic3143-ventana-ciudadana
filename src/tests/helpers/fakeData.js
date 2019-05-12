@@ -1,3 +1,5 @@
+const dayjs = require('dayjs');
+
 const proyectos = [
   {
     boletin: '00000-1',
@@ -29,16 +31,6 @@ const proyectos = [
   },
 ];
 
-const updates = [
-  {
-    createdAt: new Date('2019-04-01'),
-  },
-  {
-    createdAt: new Date('2019-04-01'),
-  },
-];
-
 module.exports = {
   proyectos,
-  updates,
 };
