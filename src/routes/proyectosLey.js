@@ -71,7 +71,6 @@ router.get('proyectos-ley','/show/:id', async (ctx) => {
     } else {
       fotos.push(senador.url_foto);
     }
-    console.log(fotos);
     senadores.push(senador);
   }
 
@@ -80,6 +79,36 @@ router.get('proyectos-ley','/show/:id', async (ctx) => {
   proy,
   fecha,
   senadores,
+ });
+});
+
+
+router.get('proyectos-ley','/show-estado/:estado', async (ctx) => {
+
+  const proys = await Proyecto.findAll({
+    where: { estado: ctx.params.estado },
+    order: [['fecha', 'DESC']],
+  });
+
+  var fechas = [];
+  const cont = proys.length;
+  const estado = ctx.params.estado;
+
+  for (var i = 0; i < proys.length; i++) {
+
+    const proyecto = proys[i];
+    const date = proyecto.fecha;
+    var string = date.toString();
+    var fecha = string.substr(4, 11)
+
+    fechas.push(fecha);
+  }
+
+  await ctx.render('proyectos-ley/show-estado', {
+  proys,
+  fechas,
+  cont,
+  estado,
  });
 });
 
