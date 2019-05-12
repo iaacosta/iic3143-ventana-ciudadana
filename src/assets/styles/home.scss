@@ -3,7 +3,12 @@
   width: calc(100% + 4rem);
   margin: -2rem;
 
-  background-image: linear-gradient(to bottom, rgba($color-black, .8), rgba($color-black, .8)), url('../images/hero-image.jpg');
+  background-image: linear-gradient(
+      to bottom,
+      rgba($color-black, 0.8),
+      rgba($color-black, 0.8)
+    ),
+    url('../images/hero-image.jpg');
   background-size: cover;
   background-position: center;
   color: $color-white;
@@ -14,7 +19,7 @@
   grid-gap: 1rem;
 
   &__header {
-    font-size: 7rem;
+    font-size: 9rem;
     text-transform: uppercase;
     letter-spacing: 1px;
     font-weight: 500;
@@ -28,14 +33,14 @@
 .options {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 2rem;
-  padding: 4rem;
+  grid-gap: 6rem;
+  padding: 7rem 4rem 5rem 4rem;
 
   &__option {
     font-size: 1.6rem;
     display: grid;
-    grid-template-rows: 12rem min-content 8rem 3.5rem;
-    box-shadow: 0rem .5rem 1rem rgba($color-black, .2);
+    grid-template-rows: 15rem min-content 10rem 4rem;
+    box-shadow: 0rem 1rem 2rem rgba($color-black, 0.1);
 
     &-image {
       width: 100%;
@@ -57,7 +62,7 @@
 
     &-text {
       padding: 1rem;
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       align-self: center;
     }
 
@@ -69,7 +74,7 @@
       justify-content: center;
       color: $color-white;
       font-size: 2.2rem;
-      transition: background-color .2s ease;
+      transition: background-color 0.2s ease;
 
       &:link,
       &:visited {

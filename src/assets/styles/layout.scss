@@ -22,7 +22,7 @@ html {
   font-weight: 300;
 
   @include respond(small) {
-    font-size: 50%;
+    font-size: 55%;
   }
 }
 
@@ -41,7 +41,7 @@ header {
 
 main {
   padding: 2rem;
-  min-height: calc(100vh - #{$header-size});
+  min-height: calc(100vh - #{$header-size} - #{$footer-size});
   background-color: $color-white;
 }
 
@@ -79,4 +79,16 @@ main {
       background-color: $color-primary-dark;
     }
   }
+}
+
+.footer {
+  height: $footer-size;
+  font-size: 1.6rem;
+  background-color: $color-grey;
+  color: $color-grey-light-3;
+
+  padding: 0 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
