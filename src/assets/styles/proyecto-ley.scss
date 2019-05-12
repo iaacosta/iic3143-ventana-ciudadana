@@ -185,6 +185,7 @@ button:hover, a:hover {
 // COLAPSIBLE CONTENT
 
 .wrap-collabsible {
+  margin-top: 2%;
   margin-bottom: 1.2rem 0;
 }
 
@@ -194,7 +195,6 @@ input[type='checkbox'] {
 
 .lbl-toggle {
   display: block;
-
   font-weight: bold;
   font-family: monospace;
   font-size: 1.2rem;
@@ -203,17 +203,16 @@ input[type='checkbox'] {
 
   padding: 1rem;
 
-  color: #A77B0E;
-  background: #FAE042;
+  color: $color-white;
+  background: $color-primary-dark;
 
-  cursor: pointer;
 
   border-radius: 7px;
   transition: all 0.25s ease-out;
 }
 
 .lbl-toggle:hover {
-  color: #7C5A0B;
+  color: $color-grey;
 }
 
 .lbl-toggle::before {
@@ -250,8 +249,7 @@ input[type='checkbox'] {
 }
 
 .collapsible-content .content-inner {
-  background: rgba(250, 224, 66, .2);
-  border-bottom: 1px solid rgba(250, 224, 66, .45);
+  background: $color-primary-light;
   border-bottom-left-radius: 7px;
   border-bottom-right-radius: 7px;
   padding: .5rem 1rem;
