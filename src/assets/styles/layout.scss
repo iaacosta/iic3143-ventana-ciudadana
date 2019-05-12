@@ -13,11 +13,6 @@ body {
   margin: 0;
   padding: 0;
   background-color: $color-primary-light;
-
-  &>* {
-    margin: auto;
-    width: 100vw;
-  }
 }
 
 html {
