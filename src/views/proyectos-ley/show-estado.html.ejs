@@ -6,7 +6,22 @@
   <h2> <%= cont %> Proyectos totales </h2>
 
   <!-- Contenedor cartas de proyectos -->
+  <div>
+    <div class="contenedor-cards">
+    <% for (i = 0; i < proys.length; i++) { %>
 
-  
+      <div class="card-senadores">
+        <h1> <%= proys[i].boletin %> </h1>
+        <h3> <%= proys[i].estado %> </h3>
+        <p class="title-senadores"> <%= fechas[i] %> </p>
+        <p class ="title-senadores"> <%= proys[i].resumen %> </p>
+
+        <p><button>Ver Perfil</button></p>
+      </div>
+
+    <% } %>
+    </div>
+  </div>
+
 
 </div>
