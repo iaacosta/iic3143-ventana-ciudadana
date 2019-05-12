@@ -56,6 +56,13 @@ router.get('proyectos-ley','/show/:id', async (ctx) => {
   var string = date.toString();
   var fecha = string.substr(4, 11)
 
+  var resumen = "";
+  if (proy.resumen == null) {
+    resumen = "Este proyecto no tiene descripcion";
+  } else {
+    resumen = proy.resumen;
+  };
+
   const senadores_id = await SenadorProyecto.findAll({
     where: {pid: proy.id},
   })
@@ -79,6 +86,7 @@ router.get('proyectos-ley','/show/:id', async (ctx) => {
   proy,
   fecha,
   senadores,
+  resumen,
  });
 });
 
