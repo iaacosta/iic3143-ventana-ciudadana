@@ -6,6 +6,8 @@
   "license": "MIT",
   "jest": {
     "clearMocks": true,
+    "globalSetup": "./src/tests/setup.js",
+    "globalTeardown": "./src/tests/teardown.js",
     "setupFilesAfterEnv": [
       "./src/setupTests.js"
     ],
@@ -51,6 +53,7 @@
     "eslint-plugin-react": "^7.4.0",
     "file-loader": "^2.0.0",
     "jest": "^24.8.0",
+    "jest-environment-node": "^24.8.0",
     "koa-webpack": "^5.1.0",
     "mini-css-extract-plugin": "^0.4.2",
     "moxios": "^0.4.0",
