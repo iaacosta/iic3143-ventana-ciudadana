@@ -74,6 +74,7 @@ main {
     text-align: center;
 
     font-size: 1.6rem;
+    transition: background-color 0.2s ease;
 
     &:hover {
       background-color: $color-primary-dark;
