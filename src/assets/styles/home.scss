@@ -1,7 +1,7 @@
 .hero {
   height: calc(100vh - #{$header-size});
   width: calc(100% + 4rem);
-  margin: -2rem;
+  margin: -2rem -2rem 0 -2rem;
 
   background-image: linear-gradient(
       to bottom,
@@ -11,7 +11,7 @@
     url('../images/hero-image.jpg');
   background-size: cover;
   background-position: center;
-  color: $color-white;
+  color: $color-grey-light-3;
 
   display: grid;
   justify-items: center;
@@ -34,7 +34,9 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 6rem;
-  padding: 7rem 4rem 5rem 4rem;
+  // padding: 7rem 4rem 1rem 4rem;
+  margin: 6rem 4rem;
+  margin-bottom: 3rem;
 
   &__option {
     font-size: 1.6rem;
@@ -85,5 +87,25 @@
         background-color: $color-primary-darkest;
       }
     }
+  }
+}
+
+.updates {
+  padding: 3rem;
+  font-size: 2rem;
+
+  display: grid;
+  grid-gap: 1rem;
+  justify-content: center;
+  justify-items: center;
+
+  &__label {
+    color: $color-primary-darkest;
+  }
+
+  &__value {
+    color: $color-grey;
+    letter-spacing: 1px;
+    text-transform: uppercase;
   }
 }
