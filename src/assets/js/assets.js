@@ -43,3 +43,8 @@ import '../images/senadores/1225.jpeg';
 import '../images/senadores/1213.jpeg';
 import '../images/senadores/1112.jpeg';
 import '../images/senadores/1067.jpeg';
+
+import '../images/camara.jpg';
+import '../images/leyes.jpg';
+import '../images/parlamentario.jpg';
+

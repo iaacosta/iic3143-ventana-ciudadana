@@ -10,7 +10,7 @@ export const mapProyectoDeLey = ({ id, boletin, resumen }) => (
   <ProyectoLey
     boletin={boletin}
     resumen={resumen}
-    url={`/proyectos-ley/${id}`}
+    url={`/proyectos-ley/show/${id}`}
     key={uuid()}
   />
 );
