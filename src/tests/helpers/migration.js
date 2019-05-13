@@ -15,7 +15,7 @@ const setUp = () => {
   });
 };
 
-const cleanUp = () => {
+const tearDown = () => {
   return new Promise((resolve, reject) => {
     const undo = spawn('sequelize', ['db:migrate:undo:all'], spawnOptions);
     undo.on('close', undoCode => {
@@ -27,5 +27,5 @@ const cleanUp = () => {
 
 module.exports = {
   setUp,
-  cleanUp,
+  tearDown,
 };

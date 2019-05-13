@@ -1,18 +1,15 @@
 const request = require('supertest');
-const { server } = require('../../../index');
+const { init } = require('../../../index');
 
 const { Proyecto } = require('../../models');
 const { proyectos } = require('../helpers/fakeData');
-const migration = require('../helpers/migration');
 
 describe('proyectos de ley / ruta', () => {
-  beforeAll(async () => {
-    await migration.setUp();
-    await Promise.all(proyectos.map(proyecto => Proyecto.create(proyecto)));
-  });
+  let server;
 
-  afterAll(async () => {
-    await migration.cleanUp();
+  beforeAll(async () => {
+    server = await init(4000);
+    await Promise.all(proyectos.map(proyecto => Proyecto.create(proyecto)));
   });
 
   test('"/proyectos-ley" debe responder la con status 200', async () => {

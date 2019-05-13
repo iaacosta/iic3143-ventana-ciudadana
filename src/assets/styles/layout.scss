@@ -13,11 +13,6 @@ body {
   margin: 0;
   padding: 0;
   background-color: $color-primary-light;
-
-  &>* {
-    margin: auto;
-    width: 90vw;
-  }
 }
 
 html {
@@ -27,12 +22,12 @@ html {
   font-weight: 300;
 
   @include respond(small) {
-    font-size: 50%;
+    font-size: 55%;
   }
 }
 
 header {
-  height: 7vh;
+  height: $header-size;
   background-color: $color-primary-darkest;
   padding: 0 0 0 2rem;
 
@@ -46,7 +41,7 @@ header {
 
 main {
   padding: 2rem;
-  min-height: 93vh;
+  min-height: calc(100vh - #{$header-size} - #{$footer-size});
   background-color: $color-white;
 }
 
@@ -79,6 +74,7 @@ main {
     text-align: center;
 
     font-size: 1.6rem;
+    transition: background-color 0.2s ease;
 
     &:hover {
       background-color: $color-primary-dark;
@@ -86,7 +82,17 @@ main {
   }
 }
 
+.footer {
+  height: $footer-size;
+  font-size: 1.6rem;
+  background-color: $color-grey;
+  color: $color-grey-light-3;
+
+  padding: 0 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
 .proyecto-ley {
   background-color: $color-white;
-
 }

@@ -6,6 +6,8 @@
   "license": "MIT",
   "jest": {
     "clearMocks": true,
+    "globalSetup": "./src/tests/setup.js",
+    "globalTeardown": "./src/tests/teardown.js",
     "setupFilesAfterEnv": [
       "./src/setupTests.js"
     ],
@@ -51,14 +53,16 @@
     "eslint-plugin-react": "^7.4.0",
     "file-loader": "^2.0.0",
     "jest": "^24.8.0",
+    "jest-environment-node": "^24.8.0",
+    "jquery": "^3.4.1",
     "koa-webpack": "^5.1.0",
     "mini-css-extract-plugin": "^0.4.2",
     "moxios": "^0.4.0",
     "node-sass": "^4.5.3",
     "nodemon": "^1.11.0",
     "sass-loader": "^7.1.0",
-    "supertest": "^4.0.2",
     "style-loader": "^0.23.0",
+    "supertest": "^4.0.2",
     "webpack": "^4.0.0",
     "webpack-asset-pipeline": "^1.1.1",
     "webpack-command": "^0.4.1"
@@ -67,6 +71,7 @@
     "@babel/polyfill": "^7.0.0",
     "axios": "^0.18.0",
     "create-react-app": "^3.0.0",
+    "dayjs": "^1.8.14",
     "koa": "^2.3.0",
     "koa-body": "^4.0.4",
     "koa-ejs": "^4.1.0",

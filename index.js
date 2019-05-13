@@ -3,24 +3,33 @@
 const app = require('./src/app');
 const db = require('./src/models');
 
-const PORT = process.env.PORT || (process.env.NODE_ENV === 'test' && 4000) || 3000;
+const PORT = process.env.PORT || 3000;
+const { NODE_ENV } = process.env;
 
-db.sequelize
-  .authenticate()
-  .then(() => {
-    if (process.env.NODE_ENV !== 'test')
+const init = async port => {
+  try {
+    await db.sequelize.authenticate();
+    if (NODE_ENV !== 'test')
       console.log('Connection to the database has been established successfully.');
-  })
-  .catch(err => console.error('Unable to connect to the database:', err));
-
-const server = app.listen(PORT, err => {
-  if (err) {
-    return console.error('Failed', err);
+  } catch (err) {
+    console.error('Unable to connect to the database:', err);
   }
-  if (process.env.NODE_ENV !== 'test') console.log(`Listening on port ${PORT}`);
-  return app;
-});
+
+  let server;
+  try {
+    // eslint-disable-next-line consistent-return
+    server = await app.listen(port, () => {
+      if (NODE_ENV !== 'test') console.log(`Listening on port ${PORT}`);
+    });
+  } catch (err) {
+    console.error('Failed', err);
+  }
+
+  return server;
+};
+
+if (NODE_ENV !== 'test') init(PORT);
 
 module.exports = {
-  server,
+  init,
 };
