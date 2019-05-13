@@ -1,10 +1,22 @@
 <div class="camaras">
-  <div id="cam_container">
-    <svg></svg>
-    <div class="info-senador" id="camara-diputados">
-      <p class="info-senador__placeholder">Seleccione un senador</p>  
+
+  <h2 class="camaras__titulo">Cámara de senadores</h2>
+  <h2 class="camaras__titulo">Cámara de diputados</h2>
+
+  <div class="camaras__container">
+    <svg id="svg-senadores"></svg>
+    <div class="info-parlamentario" id="camara-senadores">
+      <p class="info-parlamentario__placeholder">Seleccione un senador</p>  
     </div>
   </div>
+
+  <div class="camaras__container">
+    <svg id="svg-diputados"></svg>
+  </div>
+</div>
+
+<div class="proyectos">
+  <div id="proyectos-aprobados-react"></div>
 </div>
 
 <script src="http://d3js.org/d3.v3.min.js"></script>
@@ -74,25 +86,29 @@
     const { nombre, apellido_paterno, id, partido_politico } = data;
     
     const template = `
-        <img src="<%= assetPath('${id}.jpeg') %>" class="info-senador__imagen"/>
-        <p class="info-senador__nombre">${nombre} ${apellido_paterno}</p>
-        <p class="info-senador__partido">${partido_politico}</p>      
+        <img src="<%= assetPath('${id}.jpeg') %>" class="info-parlamentario__imagen"/>
+        <p class="info-parlamentario__nombre">${nombre} ${apellido_paterno}</p>
+        <p class="info-parlamentario__partido">
+          <span class="info-parlamentario__color"></span>
+          ${partido_politico}
+        </p>      
     `
 
-    $(`.info-senador#camara-diputados`).html(template);
+    $(`.info-parlamentario#camara-senadores`).html(template);
   }
 
   function resetCard(){
     const template = `
-        <p class="info-senador__placeholder">Seleccione un senador</p>  
+        <p class="info-parlamentario__placeholder">Seleccione un senador</p>  
     `
 
-    $(`.info-senador#camara-diputados`).html(template);
+    $(`.info-parlamentario#camara-senadores`).html(template);
   }
 
-  function plotPictogramChart(d) {
+  function plotPictogramChart(d, id) {
+    const active = id === 'svg-senadores';
     let row = 0;
-    const chart = d3.select("svg")
+    const chart = d3.select(`svg#${id}`)
       .attr("transform", "translate(0, 0)");
 
     const icons = chart.selectAll("g")
@@ -124,15 +140,15 @@
     }
 
     icons.append("text")
-      .on("mouseover", (d, i) => updateText(senadores_actuales[i]))
-      .on("mouseleave", () => resetCard())
-      .on("click", (d, i) => window.location.href = `/senadores/${senadores_actuales[i].id}`)
+      .on("mouseover", (d, i) => active ? updateText(senadores_actuales[i]) : null)
+      .on("mouseleave", () => active ? resetCard() : null)
+      .on("click", (d, i) => active ? window.location.href = `/senadores/${senadores_actuales[i].id}` : null)
       .attr("x", (d, i) => coords[i][1] * fontSize - 20)
       .attr("y", (d, i) => coords[i][0] * fontSize + 40)
       .attr('font-family', 'FontAwesome')
       .attr('font-size', fontSize)
       .attr('cursor', 'default')
-      .attr("fill", (d) => color(d))
+      .attr("fill", (d) => active ? color(d) : '#cccccc')
       .text((d) => "\u00A0 " + d[1]);
 
 
@@ -143,6 +159,8 @@
     legend.append("text")
       .attr("transform", "translate(0, 5)")
       .text(legendTitle);
+
+    if (!active) return;
 
     const legendItems = legend.selectAll("g")
       .data(dataIcons).enter()
@@ -161,7 +179,8 @@
   }
 
 
-  plotPictogramChart(data);
+  plotPictogramChart(data, "svg-senadores");
+  plotPictogramChart(data, "svg-diputados");
 </script>
 
 

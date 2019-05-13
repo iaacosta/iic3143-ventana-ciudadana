@@ -1,14 +1,32 @@
 .camaras {
   width: 100%;
   display: grid;
+  grid-template-rows: min-content 1fr;
   grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
 
-  .info-senador {
+  &__titulo {
+    font-size: 4rem;
+    font-weight: 500;
+    color: $color-primary-darkest;
+    margin-bottom: 3rem;
+    margin-left: 6.8rem;
+    justify-self: start;
+  }
+
+  &__container {
+    display: grid;
+    grid-template-rows: 1fr min-content;
+    grid-gap: 2rem;
+    justify-items: center;
+  }
+
+  .info-parlamentario {
     color: $color-grey;
     margin-left: -10rem;
     font-size: 2rem;
     width: 50%;
-    min-height: 15rem;
+    min-height: 20rem;
 
     display: grid;
     grid-template-columns: min-content 1fr;
@@ -48,11 +66,10 @@
   font-size: 1.5rem;
 }
 
-#cam_container {
+.proyectos {
   display: grid;
-  grid-template-rows: 1fr min-content;
-  grid-gap: 2rem;
-  justify-items: center;
+  justify-content: center;
+  margin: 2rem auto;
 }
 
 svg {
