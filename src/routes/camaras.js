@@ -25,7 +25,7 @@ router.get('camaras', '/', async ctx => {
     },
   });
 
-  await ctx.render('camaras', {
+  await ctx.render('camara/index', {
     partidos: JSON.stringify(partidos),
     yearsCongress: JSON.stringify(yearsCongress),
   });

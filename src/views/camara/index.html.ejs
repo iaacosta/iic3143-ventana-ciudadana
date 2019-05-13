@@ -1,21 +1,20 @@
 <div class="camaras">
-
-  <h2 class="camaras__titulo">Cámara de senadores</h2>
-  <h2 class="camaras__titulo">Cámara de diputados</h2>
-
   <div class="camaras__container">
+    <h2 class="camaras__titulo">Cámara de senadores</h2>
     <svg id="svg-senadores"></svg>
     <div class="info-parlamentario" id="camara-senadores">
-      <p class="info-parlamentario__placeholder">Seleccione un senador</p>  
+      <img src="#" class="info-parlamentario__imagen">
+      <p class="info-parlamentario__placeholder">Seleccione un senador</p>
     </div>
   </div>
 
   <div class="camaras__container">
+    <h2 class="camaras__titulo">Cámara de diputados</h2>
     <svg id="svg-diputados"></svg>
   </div>
 </div>
 
-<div class="proyectos">
+<div class="proyectos-aprobados">
   <div id="proyectos-aprobados-react"></div>
 </div>
 
@@ -99,6 +98,7 @@
 
   function resetCard(){
     const template = `
+        <img src="#" class="info-parlamentario__imagen">
         <p class="info-parlamentario__placeholder">Seleccione un senador</p>  
     `
 

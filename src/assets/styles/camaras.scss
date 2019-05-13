@@ -1,8 +1,8 @@
 .camaras {
+  margin: 4rem 0;
   width: 100%;
   display: grid;
-  grid-template-rows: min-content 1fr;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(715px, 1fr));
   grid-gap: 1rem;
 
   &__titulo {
@@ -10,13 +10,13 @@
     font-weight: 500;
     color: $color-primary-darkest;
     margin-bottom: 3rem;
-    margin-left: 6.8rem;
-    justify-self: start;
+    margin-left: -23rem;
+    justify-self: center;
   }
 
   &__container {
     display: grid;
-    grid-template-rows: 1fr min-content;
+    grid-template-rows: min-content 1fr min-content;
     grid-gap: 2rem;
     justify-items: center;
   }
@@ -54,10 +54,10 @@
     }
 
     &__placeholder {
-      padding: 0 5rem;
+      font-size: 2.5rem;
       align-self: center;
+      justify-self: start;
       grid-row: 1 / -1;
-      grid-column: 1 / -1;
     }
   }
 }
@@ -66,10 +66,14 @@
   font-size: 1.5rem;
 }
 
-.proyectos {
+.proyectos-aprobados {
   display: grid;
   justify-content: center;
-  margin: 2rem auto;
+  margin: -4rem auto 4rem auto;
+
+  @include respond(small) {
+    margin-top: 2rem;
+  }
 }
 
 svg {
