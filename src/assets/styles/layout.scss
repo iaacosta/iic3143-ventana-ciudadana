@@ -14,7 +14,7 @@ body {
   padding: 0;
   background-color: $color-primary-light;
 
-  &>* {
+  & > * {
     margin: auto;
     width: 90vw;
   }
@@ -84,31 +84,4 @@ main {
       background-color: $color-primary-dark;
     }
   }
-}
-
-
-//----------------------------------------------------- Camaras -----------------------------------------------------
-
-#nombre_partido{
-  font-size: 3rem;
-  margin: auto;
-  text-align: center;
-  font-weight: bold;
-}
-
-#cam_container{
-  display: flex;
-  position: center;
-  margin: auto
-}
-
-svg{
-  width:700px;
-  height: 400px;
-  margin: auto;
-}
-
- 
-g:hover {
-  opacity: 0.3;
 }

@@ -1,0 +1,65 @@
+.camaras {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  .info-senador {
+    color: $color-grey;
+    margin-left: -10rem;
+    font-size: 2rem;
+    width: 50%;
+    min-height: 15rem;
+
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    grid-template-rows: min-content 1fr;
+    grid-gap: 2rem;
+
+    &__imagen {
+      box-shadow: 0 0.5rem 1rem rgba($color-black, 0.1);
+      height: 17rem;
+      width: 15rem;
+      grid-row: 1 / -1;
+      object-fit: cover;
+      object-position: top;
+      background-color: $color-white;
+    }
+
+    &__nombre {
+      font-size: 4rem;
+      font-weight: 100;
+      line-height: 1;
+    }
+
+    &__partido {
+      font-size: 2.5rem;
+    }
+
+    &__placeholder {
+      padding: 0 5rem;
+      align-self: center;
+      grid-row: 1 / -1;
+      grid-column: 1 / -1;
+    }
+  }
+}
+
+.legend {
+  font-size: 1.5rem;
+}
+
+#cam_container {
+  display: grid;
+  grid-template-rows: 1fr min-content;
+  grid-gap: 2rem;
+  justify-items: center;
+}
+
+svg {
+  width: 715px;
+  height: 300px;
+}
+
+g:hover {
+  opacity: 0.3;
+}
