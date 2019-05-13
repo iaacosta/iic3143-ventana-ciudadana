@@ -62,6 +62,7 @@ main {
   list-style: none;
   display: flex;
   color: $color-white;
+  font-weight: 500;
 
   &__item {
     cursor: pointer;
@@ -78,6 +79,7 @@ main {
 
     &:hover {
       background-color: $color-primary-dark;
+      color: #ffffff;
     }
   }
 }
