@@ -1,0 +1,114 @@
+
+<div class='proyectos'>
+<h1 class="titulos">
+  PROYECTO NRO <%= proy.boletin %>
+</h1>
+
+
+<h3> <%= resumen %> </h3>
+<h3> Su estado actual es <%= proy.estado %> </h3>
+<a class="link" href=" <%= proy.url %> "> Ver en pagina del senado </a>
+
+<!-- Senadores Involucrados -->
+
+<div>
+  <div class="contenedor-cards">
+  <% for (i = 0; i < senadores.length; i++) { %>
+
+    <div class="card-senadores">
+      <img src=" <%= fotos[i] %> " alt="foto" class="imagen">
+      <h1> <%= senadores[i].nombre %> </h1>
+      <h1> <%= senadores[i].apellido_paterno %> </h1>
+      <p class="title-senadores"> <%= senadores[i].partido_politico %> </p>
+        <a class="link-senadores" href=" <%= senadores[i].url_twitter %> ">Twitter</a>
+      <p><button>Ver Perfil</button></p>
+    </div>
+
+  <% } %>
+  </div>
+</div>
+
+<!-- Timeline del Proyecto -->
+<div>
+  <div class="container">
+
+     <div class="timeline-block timeline-block-right">
+        <div class="marker"></div>
+        <div class="timeline-content">
+           <h3>Inicio</h3>
+           <span> <%= fecha %> </span>
+
+           <div class="wrap-collabsible">
+             <input id="collapsible" class="toggle" type="checkbox">
+             <label for="collapsible" class="lbl-toggle">Ver Detalles</label>
+             <div class="collapsible-content">
+               <div class="content-inner">
+                 <p>
+                   Aqui, en esta div, posteriormente ira informacion sobre la votacion y detalles de esta sesion particular.
+                   QUnit is by calling one of the object that are embedded in JavaScript, and faster JavaScript program could also used with
+                   its elegant, well documented, and functional programming using JS, HTML pages Modernizr is a popular browsers without
+                   plug-ins. Test-Driven Development.
+                 </p>
+               </div>
+             </div>
+           </div>
+
+        </div>
+     </div>
+
+     <div class="timeline-block timeline-block-left">
+        <div class="marker"></div>
+        <div class="timeline-content">
+           <h3>Estado actual</h3>
+           <span><%= proy.estado %></span>
+
+           <div class="wrap-collabsible">
+             <input id="collapsible" class="toggle" type="checkbox">
+             <label for="collapsible" class="lbl-toggle">Ver Detalles</label>
+             <div class="collapsible-content">
+               <div class="content-inner">
+                 <p>
+                   Aqui, en esta div, posteriormente ira informacion sobre la votacion y detalles de esta sesion particular.
+                   QUnit is by calling one of the object that are embedded in JavaScript, and faster JavaScript program could also used with
+                   its elegant, well documented, and functional programming using JS, HTML pages Modernizr is a popular browsers without
+                   plug-ins. Test-Driven Development.
+                 </p>
+               </div>
+             </div>
+           </div>
+
+           </div>
+
+        </div>
+     </div>
+
+  </div>
+</div>
+
+
+
+<!-- Timeline sacado de: -->
+<!-- https://codepen.io/hassan-kamal/pen/NNvYEQ -->
+
+
+<!-- SCRIPT COLLAPSIBLE -->
+
+<script>
+
+  let myLabels = document.querySelectorAll('.lbl-toggle');
+
+  Array.from(myLabels).forEach(label => {
+    label.addEventListener('keydown', e => {
+      // 32 === spacebar
+      // 13 === enter
+      if (e.which === 32 || e.which === 13) {
+        e.preventDefault();
+        label.click();
+      };
+    });
+  });
+
+
+  // Funcion y scss (un poco modificado) sacados de https://alligator.io/css/collapsible/
+
+</script>
