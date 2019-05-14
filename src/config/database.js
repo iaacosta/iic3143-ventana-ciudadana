@@ -1,7 +1,7 @@
 const config = {
   default: {
-    username: process.env.DB_USERNAME || 'ventana_ciudadana',
-    password: process.env.DB_PASSWORD || 'iic2513',
+    username: process.env.DB_USERNAME || 'postgres',
+    password: process.env.DB_PASSWORD || 'vixolo',
     dialect: process.env.DB_DIALECT || 'postgres',
     database: process.env.DB_NAME || 'ventana_ciudadana',
     host: process.env.DB_HOST || '127.0.0.1',
@@ -9,7 +9,7 @@ const config = {
   },
   development: {
     extend: 'default',
-    database: process.env.DB_NAME || 'ventana_ciudadana_dev',
+    database: process.env.DB_NAME || 'ventana_ciudadana',
   },
   test: {
     extend: 'default',
