@@ -1,0 +1,17 @@
+<div class="grid-container">
+  <div class="grid-item"><img src=<%= senador.url_foto %> alt="Foto de senador"></div>
+  <div class="grid-item" id="nombre-senador"> <h1> <%= senador.nombre + " " + senador.apellido_paterno + " " + senador.apellido_materno %> </h1> </div>
+  <div class="grid-item">
+    <a href=<%= senador.url_curriculum%> target="_blank">Ver Currículum</a>
+    <br></br>
+    <a href=<%= senador.url_twitter%> target="_blank">Twitter</a>
+  </div>
+  <div class="grid-item" id="lista-proyectos">
+    <ul>
+      <% proyectos.forEach((proyecto) => { %>
+        <li><a href=<%= proyecto.url%>><%=proyecto.resumen%></a></li>
+      <% }) %>
+    </ul>
+  </div>
+  <div class="grid-item"></div>
+</div>
