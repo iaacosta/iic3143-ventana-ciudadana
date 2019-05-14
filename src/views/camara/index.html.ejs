@@ -79,10 +79,10 @@
     });
   }
   function updateText(data){
-    const { nombre, apellido_paterno, id, partido_politico } = data;
+    const { nombre, apellido_paterno, id, partido_politico, url_foto } = data;
     
     const template = `
-        <img src="<%= assetPath('${id}.jpeg') %>" class="info-parlamentario__imagen"/>
+        <img src="${url_foto}" class="info-parlamentario__imagen"/>
         <p class="info-parlamentario__nombre">${nombre} ${apellido_paterno}</p>
         <p class="info-parlamentario__partido">
           <span class="info-parlamentario__color"></span>
