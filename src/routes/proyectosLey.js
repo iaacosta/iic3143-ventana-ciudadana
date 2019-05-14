@@ -1,4 +1,6 @@
 const KoaRouter = require('koa-router');
+const dayjs = require('dayjs');
+
 const { paginate } = require('../helpers');
 
 const router = new KoaRouter();
@@ -121,11 +123,8 @@ router.get('proyectos-ley', '/show-estado/:estado', async ctx => {
 
   for (let i = 0; i < proys.length; i += 1) {
     const proyecto = proys[i];
-    const date = proyecto.fecha;
-    const string = date.toString();
-    const fecha = string.substr(4, 11);
-
-    fechas.push(fecha);
+    const date = dayjs(proyecto.fecha);
+    fechas.push(date.format('DD, MMM YYYY'));
   }
 
   await ctx.render('proyectos-ley/show-estado', {

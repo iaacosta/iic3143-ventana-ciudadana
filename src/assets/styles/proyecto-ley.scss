@@ -1,12 +1,13 @@
 .titulos {
   color: $color-grey;
-  font-size: 6.2rem;
+  font-size: 6rem;
   line-height: 1;
-  max-height: 6.2rem;
   font-weight: 500;
   text-transform: uppercase;
   grid-row: 1 / span 1;
   grid-column: 1 / span 2;
+  border-left: 3px solid $color-primary-dark;
+  padding-left: 1.3rem;
 }
 
 .proyectos {
@@ -15,8 +16,8 @@
 
   display: grid;
   grid-gap: 1rem;
-  grid-template-columns: 4fr 1fr 4fr;
-  grid-template-rows: repeat(2, min-content) 5rem repeat(2, min-content);
+  grid-template-columns: 3fr 1fr 3fr;
+  grid-template-rows: repeat(2, min-content) 4rem repeat(2, min-content) 1fr;
 
   &__resumen {
     padding: 3rem 2rem;
@@ -59,6 +60,7 @@
     font-size: 1.6rem;
     font-weight: 500;
 
+    padding: .5rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -155,7 +157,7 @@
     justify-self: center;
     transition: color 0.2s ease;
 
-    & > * {
+    &>* {
       color: $color-primary-darkest;
       font-size: 3rem;
     }
@@ -355,17 +357,18 @@
   margin-bottom: 1.2rem 0;
 }
 
-input[type='checkbox'] {
+input#collapsible-2[type='checkbox'],
+input#collapsible-1[type='checkbox'] {
   display: none;
 }
 
 .lbl-toggle {
-  display: block;
-  font-weight: bold;
-  font-family: monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
   font-size: 1.2rem;
   text-transform: uppercase;
-  text-align: center;
 
   padding: 1rem;
 
@@ -373,29 +376,40 @@ input[type='checkbox'] {
   background: $color-primary-dark;
 
   border-radius: 0.7rem;
-  transition: all 0.25s ease-out;
+  transition: all 0.2s ease-out;
+
+  &:hover {
+    color: $color-grey-light-3;
+  }
+
+  &::before {
+    content: ' ';
+    display: inline-block;
+
+    border-top: 0.5rem solid transparent;
+    border-bottom: 0.5rem solid transparent;
+    border-left: 0.5rem solid currentColor;
+
+    transform: translateY(-0.12rem);
+
+    transition: transform 0.2s ease-out;
+  }
+
+  &--right {
+    &::before {
+      margin-right: .6rem;
+    }
+  }
+
+  &--left {
+    &::before {
+      margin-left: .6rem;
+    }
+  }
 }
 
-.lbl-toggle:hover {
-  color: $color-grey;
-}
-
-.lbl-toggle::before {
-  content: ' ';
-  display: inline-block;
-
-  border-top: 0.5rem solid transparent;
-  border-bottom: 0.5rem solid transparent;
-  border-left: 0.5rem solid currentColor;
-  vertical-align: middle;
-  margin-right: 0.7rem;
-  transform: translateY(-0.2rem);
-
-  transition: transform 0.2s ease-out;
-}
-
-.toggle:checked + .lbl-toggle::before {
-  transform: rotate(90deg) translateX(-0.3rem);
+.toggle:checked+.lbl-toggle::before {
+  transform: rotate(90deg) translateX(-0.1rem);
 }
 
 .collapsible-content {
@@ -404,14 +418,10 @@ input[type='checkbox'] {
   transition: max-height 0.25s ease-in-out;
 }
 
-.toggle:checked + .lbl-toggle + .collapsible-content {
+.toggle:checked+.lbl-toggle+.collapsible-content {
   max-height: 35rem;
 }
 
-.toggle:checked + .lbl-toggle {
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-}
 
 .collapsible-content .content-inner {
   background: $color-white;

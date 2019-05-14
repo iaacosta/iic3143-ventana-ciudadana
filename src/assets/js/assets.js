@@ -21,4 +21,4 @@ import '../images/areas/area18.png';
 
 import '../images/camara.jpg';
 import '../images/leyes.jpg';
-import '../images/parlamentario.jpg';
+import '../images/comisiones.jpg';

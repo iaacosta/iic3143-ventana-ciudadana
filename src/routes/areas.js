@@ -1,10 +1,9 @@
 const KoaRouter = require('koa-router');
-const pkg = require('../../package.json');
 
 const router = new KoaRouter();
 
-router.get('areas', '/',async (ctx) => {
-  await ctx.render('areas', { appVersion: pkg.version });
+router.get('areas', '/', async ctx => {
+  await ctx.render('proyectos-ley/areas');
 });
 
 module.exports = router;
