@@ -1,4 +1,4 @@
-<div class="proyectos">
+<div class="proyectos-index">
 
   <h1 class="titulos">
     Proyectos <%= estado %>s
@@ -6,22 +6,16 @@
   <h2> <%= cont %> Proyectos totales </h2>
 
   <!-- Contenedor cartas de proyectos -->
-  <div>
-    <div class="contenedor-cards">
-    <% for (i = 0; i < proys.length; i++) { %>
-
-      <div class="card-proyectos">
-        <h1> <%= proys[i].boletin %> </h1>
-        <h3> <%= proys[i].estado %> </h3>
-        <p class="title-senadores"> <%= fechas[i] %> </p>
-        <div class="div-resumen">
-          <p class ="title-senadores"> <%= proys[i].resumen %> </p>
-        </div>
-        <a href="/proyectos-ley/show/<%= proys[i].id%>"><button>Ver Perfil</button></a>
-      </div>
-
-    <% } %>
+  <div class="contenedor-cards">
+  <% for (i = 0; i < proys.length; i++) { %>
+    <div class="card-proyectos">
+      <h1 class="card-proyectos__title"><%= proys[i].boletin %></h1>
+      <h3 class="card-proyectos__estado"><%= proys[i].estado %></h3>
+      <p class="card-proyectos__fecha"><%= fechas[i] %></p>
+      <p class="card-proyectos__resumen"><%= proys[i].resumen.length > 150 ? `${proys[i].resumen.slice(0, 150)}...` : proys[i].resumen %></p>
+      <a href="/proyectos-ley/show/<%= proys[i].id%>" class="card-proyectos__button">Ver proyecto</a>
     </div>
+  <% } %>
   </div>
 
 

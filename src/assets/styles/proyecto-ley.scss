@@ -67,11 +67,20 @@
   }
 }
 
+.proyectos-index {
+  color: $color-grey-dark-4;
+  margin: 2rem;
+
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-rows: repeat(2, min-content) 5rem repeat(2, min-content);
+}
+
 .contenedor-cards {
   min-height: 42rem;
   grid-gap: 2rem;
   display: grid;
-  grid-template-columns: repeat(4, minmax(20rem, 1fr));
+  grid-template-columns: repeat(5, minmax(20rem, 1fr));
   grid-template-rows: min-content 1fr;
   float: none;
   grid-row: 5 / span 1;
@@ -80,6 +89,7 @@
   &__error {
     font-size: 1.8rem;
     font-weight: 300;
+    grid-column: 1 / -1;
   }
 
   &__subtitle {
@@ -143,6 +153,74 @@
     display: inline-block;
     color: $color-white;
     background-color: $color-grey;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1.6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
+
+.card-proyectos {
+  text-align: center;
+  border-radius: 0.8rem;
+
+  padding-top: 2rem;
+  display: grid;
+  grid-template-rows: repeat(2, min-content) 1fr 4rem;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+  overflow: hidden;
+
+  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+
+  &__title {
+    padding-left: 2rem;
+    font-size: 3rem;
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 2;
+    justify-self: start;
+    align-self: center;
+  }
+
+  &__estado {
+    padding-right: 2rem;
+    grid-column: 2 / span 1;
+    align-self: center;
+    justify-self: end;
+  }
+
+  &__resumen {
+    font-size: 1.8rem;
+    text-align: left;
+    padding: 1.5rem;
+    grid-column: 1 / -1;
+  }
+
+  &__fecha {
+    font-size: 1.8rem;
+    padding-right: 2rem;
+    grid-row: 2 / span 1;
+    grid-column: 2 / span 1;
+    align-self: center;
+    justify-self: end;
+  }
+
+  &__button {
+    grid-column: 1 / -1;
+    border: none;
+    outline: 0;
+    display: inline-block;
+    color: $color-white;
+    background-color: $color-primary-darkest;
     text-align: center;
     cursor: pointer;
     width: 100%;
@@ -233,15 +311,6 @@
 .timeline-content span {
   font-size: 1.5rem;
   color: #a4a4a4;
-}
-
-.card-proyectos {
-  box-shadow: 0 0.4rem 0.8rem 0 rgba(0, 0, 0, 0.2);
-  max-width: 20rem;
-  text-align: center;
-  border-radius: 1rem;
-  display: flex;
-  flex-direction: column;
 }
 
 .link-senadores {
