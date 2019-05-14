@@ -1,140 +1,159 @@
+<div class="camaras">
 
-<!DOCTYPE html>
-<head>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
+  <h2 class="camaras__titulo">Cámara de senadores</h2>
+  <h2 class="camaras__titulo">Cámara de diputados</h2>
 
-<body>
-<div id="cam_container">
-<svg></svg>
+  <div class="camaras__container">
+    <svg id="svg-senadores"></svg>
+    <div class="info-parlamentario" id="camara-senadores">
+      <p class="info-parlamentario__placeholder">Seleccione un senador</p>  
+    </div>
+  </div>
+
+  <div class="camaras__container">
+    <svg id="svg-diputados"></svg>
+  </div>
 </div>
-<p id="nombre_partido"></p>
-</body>
 
-
-
+<div class="proyectos">
+  <div id="proyectos-aprobados-react"></div>
+</div>
 
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
-
   var lista_partidos = [];
   var datos_senadores = [];
-  let senadores_actuales= [];
-
+  let senadores_actuales = [];
   var icon = "\uf111";
   var fontSize = 50;
-  var iconSpace = 3;
-  var legendSpace = 20;
-  var legendX = 600;
+  var legendSpace = 25;
+  var legendX = 530;
   var legendY = 20;
   var legendTitle = "Partidos políticos";
   var color = d3.scale.ordinal()
     .range(["#f0484d", "#ffcc2d", "#0088a6", "#aedfe6", "#255eab", "#c74b57", "#afaeaf", "#f79e95","#3f3e60"]);
   //var dataRating = [1, 4, 3, 2, 1]
   // var dataIcons = [[dataRating[0], icon], [dataRating[1], icon], [dataRating[2], icon], [dataRating[3], icon], [dataRating[4], icon]];
-
   let leyenda = [];
   getPartidos();
   graphElements(lista_partidos, icon, senadores_actuales)
-  console.log(leyenda)
+  
   var dataRating = lista_partidos;
   var dataIcons = leyenda;
   var dataText = lista_partidos;
   var data = datos_senadores;
-
   
   function getPartidos() {
     var partidos_senadores = <%- partidos %>;
-    var years_congress = <%- years_congress %>;
+    var years_congress = <%- yearsCongress %>;
     var ids_partido = []
     
-    //hacer lista con todos los partidos politicos
+    // hacer lista con todos los partidos politicos
     // var ids_latest =[...new Set( years_congress.map(obj => obj.ids))];
     for (i = 0; i < partidos_senadores.length; i++) {
       let a = partidos_senadores[i].partido_politico;
-      console.log(partidos_senadores[i].sid);
       if (!(lista_partidos.includes(a)) && a != null) {
         lista_partidos.push(a)
       }}
-
     // lista de senadores actuales
     senadores_actuales = years_congress.map(years_congress => {
       const senador_vigente = partidos_senadores.find(({ id }) =>years_congress.sid === id);
-    return {...senador_vigente};
+      return {...senador_vigente};
     });
-    console.log (senadores_actuales)
-
     // orden alfabetico
-    senadores_actuales.sort(function(first, second) {
+    senadores_actuales = senadores_actuales.sort(function(first, second) {
         return first.partido_politico.localeCompare(second.partido_politico);
     });
   }
-
   function graphElements(lista_partidos, icono, senadores_actuales) {
-    leyenda = lista_partidos.map(function (partido) {
-      return ([partido, icono])
+    leyenda = lista_partidos
+      .map(partido => [partido, icono])
+      .sort((first, second) => first[0].localeCompare(second[0]));
+    datos_senadores = senadores_actuales.map(function (senador) {
+      return ([senador.partido_politico, icono,senador.partido_politico ])
     });
-
-
-    datos_senadores= senadores_actuales.map(function (senador) {
-      return ([senador.partido_politico, icono,senador.partido_politico ]) //senador.nombre+" "+senador.apellido_paterno+ " - " +senador.partido_politico
-    });
-    console.log("lalalalalalla",datos_senadores);
   }
-
-
-  function updateText(className, newText){
-    $(className).text(newText);
+  function updateText(data){
+    const { nombre, apellido_paterno, id, partido_politico } = data;
+    
+    const template = `
+        <img src="<%= assetPath('${id}.jpeg') %>" class="info-parlamentario__imagen"/>
+        <p class="info-parlamentario__nombre">${nombre} ${apellido_paterno}</p>
+        <p class="info-parlamentario__partido">
+          <span class="info-parlamentario__color"></span>
+          ${partido_politico}
+        </p>      
+    `
+    $(`.info-parlamentario#camara-senadores`).html(template);
   }
-
-  function plotPictogramChart(d) {
-    var row = 0;
-    var chart = d3.select("svg")
+  function resetCard(){
+    const template = `
+        <p class="info-parlamentario__placeholder">Seleccione un senador</p>  
+    `
+    $(`.info-parlamentario#camara-senadores`).html(template);
+  }
+  function plotPictogramChart(d, id) {
+    const active = id === 'svg-senadores';
+    let row = 0;
+    const chart = d3.select(`svg#${id}`)
       .attr("transform", "translate(0, 0)");
-
-    var icons = chart.selectAll("g")
+    const icons = chart.selectAll("g")
       .data(d).enter()
       .append("g");
-
+    let currentRow = 0;
+    const positions = [
+      [1, 1, 1, 0, 0, 0, 0, 1, 1, 1],
+      [1, 1, 1, 0, 0, 0, 0, 1, 1, 1],
+      [1, 1, 1, 1, 0, 0, 1, 1, 1, 1],
+      [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+      [0, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+      [0, 0, 1, 1, 1, 1, 1, 0, 0, 0],
+    ];
+    const coords = [];
+    for (let i = 0; i < data.length; i++) {
+      let index = positions[currentRow].findIndex(val => val === 1);
+      if (index === -1) { 
+        currentRow++;
+        index = positions[currentRow].findIndex(val => val === 1);
+      }
+      
+      positions[currentRow][index] = 0;
+      coords.push([currentRow, index])
+    }
     icons.append("text")
-      .on("mouseover",function(d){ updateText("p", d[2]); })
-      .on("click", function(d){ updateText("p", d[2]); })
-      .attr("x", function(d, i){ return ((i%10 + 1) * (fontSize + 1 + iconSpace)) - fontSize;})
-      .attr("y", function(d, i){ if(i%10 == 0){row++}; return row * fontSize;})
+      .on("mouseover", (d, i) => active ? updateText(senadores_actuales[i]) : null)
+      .on("mouseleave", () => active ? resetCard() : null)
+      .on("click", (d, i) => active ? window.location.href = `/senadores/${senadores_actuales[i].id}` : null)
+      .attr("x", (d, i) => coords[i][1] * fontSize - 20)
+      .attr("y", (d, i) => coords[i][0] * fontSize + 40)
       .attr('font-family', 'FontAwesome')
       .attr('font-size', fontSize)
       .attr('cursor', 'default')
-      .attr("fill", function(d){ return color(d);})
-      .text(function(d) { return "\u00A0 " + d[1]; });
-
-
-    var legend = chart.append('g')
+      .attr("fill", (d) => active ? color(d) : '#cccccc')
+      .text((d) => "\u00A0 " + d[1]);
+    const legend = chart.append('g')
       .attr('class', 'legend')
-      .attr('transform', function(d, i) { return "translate(" + legendX + ", " + legendY + ")"; });
-
+      .attr('transform', (d, i) => "translate(" + legendX + ", " + legendY + ")");
     legend.append("text")
       .attr("transform", "translate(0, 5)")
       .text(legendTitle);
-
-    var legendItems = legend.selectAll("g")
+    if (!active) return;
+    const legendItems = legend.selectAll("g")
       .data(dataIcons).enter()
       .append("g")
       .attr("class", "item")
-      .attr("transform", function(d, i){ return "translate(0, " + (i*legendSpace + fontSize) + ")"; });
-
+      .attr("transform", (d, i) => "translate(0, " + (i * legendSpace + 30) + ")");
     legendItems.append("text")
       .attr('font-family', 'FontAwesome')
-      .attr("fill", function(d){ return color(d);})
-      .text(function(d) { return d[1]; });
-
+      .attr("fill", (d) => color(d))
+      .text((d) =>  d[1]);
     legendItems.append("text")
-      .attr("transform", function(d){ return "translate(" + legendSpace + ", 0)"; })
-      .text(function(d) { return d[0]; });
+      .attr("transform", (d) => "translate(" + legendSpace + ", 0)")
+      .text((d) =>  d[0]);
   }
-
-
-  plotPictogramChart(data);
+  plotPictogramChart(data, "svg-senadores");
+  plotPictogramChart(data, "svg-diputados");
 </script>
 
 
