@@ -1,82 +1,81 @@
-<head>
-  <meta charset="utf-8">
-  <% if (env !== 'development') { %>
-    <link rel="stylesheet" href="<%= assetPath('app.css') %>">
-  <% } %>
-</head>
+<div class="areas">
+  <h1 class="titulos">Áreas</h1>
 
-<h1>Áreas</h1>
+  <div class="contenedor-areas">
 
-<h2 id="areas"></h2>
+    <div class="area">
+      <a class="areas__link" href="/proyectos-ley/show-estado/tramitacion">
+        <img class="img_area" src="<%= assetPath('area1.png') %>" alt="area1" />
+        <h3>Gobierno, Nacionalidad, Ciudadanía y Regionalización</h3>
+      </a>
+    </div>
 
-<div class="contenedor-areas">
+    <div class="area">
+      <a class="areas__link" href="/proyectos-ley/show-estado/aprobado">
+        <img class="img_area" src="<%= assetPath('area2.png') %>" alt="area2" />
+        <h3> Relaciones Exteriores</h3>
+      </a>
+    </div>
 
-<div class="areas"><a href="/proyectos-ley/show-estado/tramitacion">
-  <img class="img_area" src="<%= assetPath('area1.png') %>" alt="area" />
-  <h3>Gobierno, Nacionalidad, Ciudadanía y Regionalización</h3></a>
+    <div class="area">
+      <a class="areas__link" href="/proyectos-ley/show-estado/suspendido">
+        <img class="img_area" src="<%= assetPath('area3.png') %>" alt="area3" />
+        <h3>Constitución, Legislación, Justicia y Reglamento</h3>
+      </a>
+    </div>
 
-<!--  <p class="inline_box_enlement"><a href="<%- %>">texto</a></p>  ESTE VA A SER EL REAL-->
+    <div class="area">
+      <a class="areas__link" href="/proyectos-ley/show-estado/rechazado">
+        <img class="img_area" src="<%= assetPath('area4.png') %>" alt="area4" />
+        <h3>Educación</h3>
+      </a>
+    </div>
+
+    <div class="area">
+      <img class="img_area" src="<%= assetPath('area6.png') %>" alt="area6" />
+      <h3>Hacienda</h3>
+    </div>
+
+    <div class="area">
+      <img class="img_area" src="<%= assetPath('area7.png') %>" alt="area7" />
+      <h3>Defensa Nacional</h3>
+    </div>
+
+    <div class="area">
+      <img class="img_area" src="<%= assetPath('area8.png') %>" alt="area8" />
+      <h3>Obras Públicas, Transportes y Telecomunicaciones</h3>
+    </div>
+
+    <div class="area">
+      <img class="img_area" src="<%= assetPath('area9.png') %>" alt="area9" />
+      <h3>Agricultura, Silvicultura y Desarrollo Rural</h3>
+    </div>
+
+    <div class="area">
+      <img class="img_area" src="<%= assetPath('area11.png') %>" alt="area11" />
+      <h3>Medio Ambiente y Recursos Naturales</h3>
+    </div>
+
+    <div class="area">
+      <img class="img_area" src="<%= assetPath('area12.png') %>" alt="area12" />
+      <h3>Salud</h3>
+    </div>
+
+    <div class="area">
+      <img class="img_area" src="<%= assetPath('area13.png') %>" alt="area13" />
+      <h3>Trabajo y Seguridad Social</h3>
+    </div>
+
+    <div class="area">
+      <img class="img_area" src="<%= assetPath('area14.png') %>" alt="area14" />
+      <h3>Minería y Energía</h3>
+    </div>
+
+  </div>
 </div>
 
-<div class="areas"><a href="/proyectos-ley/show-estado/aprobado">
-  <img class="img_area"  src="<%= assetPath('area2.png') %>" alt="area" />
-  <h3> Relaciones Exteriores</h3></a>
-</div>
 
-<div class="areas"><a href="/proyectos-ley/show-estado/suspendido" >
-  <img class="img_area" src="<%= assetPath('area3.png') %>" alt="area" />
-  <h3>Constitución, Legislación, Justicia y Reglamento</h3></a>
-</div>
-
-<div class="areas"><a href="/proyectos-ley/show-estado/rechazado">
-  <img class="img_area" src="<%= assetPath('area4.png') %>" alt="area" />
-  <h3>Educación</h3></a>
-</div>
-
-  <div class="areas">
-    <img class="img_area" src="<%= assetPath('area6.png') %>" alt="area" />
-    <h3>Hacienda</h3>
-  </div>
-
-  <div class="areas">
-    <img class="img_area"  src="<%= assetPath('area7.png') %>" alt="area" />
-    <h3>Defensa Nacional</h3>
-  </div>
-
-  <div class="areas">
-    <img class="img_area" src="<%= assetPath('area8.png') %>" alt="area" />
-    <h3>Obras Públicas, Transportes y Telecomunicaciones</h3>
-  </div>
-
-  <div class="areas">
-    <img class="img_area" src="<%= assetPath('area9.png') %>" alt="area" />
-    <h3>Agricultura, Silvicultura y Desarrollo Rural</h3>
-  </div>
-
-  <div class="areas">
-    <img class="img_area" src="<%= assetPath('area11.png') %>" alt="area" />
-    <h3>Medio Ambiente y Recursos Naturales</h3>
-  </div>
-
-  <div class="areas">
-    <img class="img_area"  src="<%= assetPath('area12.png') %>" alt="area" />
-    <h3>Salud</h3>
-  </div>
-
-  <div class="areas">
-    <img class="img_area" src="<%= assetPath('area13.png') %>" alt="area" />
-    <h3>Trabajo y Seguridad Social</h3>
-  </div>
-
-  <div class="areas">
-    <img class="img_area" src="<%= assetPath('area14.png') %>" alt="area" />
-    <h3>Minería y Energía</h3>
-  </div>
-
-
-
-</div>
-
+<%# 
 <h3>Gobierno Interior, Nacionalidad, Ciudadanía y Regionalización</h3>
 <h3>Relaciones Exteriores, Asuntos Interparlamentarios e Integración Latinoamericana</h3>
 <h3>Constitución, Legislación, Justicia y Reglamento</h3>
@@ -106,7 +105,7 @@
 <h3>Control del sistema de inteligencia del estado</h3>
 <h3>Bomberos</h3>
 <h3>Mujeres y Equidad de Género</h3>
-<h3>Régimen Interno y Administración</h3>
+<h3>Régimen Interno y Administración</h3> %>
 
 <script>
   const lista_areas = ["Gobierno Interior, Nacionalidad, Ciudadanía y Regionalización",

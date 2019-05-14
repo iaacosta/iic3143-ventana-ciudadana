@@ -1,9 +1,5 @@
 const KoaRouter = require('koa-router');
 
-const pkg = require('../../package.json');
-const { Senador, Sequelize, Periodo } = require('../models');
-const Op = Sequelize.Op;
-
 const router = new KoaRouter();
 
 router.get('camaras', '/', async ctx => {
@@ -29,9 +25,8 @@ router.get('camaras', '/', async ctx => {
     },
   });
 
-  await ctx.render('camara', {
+  await ctx.render('camara/camara', {
     partidos: JSON.stringify(partidos),
-
     yearsCongress: JSON.stringify(yearsCongress),
   });
 });

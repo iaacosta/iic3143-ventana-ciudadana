@@ -1,4 +1,5 @@
 const KoaRouter = require('koa-router');
+
 const router = new KoaRouter();
 
 router.param('id', async (id, ctx, next) => {
@@ -8,16 +9,13 @@ router.param('id', async (id, ctx, next) => {
   return next();
 });
 
-router.get('senadores-show', '/:id', async (ctx) => {
-  const senador = ctx.state.senador;
+router.get('senadores-show', '/:id', async ctx => {
+  const { senador } = ctx.state;
   const proyectos = await senador.getProyectos();
-  return await ctx.render(
-    'senadores/show',
-    {
-      senador,
-      proyectos,
-    }
-  )
+  return ctx.render('senadores/show', {
+    senador,
+    proyectos,
+  });
 });
 
 module.exports = router;
