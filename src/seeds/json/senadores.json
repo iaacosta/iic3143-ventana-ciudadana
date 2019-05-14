@@ -7,7 +7,7 @@
   "telefono": "+56322504701",
   "email": "allamand@senado.cl",
   "url_curriculum": "http:\/\/www.senado.cl\/curriculum-senador-andres-allamand-zavala\/senado\/2014-03-10\/171943.html",
-  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=comisiones&ac=getImage&fid=905",
+  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=senadores&ac=getFoto&id=905&tipo=1",
   "url_twitter": "https:\/\/twitter.com\/allamand"
 }, {
   "id": 985,
@@ -18,7 +18,7 @@
   "telefono": "+56322504671",
   "email": "iallende@senado.cl",
   "url_curriculum": "http:\/\/www.senado.cl\/curriculum-senadora-isabel-allende-bussi\/senado\/2012-11-12\/182427.html",
-  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=comisiones&ac=getImage&fid=985",
+  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=senadores&ac=getFoto&id=985&tipo=1",
   "url_twitter": "https:\/\/twitter.com\/iallendebussi"
 }, {
   "id": 1221,
@@ -29,7 +29,7 @@
   "telefono": "+56322504751",
   "email": "cgloriaaravena@senado.cl",
   "url_curriculum": "http:\/\/www.senado.cl\/curriculum-senadora-carmen-gloria-aravena-acuna\/senado\/2018-04-05\/171408.html",
-  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=comisiones&ac=getImage&fid=1221",
+  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=senadores&ac=getFoto&id=1221&tipo=1",
   "url_twitter": null
 }, {
   "id": 1110,
@@ -40,7 +40,7 @@
   "telefono": "+56322504703",
   "email": "paraya@senado.cl",
   "url_curriculum": "http:\/\/www.senado.cl\/curriculum-senador-pedro-araya-guerrero\/senado\/2014-03-10\/172256.html",
-  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=comisiones&ac=getImage&fid=1110",
+  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=senadores&ac=getFoto&id=1110&tipo=1",
   "url_twitter": "https:\/\/twitter.com\/ArayaPedro"
 }, {
   "id": 907,
@@ -51,7 +51,7 @@
   "telefono": "+56322504566",
   "email": "cbianchi@senado.cl",
   "url_curriculum": "http:\/\/www.senado.cl\/curriculum-senador-carlos-antonio-karim-bianchi-chelech\/senado\/2012-11-14\/194621.html",
-  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=comisiones&ac=getImage&fid=907",
+  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=senadores&ac=getFoto&id=907&tipo=1",
   "url_twitter": null
 }, {
   "id": 1218,
@@ -62,7 +62,7 @@
   "telefono": "+56322504753",
   "email": "jcastro@senado.cl",
   "url_curriculum": "http:\/\/www.senado.cl\/curriculum-senador-juan-enrique-castro-prieto\/senado\/2018-03-16\/113055.html",
-  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=comisiones&ac=getImage&fid=1218",
+  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=senadores&ac=getFoto&id=1218&tipo=1",
   "url_twitter": null
 }, {
   "id": 986,
@@ -73,7 +73,7 @@
   "telefono": "+56322504673",
   "email": "fchahuan@senado.cl",
   "url_curriculum": "http:\/\/www.senado.cl\/curriculum-senador-francisco-chahuan-chahuan\/senado\/2012-11-13\/112204.html",
-  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=comisiones&ac=getImage&fid=986",
+  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=senadores&ac=getFoto&id=986&tipo=1",
   "url_twitter": "https:\/\/twitter.com\/chahuan"
 }, {
   "id": 687,
@@ -84,7 +84,7 @@
   "telefono": "+56322504505",
   "email": "jcoloma@senado.cl",
   "url_curriculum": "http:\/\/www.senado.cl\/curriculum-senador-juan-antonio-coloma-correa\/senado\/2012-11-13\/133421.html",
-  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=comisiones&ac=getImage&fid=687",
+  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=senadores&ac=getFoto&id=687&tipo=1",
   "url_twitter": "https:\/\/twitter.com\/jacoloma"
 }, {
   "id": 1115,
@@ -95,7 +95,7 @@
   "telefono": null,
   "email": "adeurresti@senado.cl",
   "url_curriculum": "http:\/\/www.senado.cl\/curriculum-senador-alfonso-de-urresti-longton\/senado\/2014-03-10\/155617.html",
-  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=comisiones&ac=getImage&fid=1115",
+  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=senadores&ac=getFoto&id=1115&tipo=1",
   "url_twitter": "https:\/\/twitter.com\/adeurresti"
 }, {
   "id": 1210,
@@ -106,7 +106,7 @@
   "telefono": "+56322504755",
   "email": "jdurana@senado.cl",
   "url_curriculum": "http:\/\/www.senado.cl\/curriculum-senador-jose-miguel-durana-semir\/senado\/2018-04-04\/122456.html",
-  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=comisiones&ac=getImage&fid=1210",
+  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=senadores&ac=getFoto&id=1210&tipo=1",
   "url_twitter": "https:\/\/twitter.com\/duranasenador"
 }, {
   "id": 1212,
@@ -117,7 +117,7 @@
   "telefono": "+56322504757",
   "email": "lebensperger@senado.cl",
   "url_curriculum": "http:\/\/www.senado.cl\/curriculum-senadora-luz-ebensperger-orrego\/senado\/2018-03-14\/103248.html",
-  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=comisiones&ac=getImage&fid=1212",
+  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=senadores&ac=getFoto&id=1212&tipo=1",
   "url_twitter": null
 }, {
   "id": 1219,
@@ -128,7 +128,7 @@
   "telefono": "+56322504759",
   "email": "aelizalde@senado.cl",
   "url_curriculum": "http:\/\/www.senado.cl\/curriculum-senador-alvaro-elizalde-soto\/senado\/2018-03-14\/103900.html",
-  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=comisiones&ac=getImage&fid=1219",
+  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=senadores&ac=getFoto&id=1219&tipo=1",
   "url_twitter": "https:\/\/twitter.com\/alvaroelizalde"
 }, {
   "id": 1220,
@@ -139,7 +139,7 @@
   "telefono": "+56322504761",
   "email": "rgalilea@senado.cl",
   "url_curriculum": "http:\/\/www.senado.cl\/curriculum-senador-rodrigo-galilea-vial\/senado\/2018-03-16\/164623.html",
-  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=comisiones&ac=getImage&fid=1220",
+  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=senadores&ac=getFoto&id=1220&tipo=1",
   "url_twitter": "https:\/\/twitter.com\/galilea_rodrigo"
 }, {
   "id": 1066,
@@ -150,7 +150,7 @@
   "telefono": "+56322504667",
   "email": "agarciahuidobro@senado.cl",
   "url_curriculum": "http:\/\/www.senado.cl\/curriculum-senador-alejandro-garcia-huidobro-sanfuentes\/senado\/2012-11-13\/130824.html",
-  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=comisiones&ac=getImage&fid=1066",
+  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=senadores&ac=getFoto&id=1066&tipo=1",
   "url_twitter": "https:\/\/twitter.com\/senadoragh"
 }, {
   "id": 690,
@@ -161,7 +161,7 @@
   "telefono": "+56322504512",
   "email": "jgarcia@senado.cl",
   "url_curriculum": "http:\/\/www.senado.cl\/curriculum-senador-jose-garcia-ruminot\/senado\/2012-11-14\/172658.html",
-  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=comisiones&ac=getImage&fid=690",
+  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=senadores&ac=getFoto&id=690&tipo=1",
   "url_twitter": "https:\/\/twitter.com\/jgarciaruminot"
 }, {
   "id": 909,
@@ -172,7 +172,7 @@
   "telefono": "+56322504570",
   "email": "ggirardi@senado.cl",
   "url_curriculum": "http:\/\/www.senado.cl\/curriculum-senador-guido-girardi-lavin\/senado\/2012-11-13\/112915.html",
-  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=comisiones&ac=getImage&fid=909",
+  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=senadores&ac=getFoto&id=909&tipo=1",
   "url_twitter": "https:\/\/twitter.com\/guidogirardi"
 }, {
   "id": 1113,
@@ -183,7 +183,7 @@
   "telefono": "+56322504707",
   "email": "cgoic@senado.cl",
   "url_curriculum": "http:\/\/www.senado.cl\/curriculum-senadora-carolina-goic-boroevic\/senado\/2014-03-10\/153745.html",
-  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=comisiones&ac=getImage&fid=1113",
+  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=senadores&ac=getFoto&id=1113&tipo=1",
   "url_twitter": "https:\/\/twitter.com\/carolinagoic"
 }, {
   "id": 1111,
@@ -194,7 +194,7 @@
   "telefono": "+56322504709",
   "email": "aguillier@senado.cl",
   "url_curriculum": "http:\/\/www.senado.cl\/curriculum-senador-alejandro-rene-guillier-alvarez\/senado\/2014-03-10\/154424.html",
-  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=comisiones&ac=getImage&fid=1111",
+  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=senadores&ac=getFoto&id=1111&tipo=1",
   "url_twitter": "https:\/\/twitter.com\/guillier"
 }, {
   "id": 1114,
@@ -205,7 +205,7 @@
   "telefono": "+56322504711",
   "email": "fharboe@senado.cl",
   "url_curriculum": "http:\/\/www.senado.cl\/curriculum-senador-felipe-harboe-bascunan\/senado\/2014-03-10\/173414.html",
-  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=comisiones&ac=getImage&fid=1114",
+  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=senadores&ac=getFoto&id=1114&tipo=1",
   "url_twitter": "https:\/\/twitter.com\/felipeharboe"
 }, {
   "id": 1222,
@@ -216,7 +216,7 @@
   "telefono": "+56322504763",
   "email": "fhuenchumilla@senado.cl",
   "url_curriculum": null,
-  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=comisiones&ac=getImage&fid=1222",
+  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=senadores&ac=getFoto&id=1222&tipo=1",
   "url_twitter": "https:\/\/twitter.com\/fhuenchumilla"
 }, {
   "id": 1211,
@@ -227,7 +227,7 @@
   "telefono": "+56322504765",
   "email": "jminsulza@senado.cl",
   "url_curriculum": "http:\/\/www.senado.cl\/curriculum-senador-jose-miguel-insulza-salinas\/senado\/2018-05-04\/112001.html",
-  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=comisiones&ac=getImage&fid=1211",
+  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=senadores&ac=getFoto&id=1211&tipo=1",
   "url_twitter": "https:\/\/twitter.com\/Insulza"
 }, {
   "id": 1223,
@@ -238,7 +238,7 @@
   "telefono": "+56322504767",
   "email": "fkast@senado.cl",
   "url_curriculum": null,
-  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=comisiones&ac=getImage&fid=1223",
+  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=senadores&ac=getFoto&id=1223&tipo=1",
   "url_twitter": "https:\/\/twitter.com\/felipekast"
 }, {
   "id": 987,
@@ -249,7 +249,7 @@
   "telefono": "+56322504675",
   "email": "rlagos@senado.cl",
   "url_curriculum": "http:\/\/www.senado.cl\/curriculum-senador-ricardo-lagos-weber\/senado\/2012-11-13\/112648.html",
-  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=comisiones&ac=getImage&fid=987",
+  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=senadores&ac=getFoto&id=987&tipo=1",
   "url_twitter": "https:\/\/twitter.com\/lagosweber"
 }, {
   "id": 1216,
@@ -260,7 +260,7 @@
   "telefono": "+56322504769",
   "email": "jignaciolatorre@senado.cl",
   "url_curriculum": "http:\/\/www.senado.cl\/curriculum-senador-juan-ignacio-latorre-riveros\/senado\/2018-07-18\/105801.html",
-  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=comisiones&ac=getImage&fid=1216",
+  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=senadores&ac=getFoto&id=1216&tipo=1",
   "url_twitter": null
 }, {
   "id": 912,
@@ -271,7 +271,7 @@
   "telefono": "+56322504576",
   "email": "jpletelier@senado.cl",
   "url_curriculum": "http:\/\/www.senado.cl\/curriculum-senador-juan-pablo-letelier-morel\/senado\/2012-11-13\/131152.html",
-  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=comisiones&ac=getImage&fid=912",
+  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=senadores&ac=getFoto&id=912&tipo=1",
   "url_twitter": "https:\/\/twitter.com\/jplchile"
 }, {
   "id": 1119,
@@ -282,7 +282,7 @@
   "telefono": "+56322504714",
   "email": "cmontes@senado.cl",
   "url_curriculum": "http:\/\/www.senado.cl\/curriculum-senador-carlos-montes-cisternas\/senado\/2018-03-29\/103224.html",
-  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=comisiones&ac=getImage&fid=1119",
+  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=senadores&ac=getFoto&id=1119&tipo=1",
   "url_twitter": null
 }, {
   "id": 1117,
@@ -293,7 +293,7 @@
   "telefono": "+56322504715",
   "email": "imoreira@senado.cl",
   "url_curriculum": "http:\/\/www.senado.cl\/curriculum-senador-ivan-moreira-barros\/senado\/2014-03-10\/174001.html",
-  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=comisiones&ac=getImage&fid=1117",
+  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=senadores&ac=getFoto&id=1117&tipo=1",
   "url_twitter": "https:\/\/twitter.com\/ivanmoreirab"
 }, {
   "id": 1118,
@@ -304,7 +304,7 @@
   "telefono": "+56322504717",
   "email": "amunoz@senado.cl",
   "url_curriculum": "http:\/\/www.senado.cl\/curriculum-senadora-adriana-munoz-d-albora\/senado\/2014-03-10\/174329.html",
-  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=comisiones&ac=getImage&fid=1118",
+  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=senadores&ac=getFoto&id=1118&tipo=1",
   "url_twitter": "https:\/\/twitter.com\/_adrianamunoz"
 }, {
   "id": 915,
@@ -315,7 +315,7 @@
   "telefono": "+56322504582",
   "email": "anavarro@senado.cl",
   "url_curriculum": "http:\/\/www.senado.cl\/curriculum-senador-alejandro-navarro-brain\/senado\/2012-11-14\/110610.html",
-  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=comisiones&ac=getImage&fid=915",
+  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=senadores&ac=getFoto&id=915&tipo=1",
   "url_twitter": null
 }, {
   "id": 1224,
@@ -326,7 +326,7 @@
   "telefono": "+56322504771",
   "email": "xordenes@senado.cl",
   "url_curriculum": null,
-  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=comisiones&ac=getImage&fid=1224",
+  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=senadores&ac=getFoto&id=1224&tipo=1",
   "url_twitter": "https:\/\/twitter.com\/ximenaordenes"
 }, {
   "id": 1120,
@@ -337,7 +337,7 @@
   "telefono": "+56322504719",
   "email": "mjossandon@senado.cl",
   "url_curriculum": "http:\/\/www.senado.cl\/curriculum-senador-manuel-jose-ossandon-irarrazabal\/senado\/2014-03-10\/161208.html",
-  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=comisiones&ac=getImage&fid=1120",
+  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=senadores&ac=getFoto&id=1120&tipo=1",
   "url_twitter": "https:\/\/twitter.com\/mjossandon"
 }, {
   "id": 916,
@@ -348,7 +348,7 @@
   "telefono": "+56322504584",
   "email": "vperez@senado.cl",
   "url_curriculum": "http:\/\/www.senado.cl\/curriculum-senador-victor-perez-varela\/senado\/2012-11-14\/151317.html",
-  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=comisiones&ac=getImage&fid=916",
+  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=senadores&ac=getFoto&id=916&tipo=1",
   "url_twitter": "https:\/\/twitter.com\/senadorvpv"
 }, {
   "id": 163,
@@ -359,7 +359,7 @@
   "telefono": "+56322504260",
   "email": "jpizarro@senado.cl",
   "url_curriculum": "http:\/\/www.senado.cl\/curriculum-senador-jorge-pizarro-soto\/senado\/2012-11-13\/094056.html",
-  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=comisiones&ac=getImage&fid=163",
+  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=senadores&ac=getFoto&id=163&tipo=1",
   "url_twitter": "https:\/\/twitter.com\/pizarrosenador"
 }, {
   "id": 1214,
@@ -370,7 +370,7 @@
   "telefono": "+56322504775",
   "email": "rprohens@senado.cl",
   "url_curriculum": "http:\/\/www.senado.cl\/curriculum-senador-rafael-prohens-espinosa\/senado\/2018-03-14\/173549.html",
-  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=comisiones&ac=getImage&fid=1214",
+  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=senadores&ac=getFoto&id=1214&tipo=1",
   "url_twitter": "https:\/\/twitter.com\/rafaelprohense"
 }, {
   "id": 1215,
@@ -381,7 +381,7 @@
   "telefono": "+56322504778",
   "email": "yasnaprovoste@senado.cl",
   "url_curriculum": null,
-  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=comisiones&ac=getImage&fid=1215",
+  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=senadores&ac=getFoto&id=1215&tipo=1",
   "url_twitter": "https:\/\/twitter.com\/provosteyasna"
 }, {
   "id": 1217,
@@ -392,7 +392,7 @@
   "telefono": "+56322504773",
   "email": "kpugh@senado.cl",
   "url_curriculum": "http:\/\/www.senado.cl\/curriculum-senador-kenneth-peter-pugh-olavarria\/senado\/2018-03-19\/163527.html",
-  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=comisiones&ac=getImage&fid=1217",
+  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=senadores&ac=getFoto&id=1217&tipo=1",
   "url_twitter": "https:\/\/twitter.com\/pughsenador"
 }, {
   "id": 1008,
@@ -403,7 +403,7 @@
   "telefono": "+56322504134",
   "email": "jquintana@senado.cl",
   "url_curriculum": "http:\/\/www.senado.cl\/curriculum-senador-jaime-quintana-leal\/senado\/2012-11-14\/165507.html",
-  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=comisiones&ac=getImage&fid=1008",
+  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=senadores&ac=getFoto&id=1008&tipo=1",
   "url_twitter": "https:\/\/twitter.com\/senadorquintana"
 }, {
   "id": 1116,
@@ -414,7 +414,7 @@
   "telefono": "+56322504721",
   "email": "rquinteros@senado.cl",
   "url_curriculum": "http:\/\/www.senado.cl\/curriculum-senador-rabindranath-quinteros-lara\/senado\/2014-03-10\/155941.html",
-  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=comisiones&ac=getImage&fid=1116",
+  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=senadores&ac=getFoto&id=1116&tipo=1",
   "url_twitter": "https:\/\/twitter.com\/quinterosenador"
 }, {
   "id": 1009,
@@ -425,7 +425,7 @@
   "telefono": "+56322504779",
   "email": "xrincon@senado.cl",
   "url_curriculum": "http:\/\/www.senado.cl\/curriculum-senadora-ximena-rincon-gonzalez\/senado\/2018-09-28\/114825.html",
-  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=comisiones&ac=getImage&fid=1009",
+  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=senadores&ac=getFoto&id=1009&tipo=1",
   "url_twitter": "https:\/\/twitter.com\/ximerincon"
 }, {
   "id": 1225,
@@ -436,7 +436,7 @@
   "telefono": "+56322504781",
   "email": "dsandoval@senado.cl",
   "url_curriculum": "http:\/\/www.senado.cl\/curriculum-senador-david-sandoval-plaza\/senado\/2018-04-20\/130752.html",
-  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=comisiones&ac=getImage&fid=1225",
+  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=senadores&ac=getFoto&id=1225&tipo=1",
   "url_twitter": "https:\/\/twitter.com\/sandovalplaza"
 }, {
   "id": 1213,
@@ -447,7 +447,7 @@
   "telefono": "+56322504783",
   "email": "jsoria@senado.cl",
   "url_curriculum": null,
-  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=comisiones&ac=getImage&fid=1213",
+  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=senadores&ac=getFoto&id=1213&tipo=1",
   "url_twitter": "https:\/\/twitter.com\/senadorjsoria"
 }, {
   "id": 1112,
@@ -458,7 +458,7 @@
   "telefono": "+56322504723",
   "email": "jvanr@senado.cl",
   "url_curriculum": "http:\/\/www.senado.cl\/curriculum-senadora-jacqueline-van-rysselberghe-herrera\/senado\/2014-03-10\/154801.html",
-  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=comisiones&ac=getImage&fid=1112",
+  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=senadores&ac=getFoto&id=1112&tipo=1",
   "url_twitter": "https:\/\/twitter.com\/jvanbiobio"
 }, {
   "id": 1067,
@@ -469,7 +469,7 @@
   "telefono": "+56322504693",
   "email": "evonbaer@senado.cl",
   "url_curriculum": "http:\/\/www.senado.cl\/curriculum-senadora-ena-von-baer-jahn\/senado\/2012-11-13\/123707.html",
-  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=comisiones&ac=getImage&fid=1067",
+  "url_foto": "http:\/\/www.senado.cl\/appsenado\/index.php?mo=senadores&ac=getFoto&id=1067&tipo=1",
   "url_twitter": "https:\/\/twitter.com\/enavonbaer"
 }, {
   "id": 150,

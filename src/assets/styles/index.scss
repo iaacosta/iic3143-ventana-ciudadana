@@ -2,9 +2,15 @@
 
 @import './responsive';
 @import './colors';
+@import './sizes';
 @import './layout';
 @import './typography';
 @import './senador';
+@import './camaras';
+@import './home';
+@import './proyecto-ley';
+@import './areas';
+@import './paginacion';
 
 /* Componentes React */
 @import '../js/components/Aprobados/style.scss';

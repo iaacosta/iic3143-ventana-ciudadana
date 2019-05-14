@@ -1,6 +1,32 @@
-<h1>Hello world</h1>
-<p>
-  App web version
-  <%= appVersion %>
-</p>
-<div id="index-app">Here a React app will be rendered</div>
+<section class="hero">
+  <h1 class="hero__header">Ventana ciudadana</h1>
+  <p class="hero__slogan">Portal de visualización de información del parlamento Chileno</p>
+</section>
+
+<section class="options">
+  <div class="options__option">
+    <img class="options__option-image" src="<%= assetPath('camara.jpg') %>">
+    <p class="options__option-header">Cámara</p>
+    <p class="options__option-text">Visualiza la cámara: quienes la componen por sus colores políticos y nombres y los proyectos de ley aprobados y rechazados por el congreso</p>
+    <a href='/camaras' class="options__option-button">Ir &rsaquo;</a>
+  </div>
+
+  <div class="options__option">
+    <img class="options__option-image" src="<%= assetPath('leyes.jpg') %>">
+    <p class="options__option-header">Proyectos de ley</p>
+    <p class="options__option-text">Navega por las distintas áreas que segmentan a los proyectos de ley en curso e históricos, accediendo a ellos individualmente</p>
+    <a href='/areas' class="options__option-button">Ir &rsaquo;</a>
+  </div>
+
+  <div class="options__option">
+    <img class="options__option-image" src="<%= assetPath('parlamentario.jpg') %>">
+    <p class="options__option-header">Parlamentarios</p>
+    <p class="options__option-text">Visualiza los distintos parlamentarios que componen el congreso: su información personal y los proyectos en que han participado</p>
+    <a href='/parlamentarios' class="options__option-button">Ir &rsaquo;</a>
+  </div>
+</section>
+
+<section class="updates">
+  <span class="updates__label">Última actualización de la plataforma</span>
+  <span class="updates__value">hace <%= tiempo %></span>
+</section>

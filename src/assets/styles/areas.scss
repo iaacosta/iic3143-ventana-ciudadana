@@ -1,0 +1,43 @@
+.proyecto-ley {
+  background-color: $color-white;
+}
+
+.contenedor-areas {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+  height: 100vh;
+  align-content: stretch;
+  padding: 5px;
+}
+
+.area {
+  display: flex;
+  border: 1px solid lightgrey;
+  flex-direction: column;
+  text-align: left;
+  padding: 10px;
+  padding-block: auto;
+  border-radius: 3px;
+  flex-basis: 20%;
+  //flex:1;
+  margin: 5px;
+}
+.img_area {
+  max-width: 300px;
+}
+
+.areas h3 {
+  //visibility: hidden;
+  color: gray;
+}
+
+.areas:hover {
+  color: black;
+  opacity: 0.3;
+  font-weight: bolder;
+
+  visibility: visible;
+}
