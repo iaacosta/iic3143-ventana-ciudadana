@@ -89,13 +89,22 @@ router.get('proyectos-ley', '/show/:id', async ctx => {
 });
 
 router.get('proyectos-ley', '/show-estado/:estado', async ctx => {
+  let { page } = ctx.request.query;
+  if (!ctx.request.query.page) page = 0;
+
   const proys = await Proyecto.findAll({
     where: { estado: ctx.params.estado },
     order: [['fecha', 'DESC']],
+    ...paginate(page, 15),
+  });
+
+  const todosProy = await Proyecto.findAll({
+    attributes: [[ctx.orm.Sequelize.fn('count', ctx.orm.Sequelize.col('id')), 'total']],
+    where: { estado: ctx.params.estado },
   });
 
   const fechas = [];
-  const cont = proys.length;
+  const cont = parseInt(todosProy[0].dataValues.total, 10);
   const { estado } = ctx.params;
 
   for (let i = 0; i < proys.length; i += 1) {
@@ -112,6 +121,7 @@ router.get('proyectos-ley', '/show-estado/:estado', async ctx => {
     fechas,
     cont,
     estado,
+    currPage: parseInt(page, 10) + 1,
   });
 });
 

@@ -1,5 +1,5 @@
 .titulos {
-  color: $color-primary-darkest;
+  color: $color-grey;
   font-size: 6.2rem;
   line-height: 1;
   max-height: 6.2rem;
@@ -73,18 +73,34 @@
 
   display: grid;
   grid-gap: 1rem;
-  grid-template-rows: repeat(2, min-content) 5rem repeat(2, min-content);
+  grid-template-rows: repeat(3, min-content);
+
+  &__pages {
+    grid-row: -1 / span 1;
+    grid-column: 1 / -1;
+    margin-top: 2rem;
+    justify-self: center;
+  }
 }
 
 .contenedor-cards {
   min-height: 42rem;
   grid-gap: 2rem;
   display: grid;
-  grid-template-columns: repeat(5, minmax(20rem, 1fr));
+  grid-template-columns: repeat(5, 1fr);
   grid-template-rows: min-content 1fr;
   float: none;
   grid-row: 5 / span 1;
   grid-column: 1 / span 2;
+
+  &--index {
+    grid-column: 1 / span 1;
+    grid-row: 3 / span 1;
+  }
+
+  @include respond(small) {
+    grid-template-columns: repeat(4, 1fr);
+  }
 
   &__error {
     font-size: 1.8rem;
@@ -103,8 +119,7 @@
 
 .card-senadores {
   display: grid;
-  height: 42rem;
-  grid-template-rows: 28rem 1fr 1fr 4rem;
+  grid-template-rows: 20rem min-content 1fr 4rem;
   grid-template-columns: 1fr 1fr;
   grid-gap: 1rem;
   box-shadow: 0 1rem 2rem rgba($color-black, 0.1);
@@ -228,6 +243,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    font-weight: 500;
 
     transition: opacity 0.2s ease;
 
@@ -297,7 +313,6 @@
   padding: 0 1.5rem;
   color: #666;
   align-content: center;
-  align: center;
   text-align: center;
 }
 
@@ -325,7 +340,6 @@
 .link {
   background-color: $color-primary-dark;
   padding: 1%;
-  align: center;
   color: $color-white;
   border-radius: 1rem;
 }
