@@ -1,6 +1,4 @@
 const KoaRouter = require('koa-router');
-const { Proyecto, SenadorProyecto, Senador, Sequelize } = require('../models');
-
 const { paginate } = require('../helpers');
 
 const router = new KoaRouter();
@@ -10,9 +8,12 @@ router.get('proyectos', '/', async ctx => {
 });
 
 router.get('proyectos_cifras', '/cifras', async ctx => {
-  const cifras = await Proyecto.findAll({
+  const cifras = await ctx.orm.Proyecto.findAll({
     group: ['estado'],
-    attributes: ['estado', [Sequelize.fn('count', Sequelize.col('estado')), 'total']],
+    attributes: [
+      'estado',
+      [ctx.orm.Sequelize.fn('count', ctx.orm.Sequelize.col('estado')), 'total'],
+    ],
   });
 
   const parsedCifras = cifras.reduce(
@@ -36,7 +37,7 @@ router.get('proyectos_por_estado', '/proyectos', async ctx => {
     return;
   }
 
-  const proyectos = await Proyecto.findAll({
+  const proyectos = await ctx.orm.Proyecto.findAll({
     ...paginate(parseInt(page, 10), 20),
     where: { estado },
     order: [['fecha', 'DESC']],
@@ -48,7 +49,7 @@ router.get('proyectos_por_estado', '/proyectos', async ctx => {
 });
 
 router.get('proyectos-ley', '/show/:id', async ctx => {
-  const proy = await Proyecto.findOne({
+  const proy = await ctx.orm.Proyecto.findOne({
     where: { id: ctx.params.id },
   });
 
@@ -58,7 +59,7 @@ router.get('proyectos-ley', '/show/:id', async ctx => {
 
   const resumen = proy.resumen ? proy.resumen : 'Este proyecto no tiene descripcion';
 
-  const senadoresId = await SenadorProyecto.findAll({
+  const senadoresId = await ctx.orm.SenadorProyecto.findAll({
     where: { pid: proy.id },
   });
   const senadores = [];
@@ -66,7 +67,7 @@ router.get('proyectos-ley', '/show/:id', async ctx => {
 
   for (let i = 0; i < senadoresId.length; i += 1) {
     // eslint-disable-next-line no-await-in-loop
-    const senador = await Senador.findOne({
+    const senador = await ctx.orm.Senador.findOne({
       where: { id: senadoresId[i].sid },
     });
 
@@ -92,13 +93,24 @@ router.get('proyectos-ley', '/show-estado/:estado', async ctx => {
   let { page } = ctx.request.query;
   if (!ctx.request.query.page) page = 0;
 
-  const proys = await Proyecto.findAll({
-    where: { estado: ctx.params.estado },
+  // verifica si existe el estado
+  const estados = (await ctx.orm.Proyecto.findAll({
+    attributes: [[ctx.orm.Sequelize.literal('DISTINCT estado'), 'estado']],
+  })).map(({ dataValues }) => dataValues.estado);
+
+  const { estado: paramEstado } = ctx.params;
+  if (!estados.includes(paramEstado)) {
+    ctx.status = 404;
+    return;
+  }
+
+  const proys = await ctx.orm.Proyecto.findAll({
+    where: { estado: paramEstado },
     order: [['fecha', 'DESC']],
     ...paginate(page, 15),
   });
 
-  const todosProy = await Proyecto.findAll({
+  const todosProy = await ctx.orm.Proyecto.findAll({
     attributes: [[ctx.orm.Sequelize.fn('count', ctx.orm.Sequelize.col('id')), 'total']],
     where: { estado: ctx.params.estado },
   });
