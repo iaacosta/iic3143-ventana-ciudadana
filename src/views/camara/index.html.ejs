@@ -1,21 +1,25 @@
 <div class="camaras">
-
-  <h2 class="camaras__titulo">Cámara de senadores</h2>
-  <h2 class="camaras__titulo">Cámara de diputados</h2>
-
   <div class="camaras__container">
+    <h2 class="camaras__titulo">Cámara de senadores</h2>
     <svg id="svg-senadores"></svg>
     <div class="info-parlamentario" id="camara-senadores">
-      <p class="info-parlamentario__placeholder">Seleccione un senador</p>  
+      <img src="https://d1nhio0ox7pgb.cloudfront.net/_img/o_collection_png/green_dark_grey/256x256/plain/user.png" class="info-parlamentario__imagen">
+      <p class="info-parlamentario__placeholder">Seleccione un senador</p>
     </div>
   </div>
 
   <div class="camaras__container">
+    <h2 class="camaras__titulo">Cámara de diputados</h2>
     <svg id="svg-diputados"></svg>
+    <div class="info-parlamentario" id="camara-diputados">
+      <p class="info-parlamentario__placeholder info-parlamentario__placeholder--center">No disponible</p>
+    </div>
   </div>
 </div>
 
-<div class="proyectos">
+<hr class="hr">
+
+<div class="proyectos-aprobados">
   <div id="proyectos-aprobados-react"></div>
 </div>
 
@@ -71,7 +75,7 @@
       .map(partido => [partido, icono])
       .sort((first, second) => first[0].localeCompare(second[0]));
     datos_senadores = senadores_actuales.map(function (senador) {
-      return ([senador.partido_politico, icono,senador.partido_politico ])
+      return ([senador.partido_politico, icono, senador.partido_politico ])
     });
   }
   function updateText(data){
@@ -89,6 +93,7 @@
   }
   function resetCard(){
     const template = `
+        <img src="https://d1nhio0ox7pgb.cloudfront.net/_img/o_collection_png/green_dark_grey/256x256/plain/user.png" class="info-parlamentario__imagen">
         <p class="info-parlamentario__placeholder">Seleccione un senador</p>  
     `
     $(`.info-parlamentario#camara-senadores`).html(template);
@@ -125,13 +130,15 @@
       .on("mouseover", (d, i) => active ? updateText(senadores_actuales[i]) : null)
       .on("mouseleave", () => active ? resetCard() : null)
       .on("click", (d, i) => active ? window.location.href = `/senadores/${senadores_actuales[i].id}` : null)
-      .attr("x", (d, i) => coords[i][1] * fontSize - 20)
+      .attr("x", (d, i) => coords[i][1] * fontSize)
       .attr("y", (d, i) => coords[i][0] * fontSize + 40)
       .attr('font-family', 'FontAwesome')
       .attr('font-size', fontSize)
       .attr('cursor', 'default')
       .attr("fill", (d) => active ? color(d) : '#cccccc')
-      .text((d) => "\u00A0 " + d[1]);
+      .text((d) => d[1]);
+
+
     const legend = chart.append('g')
       .attr('class', 'legend')
       .attr('transform', (d, i) => "translate(" + legendX + ", " + legendY + ")");

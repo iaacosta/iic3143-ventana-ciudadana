@@ -11,7 +11,13 @@ h2 {
 a {
   &:link,
   &:visited {
-    color: inherit;
+    color: $color-white;
+    text-decoration: none;
+  }
+
+  &:hover,
+  &:active {
+    color: $color-white;
     text-decoration: none;
   }
 }

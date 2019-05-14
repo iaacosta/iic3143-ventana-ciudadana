@@ -62,6 +62,7 @@ main {
   list-style: none;
   display: flex;
   color: $color-white;
+  font-weight: 500;
 
   &__item {
     cursor: pointer;
@@ -78,6 +79,7 @@ main {
 
     &:hover {
       background-color: $color-primary-dark;
+      color: #ffffff;
     }
   }
 }
@@ -92,86 +94,4 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.proyecto-ley {
-  background-color: $color-white;
-}
-
-
-//----------------------------------------------------- Camaras -----------------------------------------------------
-
-#nombre_partido{
-  font-size: 3rem;
-  margin: auto;
-  text-align: center;
-  font-weight: bold;
-}
-
-#cam_container{
-  display: flex;
-  position: center;
-  margin: auto
-}
-
-svg{
-  width:700px;
-  height: 400px;
-  margin: auto;
-}
-
-
-g:hover {
-  opacity: 0.3;
-}
-
-h3{
-  font-family: 'Source Sans Pro', sans-serif;
-  font-weight: lighter;
-
-}
-
-
-.contenedor-areas {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 100%;
-  justify-content: center;
-  height: 100vh;
-  align-content: stretch;
-  padding:5px;
-
-}
-
-
-.area{
-  display: flex;
-  border: 1px solid lightgrey;
-  flex-direction: column;
-  text-align:left ;
-  padding: 10px;
-  padding-block: auto;
-  border-radius: 3px;
-  flex-basis: 20%;
-  //flex:1;
-  margin:5px;
-}
-.img_area{
-  max-width: 300px;
-
-}
-
-.areas h3{
-  //visibility: hidden;
-  color: gray;
-
-}
-
-.areas:hover{
-  color: black;
-  opacity: 0.3;
-  font-weight: bolder;
-
-  visibility: visible;
 }

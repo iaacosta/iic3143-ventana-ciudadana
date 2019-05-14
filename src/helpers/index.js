@@ -1,6 +1,6 @@
 const paginate = (page, pageSize) => ({
   offset: page * pageSize,
-  limit: page * pageSize + pageSize,
+  limit: pageSize,
 });
 
 module.exports = {

@@ -47,77 +47,82 @@ router.get('proyectos_por_estado', '/proyectos', async ctx => {
   };
 });
 
-router.get('proyectos-ley','/show/:id', async (ctx) => {
+router.get('proyectos-ley', '/show/:id', async ctx => {
   const proy = await Proyecto.findOne({
     where: { id: ctx.params.id },
   });
 
   const date = proy.fecha;
-  var string = date.toString();
-  var fecha = string.substr(4, 11)
+  const string = date.toString();
+  const fecha = string.substr(4, 11);
 
-  var resumen = "";
-  if (proy.resumen == null) {
-    resumen = "Este proyecto no tiene descripcion";
-  } else {
-    resumen = proy.resumen;
-  };
+  const resumen = proy.resumen ? proy.resumen : 'Este proyecto no tiene descripcion';
 
-  const senadores_id = await SenadorProyecto.findAll({
-    where: {pid: proy.id},
-  })
-  var senadores = [];
-  var fotos = [];
+  const senadoresId = await SenadorProyecto.findAll({
+    where: { pid: proy.id },
+  });
+  const senadores = [];
+  const fotos = [];
 
-  for (var i = 0; i < senadores_id.length; i++) {
+  for (let i = 0; i < senadoresId.length; i += 1) {
+    // eslint-disable-next-line no-await-in-loop
     const senador = await Senador.findOne({
-      where: { id: senadores_id[i].sid },
+      where: { id: senadoresId[i].sid },
     });
-    if (senador.url_foto == null) {
-      fotos.push("https://d1nhio0ox7pgb.cloudfront.net/_img/o_collection_png/green_dark_grey/256x256/plain/user.png")
-    } else {
-      fotos.push(senador.url_foto);
-    }
+
+    if (senador.url_foto == null)
+      fotos.push(
+        'https://d1nhio0ox7pgb.cloudfront.net/_img/o_collection_png/green_dark_grey/256x256/plain/user.png',
+      );
+    else fotos.push(senador.url_foto);
+
     senadores.push(senador);
   }
 
   await ctx.render('proyectos-ley/show', {
-  fotos,
-  proy,
-  fecha,
-  senadores,
-  resumen,
- });
+    fotos,
+    proy,
+    fecha,
+    senadores,
+    resumen,
+  });
 });
 
-
-router.get('proyectos-ley','/show-estado/:estado', async (ctx) => {
+router.get('proyectos-ley', '/show-estado/:estado', async ctx => {
+  let { page } = ctx.request.query;
+  if (!ctx.request.query.page) page = 0;
 
   const proys = await Proyecto.findAll({
     where: { estado: ctx.params.estado },
     order: [['fecha', 'DESC']],
+    ...paginate(page, 15),
   });
 
-  var fechas = [];
-  const cont = proys.length;
-  const estado = ctx.params.estado;
+  const todosProy = await Proyecto.findAll({
+    attributes: [[ctx.orm.Sequelize.fn('count', ctx.orm.Sequelize.col('id')), 'total']],
+    where: { estado: ctx.params.estado },
+  });
 
-  for (var i = 0; i < proys.length; i++) {
+  const fechas = [];
+  const cont = parseInt(todosProy[0].dataValues.total, 10);
+  const { estado } = ctx.params;
 
+  for (let i = 0; i < proys.length; i += 1) {
     const proyecto = proys[i];
     const date = proyecto.fecha;
-    var string = date.toString();
-    var fecha = string.substr(4, 11)
+    const string = date.toString();
+    const fecha = string.substr(4, 11);
 
     fechas.push(fecha);
   }
 
   await ctx.render('proyectos-ley/show-estado', {
-  proys,
-  fechas,
-  cont,
-  estado,
- });
+    proys,
+    fechas,
+    cont,
+    estado,
+    currPage: parseInt(page, 10) + 1,
+  });
 });
 
 module.exports = router;
