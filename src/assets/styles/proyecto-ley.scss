@@ -60,7 +60,7 @@
     font-size: 1.6rem;
     font-weight: 500;
 
-    padding: .5rem;
+    padding: 0.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -121,8 +121,8 @@
 
 .card-senadores {
   display: grid;
-  grid-template-rows: 20rem min-content 1fr 4rem;
-  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 23rem min-content 1fr 4rem;
+  grid-template-columns: 2fr 1fr;
   grid-gap: 1rem;
   box-shadow: 0 1rem 2rem rgba($color-black, 0.1);
   text-align: left;
@@ -140,8 +140,9 @@
     padding: 0 1rem;
     font-size: 1.6rem;
     grid-row: 3 / span 1;
-    justify-self: center;
+    justify-self: start;
     align-self: center;
+    hyphens: auto;
   }
 
   &__foto {
@@ -157,7 +158,7 @@
     justify-self: center;
     transition: color 0.2s ease;
 
-    &>* {
+    & > * {
       color: $color-primary-darkest;
       font-size: 3rem;
     }
@@ -397,18 +398,18 @@ input#collapsible-1[type='checkbox'] {
 
   &--right {
     &::before {
-      margin-right: .6rem;
+      margin-right: 0.6rem;
     }
   }
 
   &--left {
     &::before {
-      margin-left: .6rem;
+      margin-left: 0.6rem;
     }
   }
 }
 
-.toggle:checked+.lbl-toggle::before {
+.toggle:checked + .lbl-toggle::before {
   transform: rotate(90deg) translateX(-0.1rem);
 }
 
@@ -418,10 +419,9 @@ input#collapsible-1[type='checkbox'] {
   transition: max-height 0.25s ease-in-out;
 }
 
-.toggle:checked+.lbl-toggle+.collapsible-content {
+.toggle:checked + .lbl-toggle + .collapsible-content {
   max-height: 35rem;
 }
-
 
 .collapsible-content .content-inner {
   background: $color-white;

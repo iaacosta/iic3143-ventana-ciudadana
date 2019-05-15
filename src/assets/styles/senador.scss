@@ -1,15 +1,29 @@
 .grid-container {
   display: grid;
-  grid-template-columns: 1fr 4fr 1fr;
-  grid-template-rows:  repeat(3, min-content) 1fr;
-  grid-gap: 20px;
+  grid-template-columns: 1fr 6fr;
+  grid-template-rows: repeat(3, min-content) 42rem;
+  grid-gap: 2rem;
+
+  a {
+    &:link,
+    &:visited,
+    &:hover,
+    &:active {
+      color: $color-grey-dark-4;
+    }
+  }
 }
 
 #img-senador {
   grid-column: 1 / span 1;
   grid-row: 1 / span 2;
-  width: 100%;
-  height: auto;
+  height: 32rem;
+  object-fit: cover;
+  object-position: top;
+  justify-self: stretch;
+  box-shadow: 0 1rem 1rem rgba($color-black, 0.05);
+  border-radius: 0.7rem;
+  overflow: hidden;
 }
 
 #nombre-senador {
@@ -21,46 +35,85 @@
 #informacion-personal {
   grid-column: 2 / span 1;
   grid-row: 2 / span 1;
-  color: $color-grey-dark-4;
+  color: $color-primary-dark;
   font-size: 2rem;
+
+  a:link,
+  a:visited,
+  a:hover,
+  a:active {
+    color: $color-primary-dark;
+    font-weight: 500;
+  }
 }
 
 #titulo-proyectos {
   grid-column: 2 / span 1;
-  grid-row: 3/ span 1;
+  grid-row: 3 / span 1;
+  display: flex;
+  align-items: center;
   font-size: 3rem;
-  color: $color-grey-dark-4;
   padding-left: 1rem;
-  border-left: solid 3px $color-primary-darkest;
+  border-left: solid 0.3rem $color-primary-darkest;
+
+  span {
+    font-size: 2.2rem;
+    font-weight: 300;
+    margin-left: 1rem;
+    margin-bottom: -0.2rem;
+  }
 }
 
 #lista-proyectos {
-    grid-column: 2 / span 1;
-    grid-row: 4 / span 1;
-    color: $color-grey-dark-4;
-    font-size: 2rem;
+  grid-column: 2 / span 1;
+  grid-row: 4 / span 1;
+  height: 100%;
+  overflow: auto;
+  font-size: 2rem;
+  list-style: none;
 }
 
-.item-proyecto {
-  margin: 10px 0px;
-}
+.lista-proyectos {
+  box-shadow: 0 0.5rem 0.8rem rgba($color-black, 0.05);
 
-/* A link that has not been visited */
-a:link {
-  color: $color-grey-dark-4;
-}
+  &__item {
+    display: grid;
 
-/* A link that has been visited */
-a:visited {
-  color: $color-grey-dark-4;
-}
+    &:nth-child(even) {
+      background-color: $color-grey-light;
+    }
 
-/* A link that is hovered on */
-a:hover {
-  color: $color-grey-dark-4;
-}
+    &:nth-child(odd) {
+      background-color: $color-grey-light-2;
+    }
 
-/* A link that is selected */
-a:active {
-  color: $color-grey-dark-4;
+    &:hover {
+      background-color: $color-grey-light-3;
+    }
+  }
+
+  &__link {
+    padding: 2rem 1rem;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    grid-gap: 3rem;
+    align-items: center;
+  }
+
+  &__meta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__fecha {
+    justify-self: center;
+    font-size: 1.6rem;
+  }
+
+  &__boletin {
+    font-weight: 700;
+    color: $color-primary-dark;
+    margin-bottom: 0.5rem;
+  }
 }
