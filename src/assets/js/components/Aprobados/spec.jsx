@@ -150,21 +150,21 @@ describe('<Aprobados />', () => {
 
   test('mapProyectoDeLey debe retornar un ProyectoLey con props', () => {
     const returnedWrapper = shallow(
-      <div>{mapProyectoDeLey(fakeProyectos.aprobado)}</div>,
+      <div>{mapProyectoDeLey(fakeProyectos.aprobado[0])}</div>,
     );
 
     expect(returnedWrapper.find('ProyectoLey').exists()).toBe(true);
 
     expect(returnedWrapper.find('ProyectoLey').prop('boletin')).toBe(
-      fakeProyectos.aprobado.boletin,
+      fakeProyectos.aprobado[0].boletin,
     );
 
     expect(returnedWrapper.find('ProyectoLey').prop('resumen')).toBe(
-      fakeProyectos.aprobado.resumen,
+      fakeProyectos.aprobado[0].resumen,
     );
 
     expect(returnedWrapper.find('ProyectoLey').prop('url')).toBe(
-      `/proyectos-ley/${fakeProyectos.aprobado.id}`,
+      `/proyectos-ley/show/${fakeProyectos.aprobado[0].id}`,
     );
   });
 });
