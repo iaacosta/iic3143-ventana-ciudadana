@@ -1,5 +1,4 @@
 const KoaRouter = require('koa-router');
-const dayjs = require('dayjs');
 
 const router = new KoaRouter();
 
@@ -12,16 +11,10 @@ router.param('id', async (id, ctx, next) => {
 
 router.get('senadores-show', '/:id', async ctx => {
   const { senador } = ctx.state;
-  const proyectos = await senador.getProyectos({
-    order: [['fecha', 'DESC']],
-  });
-
+  const proyectos = await senador.getProyectos();
   return ctx.render('senadores/show', {
     senador,
-    proyectos: proyectos.map(proyecto => ({
-      ...proyecto.dataValues,
-      fecha: dayjs(proyecto.fecha).format('DD, MMM YYYY'),
-    })),
+    proyectos,
   });
 });
 
