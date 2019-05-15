@@ -1,19 +1,66 @@
 .grid-container {
   display: grid;
-  grid-template-columns: 120px auto;
-  grid-template-rows: auto auto auto;
-  grid-gap: 50px 50px;
+  grid-template-columns: 1fr 4fr 1fr;
+  grid-template-rows:  repeat(3, min-content) 1fr;
+  grid-gap: 20px;
 }
 
-.grid-item img {
+#img-senador {
+  grid-column: 1 / span 1;
+  grid-row: 1 / span 2;
   width: 100%;
   height: auto;
 }
 
-#lista-proyectos {
-  font-size: 1.5rem;
+#nombre-senador {
+  font-size: 5.5rem;
+  align-self: end;
+  color: $color-grey-dark-4;
 }
 
-#nombre-senador {
-  align-self: center;
+#informacion-personal {
+  grid-column: 2 / span 1;
+  grid-row: 2 / span 1;
+  color: $color-grey-dark-4;
+  font-size: 2rem;
+}
+
+#titulo-proyectos {
+  grid-column: 2 / span 1;
+  grid-row: 3/ span 1;
+  font-size: 3rem;
+  color: $color-grey-dark-4;
+  padding-left: 1rem;
+  border-left: solid 3px $color-primary-darkest;
+}
+
+#lista-proyectos {
+    grid-column: 2 / span 1;
+    grid-row: 4 / span 1;
+    color: $color-grey-dark-4;
+    font-size: 2rem;
+}
+
+.item-proyecto {
+  margin: 10px 0px;
+}
+
+/* A link that has not been visited */
+a:link {
+  color: $color-grey-dark-4;
+}
+
+/* A link that has been visited */
+a:visited {
+  color: $color-grey-dark-4;
+}
+
+/* A link that is hovered on */
+a:hover {
+  color: $color-grey-dark-4;
+}
+
+/* A link that is selected */
+a:active {
+  color: $color-grey-dark-4;
 }
