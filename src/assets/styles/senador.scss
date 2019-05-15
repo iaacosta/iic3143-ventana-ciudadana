@@ -1,15 +1,29 @@
 .grid-container {
   display: grid;
-  grid-template-columns: 1fr 4fr 1fr;
-  grid-template-rows:  repeat(3, min-content) 1fr;
-  grid-gap: 20px;
+  grid-template-columns: 1fr 6fr;
+  grid-template-rows: repeat(3, min-content) 42rem;
+  grid-gap: 2rem;
+
+  a {
+    &:link,
+    &:visited,
+    &:hover,
+    &:active {
+      color: $color-grey-dark-4;
+    }
+  }
 }
 
 #img-senador {
   grid-column: 1 / span 1;
   grid-row: 1 / span 2;
-  width: 100%;
-  height: auto;
+  height: 32rem;
+  object-fit: cover;
+  object-position: top;
+  justify-self: stretch;
+  box-shadow: 0 1rem 1rem rgba($color-black, 0.05);
+  border-radius: 0.7rem;
+  overflow: hidden;
 }
 
 #nombre-senador {
@@ -27,40 +41,51 @@
 
 #titulo-proyectos {
   grid-column: 2 / span 1;
-  grid-row: 3/ span 1;
+  grid-row: 3 / span 1;
   font-size: 3rem;
   color: $color-grey-dark-4;
   padding-left: 1rem;
-  border-left: solid 3px $color-primary-darkest;
+  border-left: solid 0.3rem $color-primary-darkest;
 }
 
 #lista-proyectos {
-    grid-column: 2 / span 1;
-    grid-row: 4 / span 1;
-    color: $color-grey-dark-4;
-    font-size: 2rem;
-}
-
-.item-proyecto {
-  margin: 10px 0px;
-}
-
-/* A link that has not been visited */
-a:link {
+  grid-column: 2 / span 1;
+  grid-row: 4 / span 1;
   color: $color-grey-dark-4;
+  height: 100%;
+  overflow: auto;
+  font-size: 2rem;
+  list-style: none;
 }
 
-/* A link that has been visited */
-a:visited {
-  color: $color-grey-dark-4;
-}
+.lista-proyectos {
+  box-shadow: 0 0.5rem 0.8rem rgba($color-black, 0.05);
 
-/* A link that is hovered on */
-a:hover {
-  color: $color-grey-dark-4;
-}
+  &__item {
+    display: grid;
 
-/* A link that is selected */
-a:active {
-  color: $color-grey-dark-4;
+    &:nth-child(even) {
+      background-color: $color-grey-light;
+    }
+
+    &:nth-child(odd) {
+      background-color: $color-grey-light-2;
+    }
+
+    &:hover {
+      background-color: $color-grey-light-3;
+    }
+  }
+
+  &__link {
+    padding: 2rem 1rem;
+    display: grid;
+    grid-template-columns: max-content 5fr;
+    grid-gap: 2rem;
+  }
+
+  &__boletin {
+    font-weight: 700;
+    color: $color-primary-dark;
+  }
 }
