@@ -2,15 +2,18 @@
   <img id="img-senador" src=<%= senador.url_foto %> alt="Foto de senador">
   <h1 id="nombre-senador"> <%= senador.nombre + " " + senador.apellido_paterno + " " + senador.apellido_materno %> </h1>
   <div id="informacion-personal">
-    <a href=<%= senador.url_curriculum%> target="_blank">Ver Currículum</a> ||
-    <a href=<%= senador.url_twitter%> target="_blank"> Ver Twitter</a>
+    <a href="<%= senador.url_curriculum %>" target="_blank">Ver Currículum</a> ||
+    <a href="<%= senador.url_twitter %>" target="_blank"> Ver Twitter</a>
   </div>
-  <h1 id="titulo-proyectos">Proyectos</h1>
+  <h1 id="titulo-proyectos">Proyectos <span id="proyectos-totales">(<%= proyectos.length %>)</span></h1>
   <ul class="lista-proyectos" id="lista-proyectos">
-    <% proyectos.slice(-10).forEach((proyecto) => { %>
+    <% proyectos.forEach((proyecto) => { %>
       <li class="lista-proyectos__item">
         <a class="lista-proyectos__link" href="/proyectos-ley/show/<%= proyecto.id %>">
-          <p class="lista-proyectos__boletin"><%=proyecto.boletin%></p>
+          <div class="lista-proyectos__meta">
+            <p class="lista-proyectos__boletin"><%=proyecto.boletin%></p>
+            <p class="lista-proyectos__fecha"><%=proyecto.fecha%></p>
+          </div>
           <p class="lista-proyectos__resumen"><%=proyecto.resumen%></p>
         </a>
       </li>
