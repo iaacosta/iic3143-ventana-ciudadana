@@ -1,0 +1,30 @@
+.cifras {
+  &__box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.6rem;
+  }
+
+  &__cifra {
+    font-size: 8rem;
+    font-weight: 500;
+
+    &--rechazado {
+      color: $color-red-regular;
+    }
+
+    &--aprobado {
+      color: $color-primary-dark;
+    }
+
+    &--tramitacion {
+      color: $color-grey-dark-2;
+    }
+
+    &--suspendido {
+      color: $color-yellow-dark;
+    }
+  }
+}

@@ -1,0 +1,98 @@
+<div class='proyectos'>
+  <h1 class="titulos">PROYECTO NRO <%= proy.boletin %></h1>
+
+  <div class="proyectos__resumen"><%= resumen %></div>
+  <p class="proyectos__estado proyectos__estado--<%= proy.estado %>"> <%= proy.estado.charAt(0).toUpperCase() + proy.estado.slice(1) %> </p>
+  <a class="proyectos__link" href=" <%= proy.url %>" target="_blank"> Ver en pagina del senado </a>
+
+  <!-- Senadores Involucrados -->
+  <div class="contenedor-cards">
+    <h2 class="contenedor-cards__subtitle">Parlamentarios precursores</h2>
+    <% if (senadores.length === 0) { %>
+      <h3 class="contenedor-cards__error">No hay información disponible</h3>
+    <% } else { %>
+      <% for (i = 0; i < senadores.length; i++) { %>
+        <div class="card-senadores">
+          <img src="<%= fotos[i] %>" alt="foto" class="card-senadores__foto">
+          <h2 class="card-senadores__nombre"><%= senadores[i].nombre %> <%= senadores[i].apellido_paterno %></h2>
+          <p class="card-senadores__partido"> <%= senadores[i].partido_politico %> </p>
+          <% if (senadores[i].url_twitter) { %>
+            <a target="_blank" class="card-senadores__twitter" href="<%= senadores[i].url_twitter %>"><i class="fab fa-twitter"></i></a>
+          <% } %>
+          <a class="card-senadores__button" href="/senadores/<%= senadores[i].id %>">Ver Perfil</a>
+        </div>
+      <% } %>
+    <% } %> 
+  </div>
+
+  <!-- Timeline del Proyecto -->
+  <div class="contenedor-linea">
+    <div class="timeline-block timeline-block-right">
+      <div class="marker"></div>
+      <div class="timeline-content">
+        <h3>Inicio</h3>
+        <span> <%= fecha %> </span>
+
+        <div class="wrap-collabsible">
+          <input id="collapsible-1" class="toggle" type="checkbox">
+          <label for="collapsible-1" class="lbl-toggle lbl-toggle--right">Ver Detalles</label>
+          <div class="collapsible-content">
+            <p class="content-inner">
+              Aqui, en esta div, posteriormente ira informacion sobre la votacion y detalles de esta sesion
+              particular. QUnit is by calling one of the object that are embedded in JavaScript, and faster JavaScript program could also used with its elegant, well documented, and functional programming using JS, HTML pages Modernizr is a popular browsers without plug-ins. Test-Driven Development.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-block timeline-block-left">
+      <div class="marker"></div>
+      <div class="timeline-content">
+        <h3>Estado actual</h3>
+        <span><%= proy.estado %></span>
+
+        <div class="wrap-collabsible">
+          <input id="collapsible-2" class="toggle" type="checkbox" checked>
+          <label for="collapsible-2" class="lbl-toggle lbl-toggle--left">Ver Detalles</label>
+          <div class="collapsible-content">
+            <div class="content-inner">
+              <p>
+                Aqui, en esta div, posteriormente ira informacion sobre la votacion y detalles de esta sesion particular. QUnit is by calling one of the object that are embedded in JavaScript, and faster JavaScript program could also used with its elegant, well documented, and functional programming using JS, HTML pages Modernizr is a popular browsers without plug-ins. Test-Driven Development.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+<!-- Timeline sacado de: -->
+<!-- https://codepen.io/hassan-kamal/pen/NNvYEQ -->
+
+
+<!-- SCRIPT COLLAPSIBLE -->
+
+<script>
+
+  let myLabels = document.querySelectorAll('.lbl-toggle');
+
+  Array.from(myLabels).forEach(label => {
+    label.addEventListener('keydown', e => {
+      // 32 === spacebar
+      // 13 === enter
+      if (e.which === 32 || e.which === 13) {
+        e.preventDefault();
+        label.click();
+      };
+    });
+  });
+
+
+  // Funcion y scss (un poco modificado) sacados de https://alligator.io/css/collapsible/
+
+</script>
