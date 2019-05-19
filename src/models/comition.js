@@ -3,7 +3,6 @@ module.exports = (sequelize, DataTypes) => {
   const Comition = sequelize.define(
     'Comition',
     {
-      id: DataTypes.INTEGER,
       nombre: DataTypes.STRING,
       email: DataTypes.STRING,
       telefono: DataTypes.STRING,
@@ -12,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
   );
   Comition.associate = function(models) {
     Comition.belongsToMany(models.Senador, {
-      through: models.SenadorComition,
+      through: models.SenatorComition,
       foreignKey: 'cid',
     });
 
