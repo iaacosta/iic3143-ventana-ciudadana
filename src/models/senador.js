@@ -21,6 +21,11 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'sid',
     });
 
+    Senador.belongsToMany(models.Comition, {
+      through: models.SenadorComition,
+      foreignKey: 'sid',
+    });
+
     Senador.hasMany(models.Periodo, { foreignKey: 'sid' });
   };
   return Senador;
