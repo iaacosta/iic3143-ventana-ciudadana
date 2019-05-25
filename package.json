@@ -90,7 +90,7 @@
     "react-dom": "^16.0.0",
     "react-hot-loader": "^4.3.4",
     "remove": "^0.1.5",
-    "sequelize": ">=5.3.0",
+    "sequelize": "^4.6.0",
     "sequelize-cli": "^4.1.1",
     "uuid": "^3.3.2"
   }
