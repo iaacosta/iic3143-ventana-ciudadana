@@ -1,9 +1,12 @@
 <div class='proyectos'>
 
   <h1 class="titulos">Comision de <%= comition.nombre %></h1>
-  <h3>info contacto </h3>
-  <p> <%= comition.telefono %> </p>
-  <p> <%= comition.email %> </p>
+  <div class="proyectos__info">
+    <h2 class="contenedor-cards__subtitle">Informacion de Contacto</h2>
+    <%= comition.telefono %>
+    <br>
+    <%= comition.email %>
+  </div>
 
 
   <!-- Senadores Involucrados -->

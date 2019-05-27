@@ -29,12 +29,13 @@ router.get('comitions', '/show/:id', async ctx => {
 
   // Ahora a buscar la info particular de senadores y proyectos
   var senadores = [];
-  const fotos = [];
+  var fotos = [];
 
-  for (i = 0; i < senadores_id.lenght; i++) {
+  for (i = 0; i < senadores_id.length; i++) {
     const sen = await ctx.orm.Senador.findOne({
       where: {id: senadores_id[i].sid},
     });
+
     if (sen.url_foto == null)
       fotos.push(
         'https://d1nhio0ox7pgb.cloudfront.net/_img/o_collection_png/green_dark_grey/256x256/plain/user.png',
@@ -42,8 +43,6 @@ router.get('comitions', '/show/:id', async ctx => {
     else fotos.push(sen.url_foto);
     senadores.push(sen);
   }
-
-  console.log(senadores.length);
 
   var proyectos = [];
   for (i = 0; i < proyectos_id.length; i++) {
@@ -60,6 +59,7 @@ router.get('comitions', '/show/:id', async ctx => {
     comition,
     senadores,
     proyectos,
+    fotos,
   });
 });
 
