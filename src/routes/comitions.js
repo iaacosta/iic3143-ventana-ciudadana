@@ -30,6 +30,9 @@ router.get('comitions', '/show/:id', async ctx => {
   // Ahora a buscar la info particular de senadores y proyectos
   var senadores = [];
   var fotos = [];
+  var partidos = {};
+  var partidos_nombre = [];
+  var partidos_porcentajes = [];
 
   for (i = 0; i < senadores_id.length; i++) {
     const sen = await ctx.orm.Senador.findOne({
@@ -42,12 +45,35 @@ router.get('comitions', '/show/:id', async ctx => {
       );
     else fotos.push(sen.url_foto);
     senadores.push(sen);
-  }
+
+    //Calcular porcentaje de partidos
+    if (sen.partido_politico != null) {
+      if (!(sen.partido_politico in partidos)) {
+        partidos[sen.partido_politico] = 1;
+      } else {
+        partidos[sen.partido_politico] = 1 + partidos[sen.partido_politico]
+      }
+    }
+  };
+
+  partidos_nombre = Object.keys(partidos);
+  for (i = 0; i < partidos_nombre.length; i++) {
+    const total = partidos_nombre.length;
+    porcentaje = partidos[partidos_nombre[i]] / total;
+    porcentaje = porcentaje * 100;
+    partidos_porcentajes.push(porcentaje);
+  };
+
+
+  console.log(" ");
+  console.log(partidos_porcentajes);
+  console.log(" ");
 
   var proyectos = [];
   for (i = 0; i < proyectos_id.length; i++) {
     const proy = await ctx.orm.Proyecto.findOne({
       where: {id: proyectos_id[i].pid},
+      order: [['fecha', 'DESC']],
     });
     proyectos.push(proy);
   }
@@ -60,6 +86,8 @@ router.get('comitions', '/show/:id', async ctx => {
     senadores,
     proyectos,
     fotos,
+    partidos_nombre,
+    partidos_porcentajes,
   });
 });
 

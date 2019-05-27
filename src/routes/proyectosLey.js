@@ -82,12 +82,20 @@ router.get('proyectos-ley', '/show/:id', async ctx => {
     senadores.push(senador);
   }
 
+  const com_id = await ctx.orm.ProjectComition.findOne({
+    where: {pid: proy.id},
+  });
+  const comition = await ctx.orm.Comition.findOne({
+    where: {id: com_id.cid},
+  });
+
   await ctx.render('proyectos-ley/show', {
     fotos,
     proy,
     fecha,
     senadores,
     resumen,
+    comition,
   });
 });
 

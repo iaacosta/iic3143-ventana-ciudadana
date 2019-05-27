@@ -6,6 +6,12 @@
     <%= comition.telefono %>
     <br>
     <%= comition.email %>
+    <br>
+    <h2 class="contenedor-cards__subtitle">Partidos Participantes</h2>
+    <% for (i = 0; i < partidos_nombre.length; i++) { %>
+      <%= partidos_nombre[i] %> : <%= partidos_porcentajes[i] %> %
+      <br>
+    <% } %>
   </div>
 
 
