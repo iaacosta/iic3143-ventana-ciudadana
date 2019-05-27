@@ -1,0 +1,12 @@
+<h1> HOLI </h1>
+
+<!-- Contenedor cartas de proyectos -->
+<div class="contenedor-cards contenedor-cards--index">
+<% for (i = 0; i < coms.length; i++) { %>
+  <div class="card-proyectos">
+    <h1 class="card-proyectos__title"><%= coms[i].id %></h1>
+    <h3 class="card-proyectos__estado"><%= coms[i].nombre %></h3>
+    <a href="/comitions/show/<%= coms[i].id%>" class="card-proyectos__button">Ver Comision</a>
+  </div>
+<% } %>
+</div>
