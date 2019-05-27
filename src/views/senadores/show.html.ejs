@@ -6,9 +6,13 @@
     <a href="<%= senador.url_twitter %>" target="_blank"> Ver Twitter</a>
 
     <br>
-    Participa en las comisiones de
-    <% for (i = 0; i < comitions.length; i++) { %>
-      <%= comitions[i].nombre %>,
+    <% if (comitions.len === 0) { %>
+      Este senador no participa en comisiones.
+    <% } else { %>
+      Participa en las comisiones de
+      <% for (i = 0; i < comitions.length; i++) { %>
+        <%= comitions[i].nombre %>,
+      <% } %>
     <% } %>
 
   </div>
