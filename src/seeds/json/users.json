@@ -1,0 +1,30 @@
+[
+  {
+    "nombre_completo": "Ignacio Acosta",
+    "email": "iaacosta@uc.cl",
+    "username": "cho19",
+    "password": "cho19",
+    "foto_url": "https://avatars3.githubusercontent.com/u/14133074?s=460&v=4"
+  },
+  {
+    "nombre_completo": "Vicente Muñoz",
+    "email": "vmuñoz@uc.cl",
+    "username": "vixolo",
+    "password": "vixolo",
+    "foto_url": "https://avatars1.githubusercontent.com/u/30675414?s=460&v=4"
+  },
+  {
+    "nombre_completo": "Esperanza Horn",
+    "email": "ehorn@uc.cl",
+    "username": "pita-horn",
+    "password": "pita-horn",
+    "foto_url": "https://avatars3.githubusercontent.com/u/26127375?s=460&v=4"
+  },
+  {
+    "nombre_completo": "Sofía Schwarzenberg",
+    "email": "sschwarzenberg@uc.cl",
+    "username": "sschwarzenberg",
+    "password": "sschwarzenberg",
+    "foto_url": "https://avatars1.githubusercontent.com/u/20782533?s=460&v=4"
+  }
+]
