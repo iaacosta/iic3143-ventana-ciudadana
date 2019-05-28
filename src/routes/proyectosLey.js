@@ -128,13 +128,6 @@ router.get('proyectos-ley', '/show-comition/:com_id', async ctx => {
     ...paginate(page, 15),
   });
 
-  // for (i = 0; i < proys_id.length; i++) {
-  //   const proyecto = await ctx.orm.Proyecto.findOne({
-  //     where: { id: proys_id[i].pid },
-  //   });
-  //   proys.push(proyecto);
-  // }
-
   const todosProy = await ctx.orm.ProjectComition.findAll({
     attributes: [[ctx.orm.Sequelize.fn('count', ctx.orm.Sequelize.col('cid')), 'total']],
     where: { cid: ctx.params.com_id },
