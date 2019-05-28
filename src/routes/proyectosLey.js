@@ -99,30 +99,49 @@ router.get('proyectos-ley', '/show/:id', async ctx => {
   });
 });
 
-router.get('proyectos-ley', '/show-estado/:estado', async ctx => {
+router.get('proyectos-ley', '/show-comition/:com_id', async ctx => {
   let { page } = ctx.request.query;
   if (!ctx.request.query.page) page = 0;
 
   // verifica si existe el estado
-  const estados = (await ctx.orm.Proyecto.findAll({
-    attributes: [[ctx.orm.Sequelize.literal('DISTINCT estado'), 'estado']],
-  })).map(({ dataValues }) => dataValues.estado);
+  //const estados = (await ctx.orm.Proyecto.findAll({
+    //attributes: [[ctx.orm.Sequelize.literal('DISTINCT estado'), 'estado']],
+  //})).map(({ dataValues }) => dataValues.estado);
 
-  const { estado: paramEstado } = ctx.params;
-  if (!estados.includes(paramEstado)) {
-    ctx.status = 404;
-    return;
-  }
+  //const { estado: paramEstado } = ctx.params;
+  //if (!estados.includes(paramEstado)) {
+    //ctx.status = 404;
+    //return;
+  //}
 
-  const proys = await ctx.orm.Proyecto.findAll({
-    where: { estado: paramEstado },
-    order: [['fecha', 'DESC']],
-    ...paginate(page, 15),
+  const com = await ctx.orm.Comition.findOne({
+    where: {id: ctx.params.com_id},
   });
 
-  const todosProy = await ctx.orm.Proyecto.findAll({
-    attributes: [[ctx.orm.Sequelize.fn('count', ctx.orm.Sequelize.col('id')), 'total']],
-    where: { estado: ctx.params.estado },
+  const comition = com.nombre;
+  const com_id = com.id;
+
+  const proys_id = await ctx.orm.ProjectComition.findAll({
+    where: { cid: com_id },
+  });
+
+  //const proys = await ctx.orm.Proyecto.findAll({
+  //   where: { estado: paramEstado },
+  //   order: [['fecha', 'DESC']],
+  //   ...paginate(page, 15),
+  // });
+
+  const proys = [];
+  for (i = 0; i < proys_id.length; i ++){
+    const proyecto = await ctx.orm.Proyecto.findOne({
+      where: {id: proys_id[i].pid},
+    });
+    proys.push(proyecto);
+  }
+
+  const todosProy = await ctx.orm.ProjectComition.findAll({
+    attributes: [[ctx.orm.Sequelize.fn('count', ctx.orm.Sequelize.col('cid')), 'total']],
+    where: { cid: ctx.params.com_id },
   });
 
   const fechas = [];
@@ -135,11 +154,12 @@ router.get('proyectos-ley', '/show-estado/:estado', async ctx => {
     fechas.push(date.format('DD, MMM YYYY'));
   }
 
-  await ctx.render('proyectos-ley/show-estado', {
+  await ctx.render('proyectos-ley/show-comition', {
     proys,
     fechas,
     cont,
-    estado,
+    comition,
+    com_id,
     currPage: parseInt(page, 10) + 1,
   });
 });

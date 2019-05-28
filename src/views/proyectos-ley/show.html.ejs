@@ -3,7 +3,7 @@
 
   <div class="proyectos__resumen">
     <%= resumen %><br> Pertenece a la comision de <%=comition.nombre%>
-    <a class="proyectos__link" href="/comitions/show/<%= comition.id%>" target="_blank"> Ver Comision </a>
+    <br><a class="proyectos__link" href="/comitions/show/<%= comition.id%>" target="_blank"> Ver Comision </a>
 
   </div>
   <p class="proyectos__estado proyectos__estado--<%= proy.estado %>"> <%= proy.estado.charAt(0).toUpperCase() + proy.estado.slice(1) %> </p>
