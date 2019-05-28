@@ -1,17 +1,21 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600');
 
-@import './responsive';
-@import './colors';
-@import './sizes';
-@import './layout';
-@import './typography';
-@import './senador';
-@import './camaras';
-@import './home';
-@import './proyecto-ley';
-@import './areas';
-@import './paginacion';
-@import './comition';
+@import './base/colors';
+@import './base/sizes';
+@import './base/mixins';
+@import './base/layout';
+@import './base/typography';
+
+@import './views/senador';
+@import './views/camaras';
+@import './views/home';
+@import './views/proyecto-ley';
+@import './views/areas';
+@import './views/comition';
+
+@import './utils/paginacion';
+@import './utils/timeline.scss';
+@import './utils/collapsible.scss';
 
 /* Componentes React */
 @import '../js/components/Aprobados/style.scss';

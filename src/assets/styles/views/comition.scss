@@ -1,0 +1,105 @@
+.proyectos {
+  &__info {
+    padding: 3rem 2rem;
+    border-radius: 0.5rem;
+    background-color: $color-grey-light-3;
+    font-size: 2rem;
+    grid-column: 1 / span 2;
+    grid-row: 2 / span 1;
+  }
+}
+
+.contenedor-cards-com {
+  padding: 0.5rem;
+  min-height: 42rem;
+  grid-gap: 2rem;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: min-content 1fr;
+  float: none;
+  grid-row: 5 / span 1;
+  grid-column: 1 / span 2;
+
+  &--index {
+    max-height: 60rem;
+    overflow: auto;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column: 1 / span 1;
+    grid-row: 3 / span 1;
+  }
+
+  @include respond(small) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  &__error {
+    font-size: 1.8rem;
+    font-weight: 300;
+    grid-column: 1 / -1;
+  }
+
+  &__subtitle {
+    grid-column: 1 / -1;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba($color-grey, 0.5);
+    width: 30rem;
+  }
+}
+
+.card-com-proy {
+  text-align: center;
+  border-radius: 0.8rem;
+
+  padding-top: 1rem;
+  display: grid;
+  grid-template-rows: min-content 1fr 4rem;
+  grid-gap: 1rem;
+  overflow: hidden;
+
+  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.05);
+
+  &__title {
+    padding-left: 2rem;
+    font-size: 3rem;
+    justify-self: start;
+    align-self: center;
+  }
+
+  &__resumen {
+    font-size: 1.8rem;
+    text-align: left;
+    padding: 1.5rem;
+  }
+
+  &__button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    color: $color-white;
+    background-color: $color-primary-darkest;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1.6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
+
+.contenedor-comition {
+  padding: 5rem 0;
+  margin: 5rem auto;
+  position: relative;
+  overflow: hidden;
+  grid-column: -2 / -1;
+  grid-row: 1 / -1;
+}

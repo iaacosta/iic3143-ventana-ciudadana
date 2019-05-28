@@ -1,13 +1,13 @@
 <div class='proyectos'>
 
-  <h1 class="titulos">Comision de <%= comition.nombre %></h1>
+  <h1 class="titulos titulos--medium">Comision de <%= comition.nombre %></h1>
   <div class="proyectos__info">
-    <h2 class="contenedor-cards__subtitle">Informacion de Contacto</h2>
+    <h2 class="contenedor-cards-com__subtitle">Informacion de Contacto</h2>
     <%= comition.telefono %>
     <br>
     <%= comition.email %>
     <br>
-    <h2 class="contenedor-cards__subtitle">Partidos Participantes</h2>
+    <h2 class="contenedor-cards-com__subtitle">Partidos Participantes</h2>
     <% for (i = 0; i < partidos_nombre.length; i++) { %>
       <%= partidos_nombre[i] %> : <%= partidos_porcentajes[i] %> %
       <br>
@@ -16,16 +16,16 @@
 
 
   <!-- Senadores Involucrados -->
-  <div class="contenedor-cards">
-    <h2 class="contenedor-cards__subtitle">Parlamentarios precursores</h2>
+  <div class="contenedor-cards-com">
+    <h2 class="contenedor-cards-com__subtitle">Parlamentarios precursores</h2>
     <% if (senadores.length === 0) { %>
-      <h3 class="contenedor-cards__error">No hay información disponible</h3>
+      <h3 class="contenedor-cards-com__error">No hay información disponible</h3>
     <% } else { %>
       <% for (i = 0; i < senadores.length; i++) { %>
         <div class="card-senadores">
           <img src="<%= fotos[i] %>" alt="foto" class="card-senadores__foto">
           <h2 class="card-senadores__nombre"><%= senadores[i].nombre %> <%= senadores[i].apellido_paterno %></h2>
-          <p class="card-senadores__partido"> <%= senadores[i].partido_politico %> </p>
+          <p class="card-senadores__partido"><%= senadores[i].partido_politico %></p>
           <% if (senadores[i].url_twitter) { %>
             <a target="_blank" class="card-senadores__twitter" href="<%= senadores[i].url_twitter %>"><i class="fab fa-twitter"></i></a>
           <% } %>
@@ -37,15 +37,15 @@
 
   <!-- Contenedor cartas de proyectos -->
   <div class="contenedor-comition">
-    <h2 class="contenedor-cards__subtitle">Proyectos de la Comision</h2>
+    <h2 class="contenedor-cards-com__subtitle">Proyectos de la Comision</h2>
     <% if (proyectos.length === 0) { %>
-      <h3 class="contenedor-cards__error">No hay información disponible</h3>
+      <h3 class="contenedor-cards-com__error">No hay información disponible</h3>
     <% } else { %>
-      <div class="contenedor-cards contenedor-cards--index">
+      <div class="contenedor-cards-com contenedor-cards-com--index">
       <% for (i = 0; i < proyectos.length; i++) { %>
         <div class="card-com-proy">
-          <h1 class="card-proyectos__title"><%= proyectos[i].boletin %></h1>
-          <p class="card-proyectos__resumen"><%= proyectos[i].resumen.length > 150 ? `${proyectos[i].resumen.slice(0, 150)}...` : proyectos[i].resumen %></p>
+          <h1 class="card-com-proy__title"><%= proyectos[i].boletin %></h1>
+          <p class="card-com-proy__resumen"><%= proyectos[i].resumen.length > 150 ? `${proyectos[i].resumen.slice(0, 150)}...` : proyectos[i].resumen %></p>
           <a href="/proyectos-ley/show/<%= proyectos[i].id%>" class="card-proyectos__button">Ver proyecto</a>
         </div>
       <% } %>

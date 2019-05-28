@@ -1,0 +1,74 @@
+
+.timeline-block {
+  width: -webkit-calc(50% + 0.8rem);
+  width: -moz-calc(50% + 0.8rem);
+  width: calc(50% + 0.8rem);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -moz-box-pack: justify;
+  justify-content: space-between;
+  clear: both;
+}
+
+.timeline-block-right {
+  float: right;
+}
+
+.timeline-block-left {
+  float: left;
+  direction: rtl;
+}
+
+.marker {
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  border: 0.2rem solid #f5f7fa;
+  background: #4fc1e9;
+  margin-top: 1rem;
+  z-index: 9999;
+}
+
+.timeline-content {
+  width: 95%;
+  padding: 0 1.5rem;
+  color: #666;
+  align-content: center;
+  text-align: center;
+}
+
+.timeline-content h3 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 2.5rem;
+  font-weight: 500;
+}
+
+.timeline-content span {
+  font-size: 1.5rem;
+  color: #a4a4a4;
+}
+
+.link-senadores {
+  text-decoration: none;
+  color: white;
+  margin: 20%;
+  padding-top: 30%;
+  font-size: 2.2rem;
+  color: black;
+}
+
+.link {
+  background-color: $color-primary-dark;
+  padding: 1%;
+  color: $color-white;
+  border-radius: 1rem;
+}
+
+.div-resumen {
+  flex: 1;
+}

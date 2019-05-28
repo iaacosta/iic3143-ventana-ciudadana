@@ -21,39 +21,41 @@
 
   <% maxVal = Math.ceil(cont / 15) %>
 
-  <ul class="pagination proyectos-index__pages">
-    <% if (currPage > 1) { %>
-      <a class="pagination__link" href="/proyectos-ley/show-comition/<%= com_id %>?page=<%= currPage - 2 %>">
-        <li class="pagination__page">&lsaquo;</li>
+  <% if (cont > 15) { %>
+    <ul class="pagination proyectos-index__pages">
+      <% if (currPage > 1) { %>
+        <a class="pagination__link" href="/proyectos-ley/show-comition/<%= com_id %>?page=<%= currPage - 2 %>">
+          <li class="pagination__page">&lsaquo;</li>
+        </a>
+      <% } %>
+
+      <a class="pagination__link" href="/proyectos-ley/show-comition/<%= com_id %>?page=<%= 0 %>">
+        <li class="pagination__page <%= currPage === 1 ? 'pagination__page--active' : '' %>">1</li>
       </a>
-    <% } %>
 
-    <a class="pagination__link" href="/proyectos-ley/show-comition/<%= com_id %>?page=<%= 0 %>">
-      <li class="pagination__page <%= currPage === 1 ? 'pagination__page--active' : '' %>">1</li>
-    </a>
+      <% if (currPage >= 6) { %>
+        <li class="pagination__dummy">...</li>
+      <% } %>
 
-    <% if (currPage >= 6) { %>
-      <li class="pagination__dummy">...</li>
-    <% } %>
+      <% for (let i = Math.max(currPage - 2, 2); i < Math.min(currPage + 3, maxVal); i++) { %>
+        <a class="pagination__link" href="/proyectos-ley/show-comition/<%= com_id %>?page=<%= i - 1 %>">
+          <li class="pagination__page <%= currPage === i ? 'pagination__page--active' : '' %>"><%= i %></li>
+        </a>
+      <% } %>
 
-    <% for (let i = Math.max(currPage - 2, 2); i < Math.min(currPage + 3, maxVal); i++) { %>
-      <a class="pagination__link" href="/proyectos-ley/show-comition/<%= com_id %>?page=<%= i - 1 %>">
-        <li class="pagination__page <%= currPage === i ? 'pagination__page--active' : '' %>"><%= i %></li>
+      <% if (currPage <= maxVal - 4) { %>
+        <li class="pagination__dummy">...</li>
+      <% } %>
+
+      <a class="pagination__link" href="/proyectos-ley/show-comition/<%= com_id %>?page=<%= maxVal - 1 %>">
+        <li class="pagination__page <%= currPage === maxVal ? 'pagination__page--active' : '' %>"><%= maxVal %></li>
       </a>
-    <% } %>
 
-    <% if (currPage <= maxVal - 4) { %>
-      <li class="pagination__dummy">...</li>
-    <% } %>
-
-    <a class="pagination__link" href="/proyectos-ley/show-comition/<%= com_id %>?page=<%= maxVal - 1 %>">
-      <li class="pagination__page <%= currPage === maxVal ? 'pagination__page--active' : '' %>"><%= maxVal %></li>
-    </a>
-
-    <% if (currPage < maxVal) { %>
-      <a class="pagination__link" href="/proyectos-ley/show-comition/<%= com_id %>?page=<%= currPage %>">
-        <li class="pagination__page">&rsaquo;</li>
-      </a>
-    <% } %>
-  </ul>
+      <% if (currPage < maxVal) { %>
+        <a class="pagination__link" href="/proyectos-ley/show-comition/<%= com_id %>?page=<%= currPage %>">
+          <li class="pagination__page">&rsaquo;</li>
+        </a>
+      <% } %>
+    </ul>
+  <% } %>
 </div>
