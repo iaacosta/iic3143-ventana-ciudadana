@@ -1,4 +1,6 @@
-import '../images/areas/area0.png';
+import '../images/areas/area1009.png';
+import '../images/areas/area1126.png';
+import '../images/areas/area1133.png';
 import '../images/areas/area185.png';
 import '../images/areas/area186.png';
 import '../images/areas/area187.png';
@@ -12,7 +14,16 @@ import '../images/areas/area194.png';
 import '../images/areas/area195.png';
 import '../images/areas/area196.png';
 import '../images/areas/area197.png';
+import '../images/areas/area198.png';
+import '../images/areas/area199.png';
+import '../images/areas/area200.png';
+import '../images/areas/area201.png';
 import '../images/areas/area221.png';
+import '../images/areas/area367.png';
+import '../images/areas/area615.png';
+import '../images/areas/area718.png';
+import '../images/areas/area899.png';
+import '../images/areas/area941.png';
 
 import '../images/camara.jpg';
 import '../images/leyes.jpg';
