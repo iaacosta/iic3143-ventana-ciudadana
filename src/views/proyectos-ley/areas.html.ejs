@@ -3,143 +3,17 @@
 
   <div class="contenedor-areas">
 
-    <div class="area">
-      <a class="areas__link" href="/proyectos-ley/show-estado/tramitacion">
-        <img class="img_area" src="<%= assetPath('area1.png') %>" alt="area1" />
-        <h3>Gobierno, Nacionalidad, Ciudadanía y Regionalización</h3>
-      </a>
-    </div>
-
-    <div class="area">
-      <a class="areas__link" href="/proyectos-ley/show-estado/aprobado">
-        <img class="img_area" src="<%= assetPath('area2.png') %>" alt="area2" />
-        <h3> Relaciones Exteriores</h3>
-      </a>
-    </div>
-
-    <div class="area">
-      <a class="areas__link" href="/proyectos-ley/show-estado/suspendido">
-        <img class="img_area" src="<%= assetPath('area3.png') %>" alt="area3" />
-        <h3>Constitución, Legislación, Justicia y Reglamento</h3>
-      </a>
-    </div>
-
-    <div class="area">
-      <a class="areas__link" href="/proyectos-ley/show-estado/rechazado">
-        <img class="img_area" src="<%= assetPath('area4.png') %>" alt="area4" />
-        <h3>Educación</h3>
-      </a>
-    </div>
-
-    <div class="area">
-      <img class="img_area" src="<%= assetPath('area6.png') %>" alt="area6" />
-      <h3>Hacienda</h3>
-    </div>
-
-    <div class="area">
-      <img class="img_area" src="<%= assetPath('area7.png') %>" alt="area7" />
-      <h3>Defensa Nacional</h3>
-    </div>
-
-    <div class="area">
-      <img class="img_area" src="<%= assetPath('area8.png') %>" alt="area8" />
-      <h3>Obras Públicas, Transportes y Telecomunicaciones</h3>
-    </div>
-
-    <div class="area">
-      <img class="img_area" src="<%= assetPath('area9.png') %>" alt="area9" />
-      <h3>Agricultura, Silvicultura y Desarrollo Rural</h3>
-    </div>
-
-    <div class="area">
-      <img class="img_area" src="<%= assetPath('area11.png') %>" alt="area11" />
-      <h3>Medio Ambiente y Recursos Naturales</h3>
-    </div>
-
-    <div class="area">
-      <img class="img_area" src="<%= assetPath('area12.png') %>" alt="area12" />
-      <h3>Salud</h3>
-    </div>
-
-    <div class="area">
-      <img class="img_area" src="<%= assetPath('area13.png') %>" alt="area13" />
-      <h3>Trabajo y Seguridad Social</h3>
-    </div>
-
-    <div class="area">
-      <img class="img_area" src="<%= assetPath('area14.png') %>" alt="area14" />
-      <h3>Minería y Energía</h3>
-    </div>
+    <% for (const { id, nombre } of comisiones) { %>
+      <div class="area">
+        <a class="areas__link" href="/proyectos-ley/show-comition/<%= id %>">
+          <img class="img_area" src="<%= assetPath(`area${id}.png`) %>" alt="Img área <%= id %>" />
+          <h3><%= nombre %></h3>
+        </a>
+      </div>
+    <% } %>
 
   </div>
 </div>
 
-
-<%# 
-<h3>Gobierno Interior, Nacionalidad, Ciudadanía y Regionalización</h3>
-<h3>Relaciones Exteriores, Asuntos Interparlamentarios e Integración Latinoamericana</h3>
-<h3>Constitución, Legislación, Justicia y Reglamento</h3>
-<h3>Educación</h3>
-<h3>Hacienda</h3>
-<h3>Defensa Nacional</h3>
-<h3>Obras Públicas, Transportes y Telecomunicaciones</h3>
-<h3>Agricultura, Silvicultura y Desarrollo Rural</h3>
-<h3>Medio Ambiente y Recursos Naturales</h3>
-<h3>Salud</h3>
-<h3>Trabajo y Seguridad Social</h3>
-<h3>Minería y Energía</h3>
-<h3>Economía, Fomento; Micro, Pequeña y Mediana Empresa; Protección de los Consumidores y Turismo</h3>
-<h3>Vivienda, Desarrollo Urbano y Bienes Nacionales</h3>
-<h3>Derechos Humanos y Pueblos Originarios</h3>
-<h3>Familia y Adulto Mayor</h3>
-<h3>Ciencias y Tecnología</h3>
-<h3>Pesca, Acuicultura e Intereses Marítimos</h3>
-<h3>Zonas Extremas y Antártica Chilena</h3>
-<h3>Seguridad Ciudadana</h3>
-<h3>Cultura, Artes y Comunicaciones</h3>
-<h3>Desarrollo Social, Superación de la Pobreza y Planificación</h3>
-<h3>Ética y Transparencia</h3>
-<h3>Deportes y Recreación</h3>
-<h3>Recursos Hídricos y Desertificación</h3>
-<h3>Revisora de Cuentas</h3>
-<h3>Control del sistema de inteligencia del estado</h3>
-<h3>Bomberos</h3>
-<h3>Mujeres y Equidad de Género</h3>
-<h3>Régimen Interno y Administración</h3> %>
-
 <script>
-  const lista_areas = ["Gobierno Interior, Nacionalidad, Ciudadanía y Regionalización",
-    "Relaciones Exteriores, Asuntos Interparlamentarios e Integración Latinoamericana",
-   "Constitución, Legislación, Justicia y Reglamento",
-    "Educación",
-    "Hacienda",
-   "Defensa Nacional",
-    "Obras Públicas, Transportes y Telecomunicaciones",
-    "Agricultura, Silvicultura y Desarrollo Rural",
-    "Medio Ambiente y Recursos Naturales",
-    "Salud",
-   "Trabajo y Seguridad Social",
-    "Minería y Energía",
-    "Economía, Fomento; Micro, Pequeña y Mediana Empresa; Protección de los Consumidores y Turismo",
-  "Vivienda, Desarrollo Urbano y Bienes Nacionales",
-  "Derechos Humanos y Pueblos Originarios",
-  "Familia y Adulto Mayor",
-  "Ciencias y Tecnología",
-  "Pesca, Acuicultura e Intereses Marítimos",
-  "Zonas Extremas y Antártica Chilena",
-  "Seguridad Ciudadana",
-  "Cultura, Artes y Comunicaciones",
-  "Desarrollo Social, Superación de la Pobreza y Planificación",
-  "Ética y Transparencia",
-  "Deportes y Recreación",
-  "Recursos Hídricos y Desertificación",
-  "Revisora de Cuentas",
-  "Control del sistema de inteligencia del estado",
-  "Bomberos",
-  "Mujeres y Equidad de Género",
-  "Régimen Interno y Administración]"]
-
-  // for (i = 0; i < lista_areas.length; i++){
-  //   document.getElementById('areas').innerHTML = lista_areas[i] ;
-  // }
 </script>

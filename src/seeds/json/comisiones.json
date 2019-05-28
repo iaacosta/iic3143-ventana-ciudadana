@@ -1,1 +1,303 @@
-[{"id":0,"nombre":"C\u00e1mara de Diputados","tipo":"variado","email":"ivan.flores@congreso.cl","telefono":"+56322505000"},{"id":185,"nombre":"Gobierno, Descentralizaci\u00f3n y Regionalizaci\u00f3n","tipo":"permanente","email":"gobsen@senado.cl","telefono":"+56322504116"},{"id":186,"nombre":"Constituci\u00f3n, Legislaci\u00f3n, Justicia y Reglamento","tipo":"permanente","email":"constitucion@senado.cl","telefono":"+56322504225"},{"id":187,"nombre":"Econom\u00eda","tipo":"permanente","email":"econosen@senado.cl","telefono":"+56322504336"},{"id":188,"nombre":"Hacienda","tipo":"permanente","email":"hacisen@senado.cl","telefono":"+56322504402"},{"id":189,"nombre":"Educaci\u00f3n y Cultura","tipo":"permanente","email":"edusen@senado.cl","telefono":"+56322504040"},{"id":190,"nombre":"Defensa Nacional","tipo":"permanente","email":"defensen@senado.cl","telefono":"+56322504604"},{"id":191,"nombre":"Obras P\u00fablicas","tipo":"permanente","email":"ooppsen@senado.cl","telefono":"+56322504604"},{"id":192,"nombre":"Agricultura","tipo":"permanente","email":"agrisen@senado.cl","telefono":null},{"id":193,"nombre":"Medio Ambiente y Bienes Nacionales","tipo":"permanente","email":"medioambiente@senado.cl","telefono":"+56322504227"},{"id":194,"nombre":"Trabajo y Previsi\u00f3n Social","tipo":"permanente","email":"trabajo@senado.cl","telefono":"+56322504205"},{"id":195,"nombre":"Salud","tipo":"permanente","email":"saludsen@senado.cl","telefono":"+56322504526"},{"id":196,"nombre":"Miner\u00eda y Energ\u00eda","tipo":"permanente","email":"mineria@senado.cl","telefono":"+56322504348"},{"id":197,"nombre":"Vivienda y Urbanismo","tipo":"permanente","email":"vivienda@senado.cl","telefono":"+56322504156"},{"id":198,"nombre":"Transportes y Telecomunicaciones","tipo":"permanente","email":"transen@senado.cl","telefono":"+56322504372"},{"id":199,"nombre":"Derechos Humanos, Nacionalidad y Ciudadan\u00eda","tipo":"permanente","email":"ddhhsen@senado.cl","telefono":null},{"id":200,"nombre":"Intereses Mar\u00edtimos, Pesca y Acuicultura","tipo":"permanente","email":"pescasen@senado.cl","telefono":"+56322504526"},{"id":201,"nombre":"R\u00e9gimen Interior","tipo":"permanente","email":null,"telefono":null},{"id":221,"nombre":"Relaciones Exteriores","tipo":"permanente","email":"relacionesexteriores@senado.cl","telefono":"+56322504348"},{"id":249,"nombre":"Constituci\u00f3n, Legislaci\u00f3n, Justicia y Reglamento y de Derechos Humanos, Nacionalidad y Ciudadania, unidas","tipo":"unidas","email":null,"telefono":null},{"id":256,"nombre":"Econom\u00eda y de Hacienda, unidas","tipo":"unidas","email":null,"telefono":null},{"id":264,"nombre":"Constituci\u00f3n, Legislaci\u00f3n, Justicia y Reglamento y de Econom\u00eda, unidas","tipo":"unidas","email":"constitucion@senado.cl","telefono":null},{"id":283,"nombre":"Agricultura, de Medio Ambiente y Bienes Nacionales y de Salud, unidas","tipo":"unidas","email":"agrisen@senado.cl","telefono":null},{"id":324,"nombre":"Constituci\u00f3n, Legislaci\u00f3n, Justicia y Reglamento y de Trabajo y Prevenci\u00f3n Social, unidas","tipo":"unidas","email":null,"telefono":null},{"id":367,"nombre":"Especial Mixta de Presupuestos","tipo":"permanente","email":"compres@senado.cl","telefono":"+56322504402"},{"id":411,"nombre":"Gobierno, Descentralizaci\u00f3n y Regionalizaci\u00f3n y de Hacienda, unidas","tipo":"unidas","email":null,"telefono":null},{"id":615,"nombre":"Seguridad P\u00fablica","tipo":"permanente","email":"seguridadpublica@senado.cl","telefono":"+56322504658"},{"id":718,"nombre":"\u00c9tica y Transparencia del Senado","tipo":"permanente","email":"eticaytransparencia@senado.cl","telefono":null},{"id":773,"nombre":"Educaci\u00f3n, Cultura, Ciencia y Tecnolog\u00eda, de Miner\u00eda y Energ\u00eda y Especial de Ciencia, Tecnolog\u00eda e Innovaci\u00f3n, Unidas","tipo":"unidas","email":null,"telefono":null},{"id":807,"nombre":"Agricultura y de Medio Ambiente y Bienes Nacionales, unidas","tipo":"unidas","email":null,"telefono":null},{"id":876,"nombre":"Constituci\u00f3n, Legislaci\u00f3n, Justicia y Reglamento y de Vivienda y Urbanismo Unidas","tipo":"unidas","email":null,"telefono":null},{"id":899,"nombre":"Comisi\u00f3n Especial de Zonas Extremas y Territorios Especiales","tipo":"especial","email":"zonasextremas@senado.cl","telefono":"+56322504227"},{"id":914,"nombre":"Agricultura y de Medio Ambiente y Bienes Nacionales, Unidas","tipo":"unidas","email":"agrisen@senado.cl","telefono":null},{"id":938,"nombre":"Econom\u00eda y de Trabajo y Previsi\u00f3n Social, unidas","tipo":"unidas","email":null,"telefono":null},{"id":941,"nombre":"Desaf\u00edos del Futuro, Ciencia, Tecnolog\u00eda e Innovaci\u00f3n","tipo":"permanente","email":"comisionfuturo@senado.cl","telefono":"+56322504402"},{"id":954,"nombre":"Miner\u00eda y Energ\u00eda y de Vivienda y Urbanismo, unidas","tipo":"unidas","email":null,"telefono":null},{"id":1009,"nombre":"Especial sobre Recursos H\u00eddricos, Desertificaci\u00f3n y Sequ\u00eda","tipo":"especial","email":"recursoshidricos@senado.cl","telefono":"+56322504205"},{"id":1028,"nombre":"Especial encargada de conocer proyectos relativos a probidad y transparencia","tipo":"especial","email":null,"telefono":null},{"id":1034,"nombre":"Bicameral del art\u00edculo 66A de la LOC Congreso Nacional","tipo":"especial","email":"constituci\u00f3n@senado.cl","telefono":null},{"id":1062,"nombre":"Comisi\u00f3n especial encargada de tramitar proyectos de ley relacionados con los ni\u00f1os, ni\u00f1as y adolescentes","tipo":"especial","email":null,"telefono":"+56322504372"},{"id":1126,"nombre":"Especial Encargada de conocer iniciativas y tramitar proyectos de ley relacionados con la mujer y la igualdad de g\u00e9nero","tipo":"especial","email":"comisiondelamujer@senado.cl","telefono":"+56322504205"},{"id":1130,"nombre":"Defensa Nacional y de Seguridad P\u00fablica, unidas","tipo":"unidas","email":"defensen@senado.cl","telefono":"+56322504604"},{"id":1133,"nombre":"Comisi\u00f3n Especial del Adulto Mayor","tipo":"especial","email":null,"telefono":"+56322504606"}]
+[
+  {
+    "id": 0,
+    "nombre": "C\u00e1mara de Diputados",
+    "tipo": "variado",
+    "email": "ivan.flores@congreso.cl",
+    "telefono": "+56322505000"
+  },
+  {
+    "id": 185,
+    "nombre": "Gobierno, Descentralizaci\u00f3n y Regionalizaci\u00f3n",
+    "tipo": "permanente",
+    "email": "gobsen@senado.cl",
+    "telefono": "+56322504116"
+  },
+  {
+    "id": 186,
+    "nombre": "Constituci\u00f3n, Legislaci\u00f3n, Justicia y Reglamento",
+    "tipo": "permanente",
+    "email": "constitucion@senado.cl",
+    "telefono": "+56322504225"
+  },
+  {
+    "id": 187,
+    "nombre": "Econom\u00eda",
+    "tipo": "permanente",
+    "email": "econosen@senado.cl",
+    "telefono": "+56322504336"
+  },
+  {
+    "id": 188,
+    "nombre": "Hacienda",
+    "tipo": "permanente",
+    "email": "hacisen@senado.cl",
+    "telefono": "+56322504402"
+  },
+  {
+    "id": 189,
+    "nombre": "Educaci\u00f3n y Cultura",
+    "tipo": "permanente",
+    "email": "edusen@senado.cl",
+    "telefono": "+56322504040"
+  },
+  {
+    "id": 190,
+    "nombre": "Defensa Nacional",
+    "tipo": "permanente",
+    "email": "defensen@senado.cl",
+    "telefono": "+56322504604"
+  },
+  {
+    "id": 191,
+    "nombre": "Obras P\u00fablicas",
+    "tipo": "permanente",
+    "email": "ooppsen@senado.cl",
+    "telefono": "+56322504604"
+  },
+  {
+    "id": 192,
+    "nombre": "Agricultura",
+    "tipo": "permanente",
+    "email": "agrisen@senado.cl",
+    "telefono": null
+  },
+  {
+    "id": 193,
+    "nombre": "Medio Ambiente y Bienes Nacionales",
+    "tipo": "permanente",
+    "email": "medioambiente@senado.cl",
+    "telefono": "+56322504227"
+  },
+  {
+    "id": 194,
+    "nombre": "Trabajo y Previsi\u00f3n Social",
+    "tipo": "permanente",
+    "email": "trabajo@senado.cl",
+    "telefono": "+56322504205"
+  },
+  {
+    "id": 195,
+    "nombre": "Salud",
+    "tipo": "permanente",
+    "email": "saludsen@senado.cl",
+    "telefono": "+56322504526"
+  },
+  {
+    "id": 196,
+    "nombre": "Miner\u00eda y Energ\u00eda",
+    "tipo": "permanente",
+    "email": "mineria@senado.cl",
+    "telefono": "+56322504348"
+  },
+  {
+    "id": 197,
+    "nombre": "Vivienda y Urbanismo",
+    "tipo": "permanente",
+    "email": "vivienda@senado.cl",
+    "telefono": "+56322504156"
+  },
+  {
+    "id": 198,
+    "nombre": "Transportes y Telecomunicaciones",
+    "tipo": "permanente",
+    "email": "transen@senado.cl",
+    "telefono": "+56322504372"
+  },
+  {
+    "id": 199,
+    "nombre": "Derechos Humanos, Nacionalidad y Ciudadan\u00eda",
+    "tipo": "permanente",
+    "email": "ddhhsen@senado.cl",
+    "telefono": null
+  },
+  {
+    "id": 200,
+    "nombre": "Intereses Mar\u00edtimos, Pesca y Acuicultura",
+    "tipo": "permanente",
+    "email": "pescasen@senado.cl",
+    "telefono": "+56322504526"
+  },
+  {
+    "id": 201,
+    "nombre": "R\u00e9gimen Interior",
+    "tipo": "permanente",
+    "email": null,
+    "telefono": null
+  },
+  {
+    "id": 221,
+    "nombre": "Relaciones Exteriores",
+    "tipo": "permanente",
+    "email": "relacionesexteriores@senado.cl",
+    "telefono": "+56322504348"
+  },
+  {
+    "id": 249,
+    "nombre": "Constituci\u00f3n, Legislaci\u00f3n, Justicia y Reglamento y de Derechos Humanos, Nacionalidad y Ciudadania, unidas",
+    "tipo": "unidas",
+    "email": null,
+    "telefono": null
+  },
+  {
+    "id": 256,
+    "nombre": "Econom\u00eda y de Hacienda, unidas",
+    "tipo": "unidas",
+    "email": null,
+    "telefono": null
+  },
+  {
+    "id": 264,
+    "nombre": "Constituci\u00f3n, Legislaci\u00f3n, Justicia y Reglamento y de Econom\u00eda, unidas",
+    "tipo": "unidas",
+    "email": "constitucion@senado.cl",
+    "telefono": null
+  },
+  {
+    "id": 283,
+    "nombre": "Agricultura, de Medio Ambiente y Bienes Nacionales y de Salud, unidas",
+    "tipo": "unidas",
+    "email": "agrisen@senado.cl",
+    "telefono": null
+  },
+  {
+    "id": 324,
+    "nombre": "Constituci\u00f3n, Legislaci\u00f3n, Justicia y Reglamento y de Trabajo y Prevenci\u00f3n Social, unidas",
+    "tipo": "unidas",
+    "email": null,
+    "telefono": null
+  },
+  {
+    "id": 367,
+    "nombre": "Especial Mixta de Presupuestos",
+    "tipo": "permanente",
+    "email": "compres@senado.cl",
+    "telefono": "+56322504402"
+  },
+  {
+    "id": 411,
+    "nombre": "Gobierno, Descentralizaci\u00f3n y Regionalizaci\u00f3n y de Hacienda, unidas",
+    "tipo": "unidas",
+    "email": null,
+    "telefono": null
+  },
+  {
+    "id": 615,
+    "nombre": "Seguridad P\u00fablica",
+    "tipo": "permanente",
+    "email": "seguridadpublica@senado.cl",
+    "telefono": "+56322504658"
+  },
+  {
+    "id": 718,
+    "nombre": "\u00c9tica y Transparencia del Senado",
+    "tipo": "permanente",
+    "email": "eticaytransparencia@senado.cl",
+    "telefono": null
+  },
+  {
+    "id": 773,
+    "nombre": "Educaci\u00f3n, Cultura, Ciencia y Tecnolog\u00eda, de Miner\u00eda y Energ\u00eda y Especial de Ciencia, Tecnolog\u00eda e Innovaci\u00f3n, Unidas",
+    "tipo": "unidas",
+    "email": null,
+    "telefono": null
+  },
+  {
+    "id": 807,
+    "nombre": "Agricultura y de Medio Ambiente y Bienes Nacionales, unidas",
+    "tipo": "unidas",
+    "email": null,
+    "telefono": null
+  },
+  {
+    "id": 876,
+    "nombre": "Constituci\u00f3n, Legislaci\u00f3n, Justicia y Reglamento y de Vivienda y Urbanismo Unidas",
+    "tipo": "unidas",
+    "email": null,
+    "telefono": null
+  },
+  {
+    "id": 899,
+    "nombre": "Zonas Extremas y Territorios Especiales",
+    "tipo": "especial",
+    "email": "zonasextremas@senado.cl",
+    "telefono": "+56322504227"
+  },
+  {
+    "id": 914,
+    "nombre": "Agricultura y de Medio Ambiente y Bienes Nacionales, Unidas",
+    "tipo": "unidas",
+    "email": "agrisen@senado.cl",
+    "telefono": null
+  },
+  {
+    "id": 938,
+    "nombre": "Econom\u00eda y de Trabajo y Previsi\u00f3n Social, unidas",
+    "tipo": "unidas",
+    "email": null,
+    "telefono": null
+  },
+  {
+    "id": 941,
+    "nombre": "Desaf\u00edos del Futuro, Ciencia, Tecnolog\u00eda e Innovaci\u00f3n",
+    "tipo": "permanente",
+    "email": "comisionfuturo@senado.cl",
+    "telefono": "+56322504402"
+  },
+  {
+    "id": 954,
+    "nombre": "Miner\u00eda y Energ\u00eda y de Vivienda y Urbanismo, unidas",
+    "tipo": "unidas",
+    "email": null,
+    "telefono": null
+  },
+  {
+    "id": 1009,
+    "nombre": "Recursos H\u00eddricos, Desertificaci\u00f3n y Sequ\u00eda",
+    "tipo": "especial",
+    "email": "recursoshidricos@senado.cl",
+    "telefono": "+56322504205"
+  },
+  {
+    "id": 1028,
+    "nombre": "Probidad y transparencia",
+    "tipo": "especial",
+    "email": null,
+    "telefono": null
+  },
+  {
+    "id": 1034,
+    "nombre": "Bicameral del art\u00edculo 66A de la LOC Congreso Nacional",
+    "tipo": "especial",
+    "email": "constituci\u00f3n@senado.cl",
+    "telefono": null
+  },
+  {
+    "id": 1062,
+    "nombre": "Ni\u00f1os, ni\u00f1as y adolescentes",
+    "tipo": "especial",
+    "email": null,
+    "telefono": "+56322504372"
+  },
+  {
+    "id": 1126,
+    "nombre": "Mujer y la igualdad de g\u00e9nero",
+    "tipo": "especial",
+    "email": "comisiondelamujer@senado.cl",
+    "telefono": "+56322504205"
+  },
+  {
+    "id": 1130,
+    "nombre": "Defensa Nacional y de Seguridad P\u00fablica, unidas",
+    "tipo": "unidas",
+    "email": "defensen@senado.cl",
+    "telefono": "+56322504604"
+  },
+  {
+    "id": 1133,
+    "nombre": "Adulto Mayor",
+    "tipo": "especial",
+    "email": null,
+    "telefono": "+56322504606"
+  }
+]
