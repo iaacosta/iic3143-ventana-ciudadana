@@ -4,7 +4,23 @@
   <div id="informacion-personal">
     <a href="<%= senador.url_curriculum %>" target="_blank">Ver Currículum</a> ||
     <a href="<%= senador.url_twitter %>" target="_blank"> Ver Twitter</a>
+
+    <br>
+    <% if (comitions.len === 0) { %>
+      Este senador no participa en comisiones.
+    <% } else { %>
+      Participa en las comisiones de
+      <% for (i = 0; i < comitions.length; i++) { %>
+        <%= comitions[i].nombre %>,
+      <% } %>
+    <% } %>
+
   </div>
+
+
+
+
+
   <h1 id="titulo-proyectos">Proyectos <span id="proyectos-totales">(<%= proyectos.length %>)</span></h1>
   <ul class="lista-proyectos" id="lista-proyectos">
     <% proyectos.forEach((proyecto) => { %>

@@ -82,44 +82,59 @@ router.get('proyectos-ley', '/show/:id', async ctx => {
     senadores.push(senador);
   }
 
+  const comId = await ctx.orm.ProjectComition.findOne({
+    where: { pid: proy.id },
+  });
+  const comition = await ctx.orm.Comition.findOne({
+    where: { id: comId.cid },
+  });
+
   await ctx.render('proyectos-ley/show', {
     fotos,
     proy,
     fecha,
     senadores,
     resumen,
+    comition,
   });
 });
 
-router.get('proyectos-ley', '/show-estado/:estado', async ctx => {
+router.get('proyectos-ley', '/show-comition/:com_id', async ctx => {
   let { page } = ctx.request.query;
   if (!ctx.request.query.page) page = 0;
 
-  // verifica si existe el estado
-  const estados = (await ctx.orm.Proyecto.findAll({
-    attributes: [[ctx.orm.Sequelize.literal('DISTINCT estado'), 'estado']],
-  })).map(({ dataValues }) => dataValues.estado);
+  const com = await ctx.orm.Comition.findOne({
+    where: { id: ctx.params.com_id },
+  });
 
-  const { estado: paramEstado } = ctx.params;
-  if (!estados.includes(paramEstado)) {
+  if (!com) {
     ctx.status = 404;
     return;
   }
 
+  const comition = com.nombre;
+  const comId = com.id;
+
+  const include = {
+    model: ctx.orm.Comition,
+    where: { id: comId },
+    attributes: [],
+    through: { attributes: [] },
+  };
+
   const proys = await ctx.orm.Proyecto.findAll({
-    where: { estado: paramEstado },
+    include,
     order: [['fecha', 'DESC']],
     ...paginate(page, 15),
   });
 
-  const todosProy = await ctx.orm.Proyecto.findAll({
-    attributes: [[ctx.orm.Sequelize.fn('count', ctx.orm.Sequelize.col('id')), 'total']],
-    where: { estado: ctx.params.estado },
+  const todosProy = await ctx.orm.ProjectComition.findAll({
+    attributes: [[ctx.orm.Sequelize.fn('count', ctx.orm.Sequelize.col('cid')), 'total']],
+    where: { cid: ctx.params.com_id },
   });
 
   const fechas = [];
   const cont = parseInt(todosProy[0].dataValues.total, 10);
-  const { estado } = ctx.params;
 
   for (let i = 0; i < proys.length; i += 1) {
     const proyecto = proys[i];
@@ -127,11 +142,12 @@ router.get('proyectos-ley', '/show-estado/:estado', async ctx => {
     fechas.push(date.format('DD, MMM YYYY'));
   }
 
-  await ctx.render('proyectos-ley/show-estado', {
+  await ctx.render('proyectos-ley/show-comition', {
     proys,
     fechas,
     cont,
-    estado,
+    comition,
+    com_id: comId,
     currPage: parseInt(page, 10) + 1,
   });
 });

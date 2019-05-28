@@ -1,0 +1,79 @@
+.wrap-collabsible {
+  margin-top: 2%;
+  margin-bottom: 1.2rem 0;
+}
+
+input#collapsible-2[type='checkbox'],
+input#collapsible-1[type='checkbox'] {
+  display: none;
+}
+
+.lbl-toggle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+
+  padding: 1rem;
+
+  color: $color-white;
+  background: $color-primary-dark;
+
+  border-radius: 0.7rem;
+  transition: all 0.2s ease-out;
+
+  &:hover {
+    color: $color-grey-light-3;
+  }
+
+  &::before {
+    content: ' ';
+    display: inline-block;
+
+    border-top: 0.5rem solid transparent;
+    border-bottom: 0.5rem solid transparent;
+    border-left: 0.5rem solid currentColor;
+
+    transform: translateY(-0.12rem);
+
+    transition: transform 0.2s ease-out;
+  }
+
+  &--right {
+    &::before {
+      margin-right: 0.6rem;
+    }
+  }
+
+  &--left {
+    &::before {
+      margin-left: 0.6rem;
+    }
+  }
+}
+
+.toggle:checked + .lbl-toggle::before {
+  transform: rotate(90deg) translateX(-0.1rem);
+}
+
+.collapsible-content {
+  max-height: 0rem;
+  overflow: hidden;
+  transition: max-height 0.25s ease-in-out;
+}
+
+.toggle:checked + .lbl-toggle + .collapsible-content {
+  max-height: 35rem;
+}
+
+.collapsible-content .content-inner {
+  background: $color-white;
+  border-bottom-left-radius: 0.7rem;
+  border-bottom-right-radius: 0.7rem;
+  margin-top: 1rem;
+  box-shadow: 0 0.4rem 0.8rem 0 rgba(0, 0, 0, 0.2);
+  font-size: 1.6rem;
+  text-align: left;
+}

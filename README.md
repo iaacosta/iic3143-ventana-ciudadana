@@ -25,12 +25,20 @@ Template built with [koa](http://koajs.com/) for IIC2513 - Tecnologías y Aplica
 ### Create development database
 
 ```sh
-createdb iic2513template_dev
+createdb your_awesome_name
 ```
 
 ### Run migrations
 ```sh
 ./node_modules/.bin/sequelize db:migrate
+```
+
+### Add a .env file to the main directory and use your credentials
+```sh
+DB_NAME=your_awesome_name
+DB_USERNAME=your_psql_name
+DB_PASSWORD=your_psql_pass
+
 ```
 
 ## Run the app!
@@ -48,7 +56,7 @@ node index.js
 or, if you want automatic restart after any change in your files
 
 ```sh
-./node_modules/.bin/nodemon
+yarn dev
 ```
 
 Now go to http://localhost:3000 and start browsing :)

@@ -1,7 +1,11 @@
 <div class='proyectos'>
   <h1 class="titulos">PROYECTO NRO <%= proy.boletin %></h1>
 
-  <div class="proyectos__resumen"><%= resumen %></div>
+  <div class="resumen">
+    <p class="resumen__content"><%= resumen %></p>
+    <p class="resumen__comision">Pertenece a la comisión de <span><%=comition.nombre%></span></p>
+    <a class="resumen__button" href="/comitions/show/<%= comition.id%>">Ver comisión</a>
+  </div>
   <p class="proyectos__estado proyectos__estado--<%= proy.estado %>"> <%= proy.estado.charAt(0).toUpperCase() + proy.estado.slice(1) %> </p>
   <a class="proyectos__link" href=" <%= proy.url %>" target="_blank"> Ver en pagina del senado </a>
 
@@ -22,7 +26,7 @@
           <a class="card-senadores__button" href="/senadores/<%= senadores[i].id %>">Ver Perfil</a>
         </div>
       <% } %>
-    <% } %> 
+    <% } %>
   </div>
 
   <!-- Timeline del Proyecto -->
