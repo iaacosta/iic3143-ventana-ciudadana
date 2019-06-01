@@ -18,6 +18,8 @@
     <% } %>
   </head>
 
+  <% var user %>
+
   <body>
     <header>
       <nav>
@@ -35,13 +37,11 @@
             <li class="nav-items__item">Proyectos de ley</li>
           </a>
           <% if (!user) { %>
-            <a href="/login">
+            <a href="/session">
               <li class="nav-items__item">Iniciar sesión</li>
             </a>
           <% } else { %>
-            <a href="/login">
-              <li class="nav-items__item nav-items__dropdown"><%= user.nombre %></li>
-            </a>
+            <div id="dropdown-react" data-value="<%= user.nombre %>"></div>
           <% } %>
         </ul>
       </nav>
