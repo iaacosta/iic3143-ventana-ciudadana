@@ -6,8 +6,8 @@ const router = new KoaRouter();
 router.get('/', async ctx => {
   let diff;
   let suffix;
-  const lastUpdate = await ctx.orm.Update.max('createdAt');
 
+  const lastUpdate = await ctx.orm.Update.max('createdAt');
   if (lastUpdate) {
     const diffFactory = unit => Math.abs(dayjs(lastUpdate).diff(dayjs(), unit));
     diff = diffFactory('hour');
@@ -30,7 +30,10 @@ router.get('/', async ctx => {
     suffix = 'dias';
   }
 
-  await ctx.render('index', { tiempo: `${diff} ${suffix}` });
+  await ctx.render('index', {
+    tiempo: `${diff} ${suffix}`,
+    user: ctx.session ? ctx.session.user : null,
+  });
 });
 
 module.exports = router;

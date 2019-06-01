@@ -28,6 +28,7 @@ router.get('camaras', '/', async ctx => {
   await ctx.render('camara/camara', {
     partidos: JSON.stringify(partidos),
     yearsCongress: JSON.stringify(yearsCongress),
+    user: ctx.session ? ctx.session.user : null,
   });
 });
 

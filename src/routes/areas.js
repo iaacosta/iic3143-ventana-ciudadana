@@ -8,7 +8,10 @@ router.get('areas', '/', async ctx => {
     where: { tipo: 'permanente' },
   });
 
-  await ctx.render('proyectos-ley/areas', { comisiones });
+  await ctx.render('proyectos-ley/areas', {
+    user: ctx.session ? ctx.session.user : null,
+    comisiones,
+  });
 });
 
 module.exports = router;

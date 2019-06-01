@@ -1,0 +1,13 @@
+.login {
+  justify-self: center;
+  align-self: center;
+
+  display: grid;
+  align-items: center;
+  justify-items: center;
+
+  width: 50rem;
+  .titulos {
+    justify-self: start;
+  }
+}
