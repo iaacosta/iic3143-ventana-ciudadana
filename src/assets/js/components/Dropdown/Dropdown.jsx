@@ -9,28 +9,39 @@ export default class Dropdown extends Component {
   };
 
   componentDidMount() {
-    document.addEventListener('click', this.handleClick)
+    document.addEventListener('click', this.handleClick);
   }
 
   componentWillUnmount() {
-    document.removeEventListener('click', this.handleClick)
+    document.removeEventListener('click', this.handleClick);
   }
 
-  handleClick = (event) => {
-    if (event.target !== this.trigger.current && event.target.className !== 'dropdown__item') {
+  handleClick = event => {
+    if (
+      event.target !== this.trigger.current &&
+      event.target.className !== 'dropdown__item'
+    ) {
       this.setState({ open: false });
     }
-  }
-  
-  logOut = () => {
-    axios.delete('/session');
-  }
+  };
+
+  logOut = async () => {
+    try {
+      await axios.delete('/session');
+    } catch (e) {
+      if (e.response.status === 303) window.location.reload();
+    }
+  };
 
   renderDropdown = () => {
     return (
       <ul className="dropdown">
-        <a href="/user"><li className="dropdown__item">Mi perfil</li></a>
-        <li onClick={this.logOut} className="dropdown__item">Cerrar sesión</li>
+        <a href="/user">
+          <li className="dropdown__item">Mi perfil</li>
+        </a>
+        <li onClick={this.logOut} className="dropdown__item">
+          Cerrar sesión
+        </li>
       </ul>
     );
   };
@@ -46,7 +57,11 @@ export default class Dropdown extends Component {
     const { open } = this.state;
     return (
       <>
-        <li className="nav-items__item nav-items__dropdown" ref={this.trigger} onClick={this.toggle}>
+        <li
+          className="nav-items__item nav-items__dropdown"
+          ref={this.trigger}
+          onClick={this.toggle}
+        >
           {nombre}
           <span className="arrow">&#x25BC;</span>
         </li>

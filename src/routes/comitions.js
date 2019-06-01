@@ -5,26 +5,24 @@ const { paginate } = require('../helpers');
 
 const router = new KoaRouter();
 
-
 router.get('comitions', '/', async ctx => {
   const coms = await ctx.orm.Comition.findAll();
 
-
   await ctx.render('comitions/index', {
+    user: ctx.session ? ctx.session.user : null,
     coms,
   });
 });
 
-
 router.get('comitions', '/show/:id', async ctx => {
   const comition = await ctx.orm.Comition.findOne({
-    where: {id: ctx.params.id},
+    where: { id: ctx.params.id },
   });
   const senadores_id = await ctx.orm.SenatorComition.findAll({
-    where: {cid: ctx.params.id},
+    where: { cid: ctx.params.id },
   });
   const proyectos_id = await ctx.orm.ProjectComition.findAll({
-    where: {cid: ctx.params.id},
+    where: { cid: ctx.params.id },
   });
 
   // Ahora a buscar la info particular de senadores y proyectos
@@ -36,7 +34,7 @@ router.get('comitions', '/show/:id', async ctx => {
 
   for (i = 0; i < senadores_id.length; i++) {
     const sen = await ctx.orm.Senador.findOne({
-      where: {id: senadores_id[i].sid},
+      where: { id: senadores_id[i].sid },
     });
 
     if (sen.url_foto == null)
@@ -51,10 +49,10 @@ router.get('comitions', '/show/:id', async ctx => {
       if (!(sen.partido_politico in partidos)) {
         partidos[sen.partido_politico] = 1;
       } else {
-        partidos[sen.partido_politico] = 1 + partidos[sen.partido_politico]
+        partidos[sen.partido_politico] = 1 + partidos[sen.partido_politico];
       }
     }
-  };
+  }
 
   partidos_nombre = Object.keys(partidos);
   for (i = 0; i < partidos_nombre.length; i++) {
@@ -62,22 +60,20 @@ router.get('comitions', '/show/:id', async ctx => {
     porcentaje = partidos[partidos_nombre[i]] / total;
     porcentaje = porcentaje * 100;
     partidos_porcentajes.push(porcentaje);
-  };
+  }
 
-
-  console.log(" ");
+  console.log(' ');
   console.log(partidos_porcentajes);
-  console.log(" ");
+  console.log(' ');
 
   var proyectos = [];
   for (i = 0; i < proyectos_id.length; i++) {
     const proy = await ctx.orm.Proyecto.findOne({
-      where: {id: proyectos_id[i].pid},
+      where: { id: proyectos_id[i].pid },
       order: [['fecha', 'DESC']],
     });
     proyectos.push(proy);
   }
-
 
   // Ahora calcular porcentajes de partidos
 
@@ -88,13 +84,8 @@ router.get('comitions', '/show/:id', async ctx => {
     fotos,
     partidos_nombre,
     partidos_porcentajes,
+    user: ctx.session ? ctx.session.user : null,
   });
 });
-
-
-
-
-
-
 
 module.exports = router;

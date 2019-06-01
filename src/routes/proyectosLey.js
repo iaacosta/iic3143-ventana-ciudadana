@@ -6,7 +6,9 @@ const { paginate } = require('../helpers');
 const router = new KoaRouter();
 
 router.get('proyectos', '/', async ctx => {
-  await ctx.render('proyectos-ley/index');
+  await ctx.render('proyectos-ley/index', {
+    user: ctx.session ? ctx.session.user : null,
+  });
 });
 
 router.get('proyectos_cifras', '/cifras', async ctx => {
@@ -96,6 +98,7 @@ router.get('proyectos-ley', '/show/:id', async ctx => {
     senadores,
     resumen,
     comition,
+    user: ctx.session ? ctx.session.user : null,
   });
 });
 
@@ -149,6 +152,7 @@ router.get('proyectos-ley', '/show-comition/:com_id', async ctx => {
     comition,
     com_id: comId,
     currPage: parseInt(page, 10) + 1,
+    user: ctx.session ? ctx.session.user : null,
   });
 });
 

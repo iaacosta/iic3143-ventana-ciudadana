@@ -22,9 +22,11 @@ router.post('/', async ctx => {
   }
 });
 
-router.delete('/', async ctx => {
+router.delete('/', ctx => {
   ctx.session = null;
-  ctx.redirect('/');
+  ctx.body = { success: true };
+  ctx.status = 303;
+  if (!ctx.request.path === '/') ctx.redirect('back');
 });
 
 module.exports = router;

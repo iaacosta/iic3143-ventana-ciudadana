@@ -5,7 +5,7 @@ const router = new KoaRouter();
 
 router.param('id', async (id, ctx, next) => {
   const senador = await ctx.orm.Senador.findOne({
-    where: {id: ctx.params.id},
+    where: { id: ctx.params.id },
   });
   ctx.assert(senador, 404);
   ctx.state.senador = senador;
@@ -19,20 +19,18 @@ router.get('senadores-show', '/:id', async ctx => {
   });
 
   const coms_id = await ctx.orm.SenatorComition.findAll({
-    where: {sid: senador.id},
+    where: { sid: senador.id },
   });
 
   var comitions = [];
-  for (i = 0; i < coms_id.length; i ++){
+  for (i = 0; i < coms_id.length; i++) {
     const com = await ctx.orm.Comition.findOne({
-      where: {id: coms_id[i].cid},
+      where: { id: coms_id[i].cid },
     });
-    if (com != null){
+    if (com != null) {
       comitions.push(com);
     }
-  };
-
-
+  }
 
   return ctx.render('senadores/show', {
     senador,
@@ -41,6 +39,7 @@ router.get('senadores-show', '/:id', async ctx => {
       ...proyecto.dataValues,
       fecha: dayjs(proyecto.fecha).format('DD, MMM YYYY'),
     })),
+    user: ctx.session ? ctx.session.user : null,
   });
 });
 
