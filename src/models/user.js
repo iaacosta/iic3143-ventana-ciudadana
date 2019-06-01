@@ -18,13 +18,13 @@ module.exports = (sequelize, DataTypes) => {
   User.associate = function(models) {};
   User.authenticate = async (username, password) => {
     const user = await User.findOne({
-      attributes: ['id', 'password'],
+      attributes: ['id', 'nombre_completo', 'password'],
       where: { username },
     });
     if (!user) throw new Error('invalidUser');
 
     const valid = await bcrypt.compare(password, user.get('password'));
-    if (valid) return user.get('id');
+    if (valid) return { id: user.get('id'), nombre: user.get('nombre_completo') };
 
     throw new Error('invalidPassword');
   };

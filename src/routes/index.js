@@ -30,10 +30,10 @@ router.get('/', async ctx => {
     suffix = 'dias';
   }
 
-  let logged = false;
-  if (ctx.session) logged = true;
-
-  await ctx.render('index', { tiempo: `${diff} ${suffix}`, logged });
+  await ctx.render('index', {
+    tiempo: `${diff} ${suffix}`,
+    user: ctx.session ? ctx.session.user : null,
+  });
 });
 
 module.exports = router;

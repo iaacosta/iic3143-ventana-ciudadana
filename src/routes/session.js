@@ -7,8 +7,8 @@ router.post('/', async ctx => {
 
   try {
     const { username, password } = JSON.parse(ctx.request.body);
-    const id = await ctx.orm.User.authenticate(username, password);
-    ctx.session.id = id;
+    const user = await ctx.orm.User.authenticate(username, password);
+    ctx.session.user = user;
     ctx.redirect('/');
   } catch ({ message }) {
     ctx.session = null;
