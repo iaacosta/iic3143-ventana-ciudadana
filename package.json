@@ -70,6 +70,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
     "axios": "^0.18.0",
+    "bcryptjs": "^2.4.3",
     "create-react-app": "^3.0.0",
     "dayjs": "^1.8.14",
     "dotenv": "^8.0.0",

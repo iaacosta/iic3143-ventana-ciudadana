@@ -3,28 +3,28 @@
     "nombre_completo": "Ignacio Acosta",
     "email": "iaacosta@uc.cl",
     "username": "cho19",
-    "password": "cho19",
+    "password": "$2a$10$22jBkb6QX0AUPCxpYZsTLODqWZNxA4L2DlVqaAohW/hjHLso9EJBO",
     "foto_url": "https://avatars3.githubusercontent.com/u/14133074?s=460&v=4"
   },
   {
     "nombre_completo": "Vicente Muñoz",
     "email": "vmuñoz@uc.cl",
     "username": "vixolo",
-    "password": "vixolo",
+    "password": "$2a$10$22jBkb6QX0AUPCxpYZsTLOFvqhUedjGu/KVM5qiJL5y1ytiQeC1m.",
     "foto_url": "https://avatars1.githubusercontent.com/u/30675414?s=460&v=4"
   },
   {
     "nombre_completo": "Esperanza Horn",
     "email": "ehorn@uc.cl",
     "username": "pita-horn",
-    "password": "pita-horn",
+    "password": "$2a$10$22jBkb6QX0AUPCxpYZsTLOs4DC86u79Khxo6jCHen4t.AGMUGZgq2",
     "foto_url": "https://avatars3.githubusercontent.com/u/26127375?s=460&v=4"
   },
   {
     "nombre_completo": "Sofía Schwarzenberg",
     "email": "sschwarzenberg@uc.cl",
     "username": "sschwarzenberg",
-    "password": "sschwarzenberg",
+    "password": "$2a$10$22jBkb6QX0AUPCxpYZsTLOPOPXgYg7/qUJKxNq0VpGCdKkpPiCMBu",
     "foto_url": "https://avatars1.githubusercontent.com/u/20782533?s=460&v=4"
   }
 ]
