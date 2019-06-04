@@ -1,5 +1,3 @@
-const dayjs = require('dayjs');
-
 const proyectos = [
   {
     boletin: '00000-1',
@@ -31,6 +29,17 @@ const proyectos = [
   },
 ];
 
+const users = [
+  {
+    nombre_completo: 'Ignacio Acosta',
+    username: 'cho19',
+    password: '$2a$10$22jBkb6QX0AUPCxpYZsTLODqWZNxA4L2DlVqaAohW/hjHLso9EJBO',
+    email: 'iaacosta@uc.cl',
+    foto_url: 'https://avatars3.githubusercontent.com/u/14133074?s=460&v=4',
+  },
+];
+
 module.exports = {
   proyectos,
+  users,
 };
