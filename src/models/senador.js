@@ -27,6 +27,7 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     Senador.hasMany(models.Periodo, { foreignKey: 'sid' });
+    Senador.hasMany(models.Assistance, { foreignKey: 'sid' });
   };
   return Senador;
 };
