@@ -1,0 +1,54 @@
+.profile-container{
+  width: 80%;
+  margin: 10px auto auto auto;
+  display: grid;
+  grid-template-columns: 300px 1fr 1fr;
+  grid-template-rows: 100px 200px auto ;
+  grid-template-areas:
+    "u-img u-name u-name"
+    "u-img u-gallery u-gallery"
+    "u-info u-gallery u-gallery";
+  grid-column-gap: 1.5em;
+  grid-row-gap: 1.5em;
+}
+
+.user-pic{
+  grid-area: u-img;
+  background-color: #ccd1d9;
+}
+
+.user-name{
+  grid-area: u-name;
+
+}
+
+.user-gallery {
+  grid-area: u-gallery;
+
+}
+
+.user-info {
+  grid-area: u-info;
+}
+
+.profile-title{
+  font-size: 5.5rem;
+  align-self: end;
+  color: $color-grey-dark-4;
+  text-transform: uppercase;
+}
+
+.user-info h3{
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 15px;
+  text-transform: uppercase;
+
+}
+
+.user-gallery h2{
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 15px;
+
+}
