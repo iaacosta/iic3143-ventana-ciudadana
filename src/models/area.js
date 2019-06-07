@@ -9,7 +9,10 @@ module.exports = (sequelize, DataTypes) => {
     {},
   );
   Area.associate = function(models) {
-    // associations can be defined here
+    Area.belongsToMany(models.Comition, {
+      through: models.AreaComition,
+      foreignKey: 'aid',
+    });
   };
   return Area;
 };
