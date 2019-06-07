@@ -1,11 +1,15 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const areacomition = sequelize.define('areacomition', {
-    aid: DataTypes.INTEGER,
-    cid: DataTypes.INTEGER
-  }, {});
-  areacomition.associate = function(models) {
+  const AreaComition = sequelize.define(
+    'AreaComition',
+    {
+      aid: DataTypes.INTEGER,
+      cid: DataTypes.INTEGER,
+    },
+    {},
+  );
+  AreaComition.associate = function(models) {
     // associations can be defined here
   };
-  return areacomition;
+  return AreaComition;
 };

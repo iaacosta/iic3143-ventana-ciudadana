@@ -1,74 +1,74 @@
 [
   {
-  "aid": 1,
-  "name": "Relaciones Exteriores"}
-,
+    "id": 1,
+    "name": "Relaciones Exteriores"
+  },
   {
-    "aid": 2,
-    "name": "Justicia"}
-,
+    "id": 2,
+    "name": "Justicia"
+  },
   {
-    "aid": 3,
-    "name": "Educación"}
-,
+    "id": 3,
+    "name": "Educación"
+  },
   {
-    "aid": 4,
-    "name": "Estado y administración"}
-,
+    "id": 4,
+    "name": "Estado y administración"
+  },
   {
-    "aid": 5,
-    "name": "Defensa"}
-,
+    "id": 5,
+    "name": "Defensa"
+  },
   {
-    "aid": 6,
-    "name": "Obras Públicas, Transportes y Telecomunicaciones"}
-,
+    "id": 6,
+    "name": "Obras Públicas, Transportes y Telecomunicaciones"
+  },
   {
-    "aid": 7,
-    "name": "Salud"}
-,
+    "id": 7,
+    "name": "Salud"
+  },
   {
-    "aid": 8,
-    "name": "Trabajo y Seguridad Social"}
-,
+    "id": 8,
+    "name": "Trabajo y Seguridad Social"
+  },
   {
-    "aid": 9,
-    "name": "Economía"}
-,
+    "id": 9,
+    "name": "Economía"
+  },
   {
-    "aid": 10,
-    "name": "Vivienda y Urbanismo"}
-,
+    "id": 10,
+    "name": "Vivienda y Urbanismo"
+  },
   {
-    "aid": 11,
-    "name": "Derechos Humanos y ciudadania"}
-,
+    "id": 11,
+    "name": "Derechos Humanos y ciudadania"
+  },
   {
-    "aid": 12,
-    "name": "Familia y Adulto Mayor"}
-,
+    "id": 12,
+    "name": "Familia y Adulto Mayor"
+  },
   {
-    "aid": 13,
-    "name": "Ciencias y Tecnología"}
-,
+    "id": 13,
+    "name": "Ciencias y Tecnología"
+  },
   {
-    "aid": 14,
-    "name": "Recursos Naturales y Energía"}
-,
+    "id": 14,
+    "name": "Recursos Naturales y Energía"
+  },
   {
-    "aid": 15,
-    "name": "Territorio nacional"}
-,
+    "id": 15,
+    "name": "Territorio nacional"
+  },
   {
-    "aid": 16,
-    "name": "Seguridad Ciudadana"}
-,
+    "id": 16,
+    "name": "Seguridad Ciudadana"
+  },
   {
-    "aid": 17,
-    "name": "Ética y Transparencia"}
-,
+    "id": 17,
+    "name": "Ética y Transparencia"
+  },
   {
-    "aid": 18,
-    "name": "Mujeres y Equidad de Género"}
-
+    "id": 18,
+    "name": "Mujeres y Equidad de Género"
+  }
 ]

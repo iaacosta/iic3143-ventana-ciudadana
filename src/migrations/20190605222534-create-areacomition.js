@@ -1,30 +1,26 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('areacomitions', {
-      id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER
-      },
+    return queryInterface.createTable('AreaComitions', {
       aid: {
-        type: Sequelize.INTEGER
+        primaryKey: true,
+        type: Sequelize.INTEGER,
       },
       cid: {
-        type: Sequelize.INTEGER
+        primaryKey: true,
+        type: Sequelize.INTEGER,
       },
       createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal('NOW()'),
       },
       updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal('NOW()'),
+      },
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('areacomitions');
-  }
+    return queryInterface.dropTable('AreaComitions');
+  },
 };
