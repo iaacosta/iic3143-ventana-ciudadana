@@ -20,6 +20,9 @@
 
 
 
+<a class="twitter-timeline" href="<%= senador.url_twitter %>" data-height="1000">
+  Tweets by <%= senador.nombre %>
+</a>
 
   <h1 id="titulo-proyectos">Proyectos <span id="proyectos-totales">(<%= proyectos.length %>)</span></h1>
   <ul class="lista-proyectos" id="lista-proyectos">
@@ -36,3 +39,5 @@
     <% }) %>
   </ul>
 </div>
+
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
