@@ -1,12 +1,12 @@
 <div class="areas">
-  <h1 class="titulos">Comisiones permanentes</h1>
+  <h1 class="titulos">Áreas</h1>
 
   <div class="contenedor-areas">
 
     <% for (const { id, name } of areas) { %>
 
       <div class="area">
-        <a class="areas__link" href="/proyectos-ley/show-comition/<%= id %>">
+        <a class="areas__link" href="/proyectos-ley/show-area/<%= id %>">
           <img class="img_area" src="<%= assetPath(`area${id}.png`) %>" alt="Img área <%= id %>" />
           <h3><%= name %></h3>
         </a>
