@@ -107,17 +107,20 @@
 // PARA BARRA DE PORCENTAJES
 
 body {
-	background-color:#CCC;
+  background-color: #ccc;
 }
+
 #chart rect {
-/*  fill: steelblue;*/
+  /*  fill: steelblue;*/
 }
 
 #chart text {
-  fill: #000;
-  font: 10px sans-serif;
+  fill: #fff;
+  font: 1.6rem sans-serif;
   text-anchor: initial;
 }
 #chart {
-	//background-color: #fff;
+  grid-column: 1 / span 2;
+  width: 100%;
+  //background-color: #fff;
 }

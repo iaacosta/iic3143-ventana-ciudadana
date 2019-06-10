@@ -10,8 +10,9 @@
     <%= comition.email %>
     <br>
     <h2 class="contenedor-cards-com__subtitle">Partidos Participantes</h2>
-    <% for (i = 0; i < partidos_nombre.length; i++) { %>
-      <%= partidos_nombre[i] %> : <%= partidos_porcentajes[i] %> %
+    <% const totalPartidos = Object.values(partidos).reduce((accum, cur) => accum + cur, 0); %>
+    <% for (const [partido, cantidad] of Object.entries(partidos)) { %>
+      <%= `${partido}: ${cantidad * 100 / totalPartidos}%` %>
       <br>
     <% } %>
   </div>
@@ -19,13 +20,13 @@
 
   <!-- Senadores Involucrados -->
   <div class="contenedor-cards-com">
-    <h2 class="contenedor-cards-com__subtitle">Parlamentarios precursores</h2>
+    <h2 class="contenedor-cards-com__subtitle">Integrantes</h2>
     <% if (senadores.length === 0) { %>
       <h3 class="contenedor-cards-com__error">No hay información disponible</h3>
     <% } else { %>
       <% for (i = 0; i < senadores.length; i++) { %>
         <div class="card-senadores">
-          <img src="<%= fotos[i] %>" alt="foto" class="card-senadores__foto">
+          <img src="<%= senadores[i].url_foto %>" alt="foto" class="card-senadores__foto">
           <h2 class="card-senadores__nombre"><%= senadores[i].nombre %> <%= senadores[i].apellido_paterno %></h2>
           <p class="card-senadores__partido"><%= senadores[i].partido_politico %></p>
           <% if (senadores[i].url_twitter) { %>
@@ -61,72 +62,53 @@
 
 <script src="https://d3js.org/d3.v3.js"></script>
 <script type="text/javascript">
+  var data = [<%- Object.values(partidos) %>];
+  var names = [<%- Object.keys(partidos).map(nombre => `"${nombre}"`) %>];
 
-  //var data = [1, 2, 3, 4, 7];
-
-  var data = JSON.parse(<%= partidos_cantidad %>);
-
-
-  console.log(data);
-
-  //data.sort(function(a, b){return a-b});
-  //data.sort(d3.descending());
   var width = "100%",
-      height = 20,
+      height = 30,
   	goal = 600,
   	perc_so_far = 0;
 
-
-  //console.log(d3.sum(data));
-  var total_time = d3.sum(data);
+  var total_partidos = d3.sum(data);
   var bar_x = 0;
-  var chart = d3.select("#chart")
-  	.attr("width", "100%")
-  	.attr("height", height);
-  	bar_x = 0;
-  	//var chart_width = chart.style("width").replace("px", "");
-  var chart_width = parseInt(d3.select("#chart").style("width"));
-  console.log(chart_width);
+  var chart = d3.select("#chart").attr("width", width).attr("height", height);
+  
+  bar_x = 0;
 
   var color = d3.scale.category20c();
-  	//d3.scale.ordinal()
-  	//.domain(["6TH", "7TH", "5TH", "4TH"])
-  	//.range(colorbrewer.RdBu[12]);
-  var bar = chart.selectAll("g")
-  	.data(data)
-  	.enter().append("g");
-  	console.log(bar);
+  
+  var bar = chart.selectAll("g").data(data).enter().append("g");
+
   bar.append("rect")
-  	.attr("width", function(d) { return ((d/total_time)*100) + "%"; } )
+  	.attr("width", function(d) { return ((d/total_partidos)*100) + "%"; } )
   	.attr("x", function(d) {
   		var prev_perc = perc_so_far;
-  		var this_perc = 100*(d/total_time);
+  		var this_perc = 100*(d/total_partidos);
   		perc_so_far = perc_so_far + this_perc;
   		console.log("perc_so_far:" + perc_so_far + "; this_perc:" + this_perc + "; prev_perc:" + prev_perc + ";");
   		return prev_perc + "%";
   	})
   	.attr("height", height)
-  	.attr("fill",  function(d) { return (color(d)) } );
+  	.attr("fill",  function(d) { return (color(d)) });
 
   perc_so_far = 0;
   bar.append("text")
   	.attr("x", function(d) {
   		var prev_perc = perc_so_far;
-  		var this_perc = 100*(d/total_time);
+  		var this_perc = 100*(d/total_partidos);
   		perc_so_far = perc_so_far + this_perc;
   		console.log("perc_so_far:" + perc_so_far + "; this_perc:" + this_perc + "; prev_perc:" + prev_perc + ";");
-  		return prev_perc + "%";
+  		return prev_perc + 1 + "%";
   	})
-  	//.attr("y", 11)
+  	.attr("y", 0)
   	.attr("dy", "1.35em")
-  	.text(function(d) { return d; });
+  	.text(function(d, i) { return names[i]; });
 
   d3.select(window).on('resize', resize);
 
   function resize () {
   	var width = parseInt(d3.select("#chart").style("width"));
-  	//console.log(width);
-  	//console.log(bar);
   }
 
 </script>

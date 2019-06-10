@@ -1,7 +1,4 @@
 const KoaRouter = require('koa-router');
-const dayjs = require('dayjs');
-
-const { paginate } = require('../helpers');
 
 const router = new KoaRouter();
 
@@ -15,26 +12,60 @@ router.get('comitions', '/', async ctx => {
 });
 
 router.get('comitions', '/show/:id', async ctx => {
-  const comition = await ctx.orm.Comition.findOne({
-    where: { id: ctx.params.id },
+  const comition = await ctx.orm.Comition.findOne({ where: { id: ctx.params.id } });
+  const include = [
+    {
+      model: ctx.orm.Comition,
+      attributes: [],
+      where: { id: ctx.params.id },
+      through: { attributes: [], raw: true },
+      raw: true,
+    },
+  ];
+
+  const senadores = await ctx.orm.Senador.findAll({ include });
+  const proyectos = await ctx.orm.Proyecto.findAll({ include });
+
+  senadores.forEach((senador, i) => {
+    if (!senador.url_foto)
+      senadores[i].url_foto =
+        'https://d1nhio0ox7pgb.cloudfront.net/_img/o_collection_png/green_dark_grey/256x256/plain/user.png';
   });
-  const senadores_id = await ctx.orm.SenatorComition.findAll({
-    where: { cid: ctx.params.id },
+
+  const query = `SELECT "partido_politico", COUNT(*) FROM "Senadors", "SenatorComitions" WHERE sid = id AND cid = ${
+    comition.id
+  } GROUP BY "partido_politico";`;
+
+  /* Aqui creo un diccionario/objeto de la forma { partido1: total, partido2: total } */
+  const partidos = (await ctx.orm.sequelize.query(query))[0].reduce(
+    // eslint-disable-next-line camelcase
+    (accum, { partido_politico, count }) =>
+      Object.assign(accum, { [partido_politico]: parseInt(count, 10) }),
+    {},
+  );
+
+  /* const senadoresId = await ctx.orm.SenatorComition.findAll({;
+    where: {
+      cid: ctx.params.id,
+    },
   });
-  const proyectos_id = await ctx.orm.ProjectComition.findAll({
-    where: { cid: ctx.params.id },
+  const proyectosId = await ctx.orm.ProjectComition.findAll({
+    where: {
+      cid: ctx.params.id,
+    },
   });
 
   // Ahora a buscar la info particular de senadores y proyectos
-  var senadores = [];
-  var fotos = [];
-  var partidos = {};
-  var partidos_nombre = [];
-  var partidos_porcentajes = [];
+  const senadores = [];
+  const fotos = [];
+  const partidos = {};
+  const partidosPorcentajes = [];
 
-  for (i = 0; i < senadores_id.length; i++) {
+  for (let i = 0; i < senadoresId.length; i += 1) {
     const sen = await ctx.orm.Senador.findOne({
-      where: { id: senadores_id[i].sid },
+      where: {
+        id: senadoresId[i].sid,
+      },
     });
 
     if (sen.url_foto == null)
@@ -44,7 +75,7 @@ router.get('comitions', '/show/:id', async ctx => {
     else fotos.push(sen.url_foto);
     senadores.push(sen);
 
-    //Calcular porcentaje de partidos
+    // Calcular porcentaje de partidos
     if (sen.partido_politico != null) {
       if (!(sen.partido_politico in partidos)) {
         partidos[sen.partido_politico] = 1;
@@ -74,20 +105,19 @@ router.get('comitions', '/show/:id', async ctx => {
   var proyectos = [];
   for (i = 0; i < proyectos_id.length; i++) {
     const proy = await ctx.orm.Proyecto.findOne({
-      where: { id: proyectos_id[i].pid },
+      where: {
+        id: proyectosId[i].pid,
+      },
       order: [['fecha', 'DESC']],
     });
     proyectos.push(proy);
-  }
+  } */
 
   await ctx.render('comitions/show', {
     comition,
     senadores,
     proyectos,
-    fotos,
-    partidos_nombre,
-    partidos_cantidad,
-    partidos_porcentajes,
+    partidos,
     user: ctx.session ? ctx.session.user : null,
   });
 });
