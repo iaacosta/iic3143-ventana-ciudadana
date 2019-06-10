@@ -55,16 +55,21 @@ router.get('comitions', '/show/:id', async ctx => {
   }
 
   partidos_nombre = Object.keys(partidos);
+
+  var partidos_cantidad = [];
+  for (i = 0; i < partidos_nombre.length; i ++) {
+    const cant = partidos[partidos_nombre[i]];
+    partidos_cantidad.push(cant);
+  }
+
+  partidos_cantidad = JSON.strinfigy(partidos_cantidad);
+
   for (i = 0; i < partidos_nombre.length; i++) {
     const total = partidos_nombre.length;
     porcentaje = partidos[partidos_nombre[i]] / total;
     porcentaje = porcentaje * 100;
     partidos_porcentajes.push(porcentaje);
   }
-
-  console.log(' ');
-  console.log(partidos_porcentajes);
-  console.log(' ');
 
   var proyectos = [];
   for (i = 0; i < proyectos_id.length; i++) {
@@ -75,14 +80,13 @@ router.get('comitions', '/show/:id', async ctx => {
     proyectos.push(proy);
   }
 
-  // Ahora calcular porcentajes de partidos
-
   await ctx.render('comitions/show', {
     comition,
     senadores,
     proyectos,
     fotos,
     partidos_nombre,
+    partidos_cantidad,
     partidos_porcentajes,
     user: ctx.session ? ctx.session.user : null,
   });

@@ -103,3 +103,21 @@
   grid-column: -2 / -1;
   grid-row: 1 / -1;
 }
+
+// PARA BARRA DE PORCENTAJES
+
+body {
+	background-color:#CCC;
+}
+#chart rect {
+/*  fill: steelblue;*/
+}
+
+#chart text {
+  fill: #000;
+  font: 10px sans-serif;
+  text-anchor: initial;
+}
+#chart {
+	//background-color: #fff;
+}
