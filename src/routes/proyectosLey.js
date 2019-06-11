@@ -102,7 +102,7 @@ router.get('proyectos-ley', '/show/:id', async ctx => {
   });
 });
 
-router.get('proyectos-ley', '/show-area/:aid', async ctx => {
+router.get('proyectos-ley', '/proyectos-area/:aid', async ctx => {
   let { page } = ctx.request.query;
   if (!ctx.request.query.page) page = 0;
 
