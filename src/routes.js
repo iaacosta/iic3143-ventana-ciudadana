@@ -6,6 +6,7 @@ const senadores = require('./routes/senadores');
 const camaras = require('./routes/camaras');
 const areas = require('./routes/areas');
 const comitions = require('./routes/comitions');
+const session = require('./routes/session');
 
 const router = new KoaRouter();
 
@@ -15,5 +16,6 @@ router.use('/senadores', senadores.routes());
 router.use('/camaras', camaras.routes());
 router.use('/areas', areas.routes());
 router.use('/comitions', comitions.routes());
+router.use('/session', session.routes());
 
 module.exports = router;

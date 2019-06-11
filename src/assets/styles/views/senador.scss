@@ -1,6 +1,6 @@
 .grid-container {
   display: grid;
-  grid-template-columns: 1fr 6fr;
+  grid-template-columns: 1fr 5fr;
   grid-template-rows: repeat(3, min-content) 42rem;
   grid-gap: 2rem;
 
@@ -47,9 +47,14 @@
   }
 }
 
-#titulo-proyectos {
+#proyectos {
   grid-column: 2 / span 1;
-  grid-row: 3 / span 1;
+  grid-row: 3 / span 2;
+}
+
+#titulo-proyectos {
+  // grid-column: 2 / span 1;
+  // grid-row: 3 / span 1;
   display: flex;
   align-items: center;
   font-size: 3rem;
@@ -65,8 +70,8 @@
 }
 
 #lista-proyectos {
-  grid-column: 2 / span 1;
-  grid-row: 4 / span 1;
+  // grid-column: 2 / span 1;
+  // grid-row: 4 / span 1;
   height: 100%;
   overflow: auto;
   font-size: 2rem;

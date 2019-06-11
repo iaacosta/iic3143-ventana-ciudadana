@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "name": "Relaciones Exteriores"
+  },
+  {
+    "id": 2,
+    "name": "Justicia"
+  },
+  {
+    "id": 3,
+    "name": "Educación"
+  },
+  {
+    "id": 4,
+    "name": "Estado y administración"
+  },
+  {
+    "id": 5,
+    "name": "Defensa"
+  },
+  {
+    "id": 6,
+    "name": "Obras Públicas, Transportes y Telecomunicaciones"
+  },
+  {
+    "id": 7,
+    "name": "Salud"
+  },
+  {
+    "id": 8,
+    "name": "Trabajo y Seguridad Social"
+  },
+  {
+    "id": 9,
+    "name": "Economía"
+  },
+  {
+    "id": 10,
+    "name": "Vivienda y Urbanismo"
+  },
+  {
+    "id": 11,
+    "name": "Derechos Humanos y ciudadania"
+  },
+  {
+    "id": 12,
+    "name": "Familia y Adulto Mayor"
+  },
+  {
+    "id": 13,
+    "name": "Ciencias y Tecnología"
+  },
+  {
+    "id": 14,
+    "name": "Recursos Naturales y Energía"
+  },
+  {
+    "id": 15,
+    "name": "Territorio nacional"
+  },
+  {
+    "id": 16,
+    "name": "Seguridad Ciudadana"
+  },
+  {
+    "id": 17,
+    "name": "Ética y Transparencia"
+  },
+  {
+    "id": 18,
+    "name": "Mujeres y Equidad de Género"
+  }
+]

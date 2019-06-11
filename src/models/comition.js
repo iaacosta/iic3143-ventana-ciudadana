@@ -20,6 +20,11 @@ module.exports = (sequelize, DataTypes) => {
       through: models.ProjectComition,
       foreignKey: 'cid',
     });
+
+    Comition.belongsToMany(models.Area, {
+      through: models.AreaComition,
+      foreignKey: 'cid',
+    });
   };
   return Comition;
 };

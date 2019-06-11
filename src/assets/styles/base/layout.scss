@@ -43,6 +43,7 @@ main {
   padding: 2rem;
   min-height: calc(100vh - #{$header-size} - #{$footer-size});
   background-color: $color-white;
+  display: grid;
 }
 
 .logo {
@@ -52,7 +53,6 @@ main {
   &__wrapper {
     display: flex;
     align-items: center;
-
   }
 
   &__strong {
@@ -67,6 +67,10 @@ main {
   display: flex;
   color: $color-white;
   font-weight: 500;
+
+  &__dropdown {
+    position: relative;
+  }
 
   &__item {
     cursor: pointer;
