@@ -25,6 +25,7 @@ router.get('camaras', '/', async ctx => {
     },
   });
 
+  // eslint-disable-next-line no-unused-vars
   const totalAssistance = await ctx.orm.Assistance.findAll({
     group: ['sid'],
     attributes: [
