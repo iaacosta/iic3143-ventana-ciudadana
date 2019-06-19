@@ -25,6 +25,22 @@ router.get('camaras', '/', async ctx => {
     },
   });
 
+  const totalAssistance = await ctx.orm.Assistance.findAll({
+    group: ['sid'],
+    attributes: [
+      'sid',
+      [ctx.orm.Sequelize.fn('SUM', ctx.orm.Sequelize.col('asistencias')), 'total_asistencias'],
+      [
+        ctx.orm.Sequelize.fn('SUM', ctx.orm.Sequelize.col('inasistencias_just')),
+        'total_inasistencias_just',
+      ],
+      [
+        ctx.orm.Sequelize.fn('SUM', ctx.orm.Sequelize.col('inasistencias_no_just')),
+        'total_inasistencias_no_just',
+      ],
+    ],
+  });
+
   await ctx.render('camara/camara', {
     partidos: JSON.stringify(partidos),
     yearsCongress: JSON.stringify(yearsCongress),
