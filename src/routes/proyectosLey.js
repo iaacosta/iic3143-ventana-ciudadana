@@ -91,6 +91,16 @@ router.get('proyectos-ley', '/show/:id', async ctx => {
     where: { id: comId.cid },
   });
 
+  const { Milestone, Proyecto } = ctx.orm;
+
+  const milestones = (await Proyecto.findAll({
+    include: {
+      model: Milestone,
+      attributes: ['fecha', 'a_favor', 'en_contra', 'abstencion', 'pareo'],
+    },
+    where: { id: proy.id },
+  }))[0].get('Milestones');
+
   await ctx.render('proyectos-ley/show', {
     fotos,
     proy,
@@ -98,6 +108,7 @@ router.get('proyectos-ley', '/show/:id', async ctx => {
     senadores,
     resumen,
     comition,
+    milestones: milestones.map(milestone => milestone.dataValues),
     user: ctx.session ? ctx.session.user : null,
   });
 });
@@ -145,7 +156,6 @@ router.get('proyectos-ley', '/proyectos-area/:aid', async ctx => {
   );
 
   const cant = allProjects[0][0].count;
-  console.log(nombreArea);
 
   const fechas = [];
   for (let i = 0; i < proys.length; i += 1) {
