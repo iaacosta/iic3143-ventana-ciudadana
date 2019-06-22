@@ -4,22 +4,31 @@
   <div id="informacion-personal">
     <a href="<%= senador.url_curriculum %>" target="_blank">Ver Currículum</a> ||
     <a href="<%= senador.url_twitter %>" target="_blank"> Ver Twitter</a>
-
-    <br>
-    <% if (comitions.len === 0) { %>
-      Este senador no participa en comisiones.
-    <% } else { %>
-      Participa en las comisiones de
-      <% for (i = 0; i < comitions.length; i++) { %>
-        <%= comitions[i].nombre %>,
+    <div id="comisiones">
+      <% if (comitions.len === 0) { %>
+        Este senador no participa en comisiones.
+      <% } else { %>
+        Participa en las comisiones de
+        <% for (i = 0; i < comitions.length; i++) { %>
+          <%= comitions[i].nombre %>,
+        <% } %>
       <% } %>
-    <% } %>
-
+    </div>
   </div>
-
-
-
-
+  <div class="senador__asistencia">
+    <div class="senador__asistencia-item">
+      <p class="senador__asistencia-porcentaje senador__asistencia-porcentaje--asistencia">33%</p>
+      <p class="senador__asistencia-label">Asistencias</p>
+    </div>
+    <div class="senador__asistencia-item">
+      <p class="senador__asistencia-porcentaje senador__asistencia-porcentaje--inasistencia">33%</p>
+      <p class="senador__asistencia-label">Inasistencias</p>
+    </div>
+    <div class="senador__asistencia-item">
+      <p class="senador__asistencia-porcentaje senador__asistencia-porcentaje--justificada">33%</p>
+      <p class="senador__asistencia-label">Inasistencias justificadas</p>
+    </div>
+  </div>
   <a class="twitter-timeline" href="<%= senador.url_twitter %>" data-height="1000">
     Tweets by <%= senador.nombre %>
   </a>
