@@ -5,12 +5,12 @@
     <a href="<%= senador.url_curriculum %>" target="_blank">Ver Currículum</a> ||
     <a href="<%= senador.url_twitter %>" target="_blank"> Ver Twitter</a>
     <div id="comisiones">
-      <% if (comitions.len === 0) { %>
+      <% if (comitions.length === 0) { %>
         Este senador no participa en comisiones.
       <% } else { %>
         Participa en las comisiones de
         <% for (i = 0; i < comitions.length; i++) { %>
-          <%= comitions[i].nombre %>,
+          <%= comitions[i] %>,
         <% } %>
       <% } %>
     </div>

@@ -18,19 +18,17 @@ router.get('senadores-show', '/:id', async ctx => {
     order: [['fecha', 'DESC']],
   });
 
-  const coms_id = await ctx.orm.SenatorComition.findAll({
-    where: { sid: senador.id },
-  });
-
-  var comitions = [];
-  for (i = 0; i < coms_id.length; i++) {
-    const com = await ctx.orm.Comition.findOne({
-      where: { id: coms_id[i].cid },
-    });
-    if (com != null) {
-      comitions.push(com);
-    }
-  }
+  const { Senador, Comition } = ctx.orm;
+  const comitions = (await Senador.findAll({
+    include: {
+      model: Comition,
+      attributes: ['nombre'],
+    },
+    where: { id: senador.get('id') },
+    attributes: [],
+  }))[0]
+    .get('Comitions')
+    .map(com => com.get('nombre'));
 
   return ctx.render('senadores/show', {
     senador,
