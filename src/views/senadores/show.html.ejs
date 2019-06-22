@@ -4,22 +4,36 @@
   <div id="informacion-personal">
     <a href="<%= senador.url_curriculum %>" target="_blank">Ver Currículum</a> ||
     <a href="<%= senador.url_twitter %>" target="_blank"> Ver Twitter</a>
-
-    <br>
-    <% if (comitions.len === 0) { %>
-      Este senador no participa en comisiones.
-    <% } else { %>
-      Participa en las comisiones de
-      <% for (i = 0; i < comitions.length; i++) { %>
-        <%= comitions[i].nombre %>,
+    <div id="comisiones">
+      <% if (comitions.length === 0) { %>
+        Este senador no participa en comisiones.
+      <% } else { %>
+        Participa en las comisiones de
+        <% for (i = 0; i < comitions.length; i++) { %>
+          <%= comitions[i] %>,
+        <% } %>
       <% } %>
-    <% } %>
-
+    </div>
   </div>
-
-
-
-
+  <div class="senador__asistencia">
+    <% if (Object.keys(assistances).length !== 0) { %>
+      <% const total = assistances.total_asistencias +assistances.total_inasistencias +assistances.total_justif %>
+      <div class="senador__asistencia-item">
+        <p class="senador__asistencia-porcentaje senador__asistencia-porcentaje--asistencia"><%= Math.round(assistances.total_asistencias / total * 100) %>%</p>
+        <p class="senador__asistencia-label">Asistencias</p>
+      </div>
+      <div class="senador__asistencia-item">
+        <p class="senador__asistencia-porcentaje senador__asistencia-porcentaje--inasistencia"><%= Math.round(assistances.total_inasistencias / total * 100) %>%</p>
+        <p class="senador__asistencia-label">Inasistencias</p>
+      </div>
+      <div class="senador__asistencia-item">
+        <p class="senador__asistencia-porcentaje senador__asistencia-porcentaje--justificada"><%= Math.round(assistances.total_justif / total * 100) %>%</p>
+        <p class="senador__asistencia-label">Inasistencias justificadas</p>
+      </div>
+    <% } else { %>
+      <p class="senador__asistencia-label senador__asistencia-label--red">No hay información disponible de las asistencias de este senador</p>
+    <% } %>
+  </div>
   <a class="twitter-timeline" href="<%= senador.url_twitter %>" data-height="1000">
     Tweets by <%= senador.nombre %>
   </a>

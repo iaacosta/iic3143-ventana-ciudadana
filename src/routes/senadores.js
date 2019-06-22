@@ -18,23 +18,40 @@ router.get('senadores-show', '/:id', async ctx => {
     order: [['fecha', 'DESC']],
   });
 
-  const coms_id = await ctx.orm.SenatorComition.findAll({
-    where: { sid: senador.id },
+  const { Senador, Comition, Assistance, Sequelize } = ctx.orm;
+  const comitions = (await Senador.findAll({
+    include: {
+      model: Comition,
+      attributes: ['nombre'],
+    },
+    where: { id: senador.get('id') },
+    attributes: [],
+  }))[0]
+    .get('Comitions')
+    .map(com => com.get('nombre'));
+
+  let assistances = await Assistance.findAll({
+    group: ['sid'],
+    include: { model: Senador, attributes: [], where: { id: senador.get('id') } },
+    attributes: [
+      [Sequelize.fn('SUM', Sequelize.col('asistencias')), 'total_asistencias'],
+      [Sequelize.fn('SUM', Sequelize.col('inasistencias_just')), 'total_inasistencias'],
+      [Sequelize.fn('SUM', Sequelize.col('inasistencias_no_just')), 'total_justif'],
+    ],
   });
 
-  var comitions = [];
-  for (i = 0; i < coms_id.length; i++) {
-    const com = await ctx.orm.Comition.findOne({
-      where: { id: coms_id[i].cid },
-    });
-    if (com != null) {
-      comitions.push(com);
-    }
+  if (assistances.length > 0) {
+    assistances = assistances[0].dataValues;
+    // eslint-disable-next-line no-return-assign
+    Object.keys(assistances).forEach(key => (assistances[key] = +assistances[key]));
+  } else {
+    assistances = {};
   }
 
   return ctx.render('senadores/show', {
     senador,
     comitions,
+    assistances,
     proyectos: proyectos.map(proyecto => ({
       ...proyecto.dataValues,
       fecha: dayjs(proyecto.fecha).format('DD, MMM YYYY'),
