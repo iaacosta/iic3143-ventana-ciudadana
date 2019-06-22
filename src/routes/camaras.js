@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 const KoaRouter = require('koa-router');
 
 const router = new KoaRouter();
@@ -52,11 +53,11 @@ router.get('camaras', '/', async ctx => {
     raw: true,
   });
 
-  let totalAssistance = {};
+  let totalAssistanceByParty = {};
   totalAssistanceQuery.forEach(val => {
     if (!val.partido_politico) return;
-    if (!totalAssistance[val.partido_politico])
-      totalAssistance[val.partido_politico] = {
+    if (!totalAssistanceByParty[val.partido_politico])
+      totalAssistanceByParty[val.partido_politico] = {
         assistances: 0,
         inassistancesJust: 0,
         inassistances: 0,
@@ -67,22 +68,34 @@ router.get('camaras', '/', async ctx => {
     const inassistances = parseInt(val.total_inasistencias_just, 10);
     const inassistancesJust = parseInt(val.total_inasistencias_no_just, 10);
 
-    totalAssistance[val.partido_politico].assistances += assistances;
-    totalAssistance[val.partido_politico].inassistancesJust += inassistances;
-    totalAssistance[val.partido_politico].inassistances += inassistancesJust;
-    totalAssistance[val.partido_politico].total +=
+    totalAssistanceByParty[val.partido_politico].assistances += assistances;
+    totalAssistanceByParty[val.partido_politico].inassistancesJust += inassistances;
+    totalAssistanceByParty[val.partido_politico].inassistances += inassistancesJust;
+    totalAssistanceByParty[val.partido_politico].total +=
       assistances + inassistances + inassistancesJust;
   });
 
-  totalAssistance = Object.entries(totalAssistance).reduce(
+  totalAssistanceByParty = Object.entries(totalAssistanceByParty).reduce(
     (accum, [name, val]) => [...accum, { ...val, partido: name }],
     [],
+  );
+
+  const totalAssistance = totalAssistanceByParty.reduce(
+    (accum, cur) => {
+      accum.assistances += cur.assistances;
+      accum.inassistances += cur.inassistances;
+      accum.inassistancesJust += cur.inassistancesJust;
+      accum.total += cur.total;
+      return accum;
+    },
+    { assistances: 0, inassistances: 0, inassistancesJust: 0, total: 0 },
   );
 
   await ctx.render('camara/camara', {
     partidos: JSON.stringify(partidos),
     yearsCongress: JSON.stringify(yearsCongress),
-    totalAssistance: JSON.stringify(totalAssistance),
+    totalAssistanceByParty: JSON.stringify(totalAssistanceByParty),
+    totalAssistance,
     user: ctx.session ? ctx.session.user : null,
   });
 });
