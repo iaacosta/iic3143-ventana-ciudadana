@@ -30,7 +30,7 @@ router.get('senadores-show', '/:id', async ctx => {
     .get('Comitions')
     .map(com => com.get('nombre'));
 
-  const assistances = (await Assistance.findAll({
+  let assistances = await Assistance.findAll({
     group: ['sid'],
     include: { model: Senador, attributes: [], where: { id: senador.get('id') } },
     attributes: [
@@ -38,7 +38,15 @@ router.get('senadores-show', '/:id', async ctx => {
       [Sequelize.fn('SUM', Sequelize.col('inasistencias_just')), 'total_inasistencias'],
       [Sequelize.fn('SUM', Sequelize.col('inasistencias_no_just')), 'total_justif'],
     ],
-  }))[0];
+  });
+
+  if (assistances.length > 0) {
+    assistances = assistances[0].dataValues;
+    // eslint-disable-next-line no-return-assign
+    Object.keys(assistances).forEach(key => (assistances[key] = +assistances[key]));
+  } else {
+    assistances = {};
+  }
 
   return ctx.render('senadores/show', {
     senador,

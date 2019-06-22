@@ -47,6 +47,10 @@
 
     &-label {
       font-size: 1.8rem;
+
+      &--red {
+        color: $color-red-dark;
+      }
     }
   }
 }

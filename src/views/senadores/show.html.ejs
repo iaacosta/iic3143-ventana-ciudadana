@@ -16,18 +16,23 @@
     </div>
   </div>
   <div class="senador__asistencia">
-    <div class="senador__asistencia-item">
-      <p class="senador__asistencia-porcentaje senador__asistencia-porcentaje--asistencia">33%</p>
-      <p class="senador__asistencia-label">Asistencias</p>
-    </div>
-    <div class="senador__asistencia-item">
-      <p class="senador__asistencia-porcentaje senador__asistencia-porcentaje--inasistencia">33%</p>
-      <p class="senador__asistencia-label">Inasistencias</p>
-    </div>
-    <div class="senador__asistencia-item">
-      <p class="senador__asistencia-porcentaje senador__asistencia-porcentaje--justificada">33%</p>
-      <p class="senador__asistencia-label">Inasistencias justificadas</p>
-    </div>
+    <% if (Object.keys(assistances).length !== 0) { %>
+      <% const total = assistances.total_asistencias +assistances.total_inasistencias +assistances.total_justif %>
+      <div class="senador__asistencia-item">
+        <p class="senador__asistencia-porcentaje senador__asistencia-porcentaje--asistencia"><%= Math.round(assistances.total_asistencias / total * 100) %>%</p>
+        <p class="senador__asistencia-label">Asistencias</p>
+      </div>
+      <div class="senador__asistencia-item">
+        <p class="senador__asistencia-porcentaje senador__asistencia-porcentaje--inasistencia"><%= Math.round(assistances.total_inasistencias / total * 100) %>%</p>
+        <p class="senador__asistencia-label">Inasistencias</p>
+      </div>
+      <div class="senador__asistencia-item">
+        <p class="senador__asistencia-porcentaje senador__asistencia-porcentaje--justificada"><%= Math.round(assistances.total_justif / total * 100) %>%</p>
+        <p class="senador__asistencia-label">Inasistencias justificadas</p>
+      </div>
+    <% } else { %>
+      <p class="senador__asistencia-label senador__asistencia-label--red">No hay información disponible de las asistencias de este senador</p>
+    <% } %>
   </div>
   <a class="twitter-timeline" href="<%= senador.url_twitter %>" data-height="1000">
     Tweets by <%= senador.nombre %>
