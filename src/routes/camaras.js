@@ -26,11 +26,20 @@ router.get('camaras', '/', async ctx => {
   });
 
   // eslint-disable-next-line no-unused-vars
-  const totalAssistance = await ctx.orm.Assistance.findAll({
-    group: ['sid'],
+  const totalAssistanceQuery = await ctx.orm.Assistance.findAll({
+    group: ['Senador.partido_politico', 'Senador.id', 'sid'],
+    include: [
+      {
+        model: ctx.orm.Senador,
+        attributes: ['partido_politico'],
+      },
+    ],
     attributes: [
-      'sid',
-      [ctx.orm.Sequelize.fn('SUM', ctx.orm.Sequelize.col('asistencias')), 'total_asistencias'],
+      'Senador.partido_politico',
+      [
+        ctx.orm.Sequelize.fn('SUM', ctx.orm.Sequelize.col('asistencias')),
+        'total_asistencias',
+      ],
       [
         ctx.orm.Sequelize.fn('SUM', ctx.orm.Sequelize.col('inasistencias_just')),
         'total_inasistencias_just',
@@ -40,11 +49,40 @@ router.get('camaras', '/', async ctx => {
         'total_inasistencias_no_just',
       ],
     ],
+    raw: true,
   });
+
+  let totalAssistance = {};
+  totalAssistanceQuery.forEach(val => {
+    if (!val.partido_politico) return;
+    if (!totalAssistance[val.partido_politico])
+      totalAssistance[val.partido_politico] = {
+        assistances: 0,
+        inassistancesJust: 0,
+        inassistances: 0,
+        total: 0,
+      };
+
+    const assistances = parseInt(val.total_asistencias, 10);
+    const inassistances = parseInt(val.total_inasistencias_just, 10);
+    const inassistancesJust = parseInt(val.total_inasistencias_no_just, 10);
+
+    totalAssistance[val.partido_politico].assistances += assistances;
+    totalAssistance[val.partido_politico].inassistancesJust += inassistances;
+    totalAssistance[val.partido_politico].inassistances += inassistancesJust;
+    totalAssistance[val.partido_politico].total +=
+      assistances + inassistances + inassistancesJust;
+  });
+
+  totalAssistance = Object.entries(totalAssistance).reduce(
+    (accum, [name, val]) => [...accum, { ...val, partido: name }],
+    [],
+  );
 
   await ctx.render('camara/camara', {
     partidos: JSON.stringify(partidos),
     yearsCongress: JSON.stringify(yearsCongress),
+    totalAssistance: JSON.stringify(totalAssistance),
     user: ctx.session ? ctx.session.user : null,
   });
 });

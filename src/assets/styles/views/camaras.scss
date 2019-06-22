@@ -93,9 +93,20 @@
   }
 }
 
+.asistencia {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+}
+
 svg {
   width: 715px;
   height: 300px;
+}
+
+svg#asistencias {
+  width: auto;
+  height: auto;
 }
 
 g {
