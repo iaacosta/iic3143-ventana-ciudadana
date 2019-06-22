@@ -18,7 +18,7 @@ router.get('senadores-show', '/:id', async ctx => {
     order: [['fecha', 'DESC']],
   });
 
-  const { Senador, Comition } = ctx.orm;
+  const { Senador, Comition, Assistance, Sequelize } = ctx.orm;
   const comitions = (await Senador.findAll({
     include: {
       model: Comition,
@@ -30,9 +30,20 @@ router.get('senadores-show', '/:id', async ctx => {
     .get('Comitions')
     .map(com => com.get('nombre'));
 
+  const assistances = (await Assistance.findAll({
+    group: ['sid'],
+    include: { model: Senador, attributes: [], where: { id: senador.get('id') } },
+    attributes: [
+      [Sequelize.fn('SUM', Sequelize.col('asistencias')), 'total_asistencias'],
+      [Sequelize.fn('SUM', Sequelize.col('inasistencias_just')), 'total_inasistencias'],
+      [Sequelize.fn('SUM', Sequelize.col('inasistencias_no_just')), 'total_justif'],
+    ],
+  }))[0];
+
   return ctx.render('senadores/show', {
     senador,
     comitions,
+    assistances,
     proyectos: proyectos.map(proyecto => ({
       ...proyecto.dataValues,
       fecha: dayjs(proyecto.fecha).format('DD, MMM YYYY'),
