@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 const KoaRouter = require('koa-router');
 const dayjs = require('dayjs');
 
@@ -93,13 +94,21 @@ router.get('proyectos-ley', '/show/:id', async ctx => {
 
   const { Milestone, Proyecto } = ctx.orm;
 
-  const milestones = (await Proyecto.findAll({
+  let milestones = (await Proyecto.findAll({
     include: {
       model: Milestone,
       attributes: ['fecha', 'a_favor', 'en_contra', 'abstencion', 'pareo'],
     },
     where: { id: proy.id },
   }))[0].get('Milestones');
+
+  milestones = milestones.map(milestone => milestone.dataValues);
+  milestones.forEach(
+    // eslint-disable-next-line no-return-assign
+    milestone => (milestone.fecha = dayjs(milestone.fecha).format('DD/MM/YYYY')),
+  );
+
+  console.log(milestones);
 
   await ctx.render('proyectos-ley/show', {
     fotos,
@@ -108,7 +117,7 @@ router.get('proyectos-ley', '/show/:id', async ctx => {
     senadores,
     resumen,
     comition,
-    milestones: milestones.map(milestone => milestone.dataValues),
+    milestones,
     user: ctx.session ? ctx.session.user : null,
   });
 });
