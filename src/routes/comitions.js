@@ -62,10 +62,6 @@ router.get('comitions', '/show/:id', async ctx => {
     partidos_porcentajes.push(porcentaje);
   }
 
-  console.log(' ');
-  console.log(partidos_porcentajes);
-  console.log(' ');
-
   var proyectos = [];
   for (i = 0; i < proyectos_id.length; i++) {
     const proy = await ctx.orm.Proyecto.findOne({

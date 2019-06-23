@@ -33,15 +33,15 @@
       font-weight: 500;
 
       &--asistencia {
-        color: #5fad56;
+        color: $color-green-dark;
       }
 
       &--inasistencia {
-        color: #f78154;
+        color: $color-red-dark;
       }
 
       &--justificada {
-        color: #fde74c;
+        color: $color-yellow-dark;
       }
     }
 

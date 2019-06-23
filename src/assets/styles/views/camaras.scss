@@ -135,15 +135,15 @@
     line-height: 1;
 
     &--asistencia {
-      color: #5fad56;
+      color: $color-green-regular;
     }
 
     &--inasistencia {
-      color: #f78154;
+      color: $color-red-regular;
     }
 
     &--justificada {
-      color: #fde74c;
+      color: $color-yellow-regular;
     }
   }
 

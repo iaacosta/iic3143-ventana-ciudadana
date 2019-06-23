@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 const KoaRouter = require('koa-router');
 const dayjs = require('dayjs');
 
@@ -63,6 +64,7 @@ router.get('proyectos-ley', '/show/:id', async ctx => {
 
   const resumen = proy.resumen ? proy.resumen : 'Este proyecto no tiene descripcion';
 
+  /* Senadores */
   const senadoresId = await ctx.orm.SenadorProyecto.findAll({
     where: { pid: proy.id },
   });
@@ -84,6 +86,7 @@ router.get('proyectos-ley', '/show/:id', async ctx => {
     senadores.push(senador);
   }
 
+  /* Comitions */
   const comId = await ctx.orm.ProjectComition.findOne({
     where: { pid: proy.id },
   });
@@ -91,6 +94,23 @@ router.get('proyectos-ley', '/show/:id', async ctx => {
     where: { id: comId.cid },
   });
 
+  /* Milestones */
+  const { Milestone, Proyecto } = ctx.orm;
+  let milestones = (await Proyecto.findAll({
+    include: {
+      model: Milestone,
+      attributes: ['fecha', 'a_favor', 'en_contra', 'abstencion', 'pareo'],
+    },
+    where: { id: proy.id },
+  }))[0].get('Milestones');
+
+  milestones = milestones.map(milestone => milestone.dataValues);
+  milestones.forEach(
+    // eslint-disable-next-line no-return-assign
+    milestone => (milestone.fecha = dayjs(milestone.fecha).format('DD/MM/YYYY')),
+  );
+
+  /* Render */
   await ctx.render('proyectos-ley/show', {
     fotos,
     proy,
@@ -98,6 +118,7 @@ router.get('proyectos-ley', '/show/:id', async ctx => {
     senadores,
     resumen,
     comition,
+    milestones,
     user: ctx.session ? ctx.session.user : null,
   });
 });
@@ -145,7 +166,6 @@ router.get('proyectos-ley', '/proyectos-area/:aid', async ctx => {
   );
 
   const cant = allProjects[0][0].count;
-  console.log(nombreArea);
 
   const fechas = [];
   for (let i = 0; i < proys.length; i += 1) {

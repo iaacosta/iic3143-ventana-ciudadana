@@ -31,42 +31,54 @@
 
   <!-- Timeline del Proyecto -->
   <div class="contenedor-linea">
+    <% let side = 'left'; %>
     <div class="timeline-block timeline-block-right">
       <div class="marker"></div>
       <div class="timeline-content">
-        <h3>Inicio</h3>
+        <h3>Publicación</h3>
         <span> <%= fecha %> </span>
-
-        <div class="wrap-collabsible">
-          <input id="collapsible-1" class="toggle" type="checkbox">
-          <label for="collapsible-1" class="lbl-toggle lbl-toggle--right">Ver Detalles</label>
-          <div class="collapsible-content">
-            <p class="content-inner">
-              Aqui, en esta div, posteriormente ira informacion sobre la votacion y detalles de esta sesion
-              particular. QUnit is by calling one of the object that are embedded in JavaScript, and faster JavaScript program could also used with its elegant, well documented, and functional programming using JS, HTML pages Modernizr is a popular browsers without plug-ins. Test-Driven Development.
-            </p>
-          </div>
-        </div>
       </div>
     </div>
 
-    <div class="timeline-block timeline-block-left">
+    <% for (let cont = 0; cont < milestones.length; cont += 1) { %>
+      <div class="timeline-block timeline-block-<%= side %>">
+        <div class="marker"></div>
+        <div class="timeline-content">
+          <h3><%= milestones[cont].fecha %></h3>
+          <div class="wrap-collabsible">
+            <input id="collapsible-<%= cont %>" class="toggle collapsible__checkbox" type="checkbox">
+            <label for="collapsible-<%= cont %>" class="lbl-toggle lbl-toggle--<%= side %>">Ver votos</label>
+            <div class="collapsible-content">
+              <div class="collapsible-content__content">
+                <p class="collapsible-content__cifra collapsible-content__cifra--favor">
+                  <%= milestones[cont].a_favor %>
+                </p>
+                <p class="collapsible-content__label">votos a favor</p>
+                <p class="collapsible-content__cifra collapsible-content__cifra--contra">
+                  <%= milestones[cont].en_contra %>
+                </p>
+                <p class="collapsible-content__label">votos en contra</p>
+                <p class="collapsible-content__cifra collapsible-content__cifra--abstencion">
+                  <%= milestones[cont].abstencion %>
+                </p>
+                <p class="collapsible-content__label">abstenciones</p>
+                <p class="collapsible-content__cifra collapsible-content__cifra--pareo">
+                  <%= milestones[cont].pareo %>
+                </p>
+                <p class="collapsible-content__label">pareos</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% side = side === 'right' ? 'left' : 'right' %>
+    <% } %>
+
+    <div class="timeline-block timeline-block-<%= side %>">
       <div class="marker"></div>
       <div class="timeline-content">
         <h3>Estado actual</h3>
         <span><%= proy.estado %></span>
-
-        <div class="wrap-collabsible">
-          <input id="collapsible-2" class="toggle" type="checkbox" checked>
-          <label for="collapsible-2" class="lbl-toggle lbl-toggle--left">Ver Detalles</label>
-          <div class="collapsible-content">
-            <div class="content-inner">
-              <p>
-                Aqui, en esta div, posteriormente ira informacion sobre la votacion y detalles de esta sesion particular. QUnit is by calling one of the object that are embedded in JavaScript, and faster JavaScript program could also used with its elegant, well documented, and functional programming using JS, HTML pages Modernizr is a popular browsers without plug-ins. Test-Driven Development.
-              </p>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
