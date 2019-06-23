@@ -110,8 +110,6 @@ router.get('proyectos-ley', '/show/:id', async ctx => {
     milestone => (milestone.fecha = dayjs(milestone.fecha).format('DD/MM/YYYY')),
   );
 
-  console.log(milestones);
-
   /* Render */
   await ctx.render('proyectos-ley/show', {
     fotos,
