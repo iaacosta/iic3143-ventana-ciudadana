@@ -54,11 +54,10 @@
           </div>
         </div>
       </div>
-
       <% side = side === 'right' ? 'left' : 'right' %>
     <% } %>
 
-    <div class="timeline-block timeline-block-left">
+    <div class="timeline-block timeline-block-<%= side %>">
       <div class="marker"></div>
       <div class="timeline-content">
         <h3>Estado actual</h3>
