@@ -64,6 +64,7 @@ router.get('proyectos-ley', '/show/:id', async ctx => {
 
   const resumen = proy.resumen ? proy.resumen : 'Este proyecto no tiene descripcion';
 
+  /* Senadores */
   const senadoresId = await ctx.orm.SenadorProyecto.findAll({
     where: { pid: proy.id },
   });
@@ -85,6 +86,7 @@ router.get('proyectos-ley', '/show/:id', async ctx => {
     senadores.push(senador);
   }
 
+  /* Comitions */
   const comId = await ctx.orm.ProjectComition.findOne({
     where: { pid: proy.id },
   });
@@ -92,8 +94,8 @@ router.get('proyectos-ley', '/show/:id', async ctx => {
     where: { id: comId.cid },
   });
 
+  /* Milestones */
   const { Milestone, Proyecto } = ctx.orm;
-
   let milestones = (await Proyecto.findAll({
     include: {
       model: Milestone,
@@ -110,6 +112,7 @@ router.get('proyectos-ley', '/show/:id', async ctx => {
 
   console.log(milestones);
 
+  /* Render */
   await ctx.render('proyectos-ley/show', {
     fotos,
     proy,

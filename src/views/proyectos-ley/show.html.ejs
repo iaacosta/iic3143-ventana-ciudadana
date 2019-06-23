@@ -49,7 +49,24 @@
             <input id="collapsible-<%= cont %>" class="toggle collapsible__checkbox" type="checkbox">
             <label for="collapsible-<%= cont %>" class="lbl-toggle lbl-toggle--<%= side %>">Ver votos</label>
             <div class="collapsible-content">
-              <div class="collapsible-content__content">asd</div>
+              <div class="collapsible-content__content">
+                <p class="collapsible-content__cifra collapsible-content__cifra--favor">
+                  <%= milestones[cont].a_favor %>
+                </p>
+                <p class="collapsible-content__label">votos a favor</p>
+                <p class="collapsible-content__cifra collapsible-content__cifra--contra">
+                  <%= milestones[cont].en_contra %>
+                </p>
+                <p class="collapsible-content__label">votos en contra</p>
+                <p class="collapsible-content__cifra collapsible-content__cifra--abstencion">
+                  <%= milestones[cont].abstencion %>
+                </p>
+                <p class="collapsible-content__label">abstenciones</p>
+                <p class="collapsible-content__cifra collapsible-content__cifra--pareo">
+                  <%= milestones[cont].pareo %>
+                </p>
+                <p class="collapsible-content__label">pareos</p>
+              </div>
             </div>
           </div>
         </div>
