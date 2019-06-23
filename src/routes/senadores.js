@@ -4,21 +4,22 @@ const dayjs = require('dayjs');
 const router = new KoaRouter();
 
 router.param('id', async (id, ctx, next) => {
-  const senador = await ctx.orm.Senador.findOne({
-    where: { id: ctx.params.id },
-  });
+  const senador = await ctx.orm.Senador.findOne({ where: { id } });
   ctx.assert(senador, 404);
   ctx.state.senador = senador;
   return next();
 });
 
 router.get('senadores-show', '/:id', async ctx => {
+  const { Senador, Comition, Assistance, Sequelize } = ctx.orm;
+
+  /* Projects */
   const { senador } = ctx.state;
   const proyectos = await senador.getProyectos({
     order: [['fecha', 'DESC']],
   });
 
-  const { Senador, Comition, Assistance, Sequelize } = ctx.orm;
+  /* Comitions */
   const comitions = (await Senador.findAll({
     include: {
       model: Comition,
@@ -30,6 +31,7 @@ router.get('senadores-show', '/:id', async ctx => {
     .get('Comitions')
     .map(com => com.get('nombre'));
 
+  /* Assistances  */
   let assistances = await Assistance.findAll({
     group: ['sid'],
     include: { model: Senador, attributes: [], where: { id: senador.get('id') } },

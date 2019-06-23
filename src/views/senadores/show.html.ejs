@@ -2,9 +2,14 @@
   <img id="img-senador" src="<%= senador.url_foto ? senador.url_foto : 'https://d1nhio0ox7pgb.cloudfront.net/_img/o_collection_png/green_dark_grey/256x256/plain/user.png'%>" alt="Foto de senador">
   <h1 id="nombre-senador"> <%= senador.nombre + " " + senador.apellido_paterno + " " + senador.apellido_materno %> </h1>
   <div id="informacion-personal">
-    <a href="<%= senador.url_curriculum %>" target="_blank">Ver Currículum</a> ||
-    <a href="<%= senador.url_twitter %>" target="_blank"> Ver Twitter</a>
-    <div id="comisiones">
+    <% if (senador.url_curriculum) { %>
+      <a href="<%= senador.url_curriculum %>" target="_blank">Ver Currículum</a>
+    <% } %>
+    <%= senador.url_curriculum && senador.url_twitter ? '||' : '' %>
+    <% if (senador.url_twitter) { %>
+      <a href="<%= senador.url_twitter %>" target="_blank"> Ver Twitter</a>
+    <% } %>
+    <p id="comisiones">
       <% if (comitions.length === 0) { %>
         Este senador no participa en comisiones.
       <% } else { %>
@@ -13,30 +18,50 @@
           <%= comitions[i] %>,
         <% } %>
       <% } %>
-    </div>
+    </p>
   </div>
+
+  <ul class="senador__datos">
+    <li class="senador__list-item">
+      <p class="senador__item-header">Partido político</p>
+      <p class="senador__item-value"><%= senador.partido_politico ? senador.partido_politico : 'No disponible' %></p>
+    </li>
+    <li class="senador__list-item">
+      <p class="senador__item-header">Correo electrónico</p>
+      <p class="senador__item-value"><%= senador.email ? senador.email : 'No disponible' %></p>
+    </li>
+    <li class="senador__list-item">
+      <p class="senador__item-header">Teléfono</p>
+      <p class="senador__item-value"><%= senador.telefono ? senador.telefono : 'No disponible' %></p>
+    </li>
+  </ul>
+
   <div class="senador__asistencia">
     <% if (Object.keys(assistances).length !== 0) { %>
       <% const total = assistances.total_asistencias +assistances.total_inasistencias +assistances.total_justif %>
-      <div class="senador__asistencia-item">
-        <p class="senador__asistencia-porcentaje senador__asistencia-porcentaje--asistencia"><%= Math.round(assistances.total_asistencias / total * 100) %>%</p>
-        <p class="senador__asistencia-label">Asistencias</p>
-      </div>
-      <div class="senador__asistencia-item">
-        <p class="senador__asistencia-porcentaje senador__asistencia-porcentaje--inasistencia"><%= Math.round(assistances.total_inasistencias / total * 100) %>%</p>
-        <p class="senador__asistencia-label">Inasistencias</p>
-      </div>
-      <div class="senador__asistencia-item">
-        <p class="senador__asistencia-porcentaje senador__asistencia-porcentaje--justificada"><%= Math.round(assistances.total_justif / total * 100) %>%</p>
-        <p class="senador__asistencia-label">Inasistencias justificadas</p>
-      </div>
+      <p class="senador__asistencia-porcentaje senador__asistencia-porcentaje--asistencia">
+        <%= Math.round(assistances.total_asistencias / total * 100) %>%
+      </p>
+      <p class="senador__asistencia-label">Asistencias</p>
+      <p class="senador__asistencia-porcentaje senador__asistencia-porcentaje--inasistencia">
+        <%= Math.round(assistances.total_inasistencias / total * 100) %>%
+      </p>
+      <p class="senador__asistencia-label">Inasistencias no justificadas</p>
+      <p class="senador__asistencia-porcentaje senador__asistencia-porcentaje--justificada">
+        <%= Math.round(assistances.total_justif / total * 100) %>%
+      </p>
+      <p class="senador__asistencia-label">Inasistencias justificadas</p>
     <% } else { %>
       <p class="senador__asistencia-label senador__asistencia-label--red">No hay información disponible de las asistencias de este senador</p>
     <% } %>
   </div>
-  <a class="twitter-timeline" href="<%= senador.url_twitter %>" data-height="1000">
-    Tweets by <%= senador.nombre %>
-  </a>
+
+  <% if (senador.url_twitter) { %>
+    <a class="twitter-timeline" href="<%= senador.url_twitter %>" data-height="600">
+      Tweets by <%= senador.nombre %>
+    </a>
+  <% } %>
+
   <div id="proyectos">
     <h1 id="titulo-proyectos">Proyectos <span id="proyectos-totales">(<%= proyectos.length %>)</span></h1>
     <ul class="lista-proyectos" id="lista-proyectos">
