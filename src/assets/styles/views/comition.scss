@@ -1,4 +1,8 @@
 .proyectos {
+  &__comision {
+    grid-template-rows: repeat(2, min-content) min-content repeat(2, min-content) 1fr;
+  }
+
   &__info {
     padding: 3rem 2rem;
     border-radius: 0.5rem;
@@ -106,21 +110,25 @@
 
 // PARA BARRA DE PORCENTAJES
 
-body {
-  background-color: #ccc;
-}
-
-#chart rect {
-  /*  fill: steelblue;*/
-}
-
 #chart text {
   fill: #fff;
-  font: 1.6rem sans-serif;
+  font-size: 1.8rem;
+  font-weight: 500;
   text-anchor: initial;
 }
+
 #chart {
-  grid-column: 1 / span 2;
   width: 100%;
-  //background-color: #fff;
+}
+
+.comision {
+  &__partidos {
+    grid-column: 1 / span 2;
+  }
+
+  &-info {
+    &__data {
+      margin-bottom: 1rem;
+    }
+  }
 }

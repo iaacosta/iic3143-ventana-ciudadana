@@ -1,22 +1,18 @@
 <link href='https://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
 
-<div class='proyectos'>
+<div class='proyectos proyectos__comision'>
 
   <h1 class="titulos titulos--medium">Comision de <%= comition.nombre %></h1>
   <div class="proyectos__info">
     <h2 class="contenedor-cards-com__subtitle">Informacion de Contacto</h2>
-    <%= comition.telefono %>
-    <br>
-    <%= comition.email %>
-    <br>
-    <h2 class="contenedor-cards-com__subtitle">Partidos Participantes</h2>
-    <% const totalPartidos = Object.values(partidos).reduce((accum, cur) => accum + cur, 0); %>
-    <% for (const [partido, cantidad] of Object.entries(partidos)) { %>
-      <%= `${partido}: ${cantidad * 100 / totalPartidos}%` %>
-      <br>
-    <% } %>
+    <p class="comision-info__data"><%= comition.telefono %></p>
+    <p class="comision-info__data"><%= comition.email %></p>
   </div>
 
+  <div class="comision__partidos">
+    <h2 class="contenedor-cards-com__subtitle">Partidos Participantes</h2>
+    <svg id="chart"></svg>
+  </div>
 
   <!-- Senadores Involucrados -->
   <div class="contenedor-cards-com">
@@ -56,43 +52,42 @@
     <% } %>
   </div>
 
-<svg id="chart"></svg>
-
 </div>
 
 <script src="https://d3js.org/d3.v3.js"></script>
 <script type="text/javascript">
-  var data = [<%- Object.values(partidos) %>];
-  var names = [<%- Object.keys(partidos).map(nombre => `"${nombre}"`) %>];
+  const data = [<%- Object.values(partidos) %>];
+  const names = [<%- Object.keys(partidos).map(nombre => `"${nombre}"`) %>];
+  const color = d3.scale
+    .ordinal()
+    .range(["#f0484d", "#255eab", "#e5b82d", "#5bc973",  "#3f3e60", "#ff932d", "#0088a6",  "#919191"]);
 
-  var width = "100%",
-      height = 30,
-  	goal = 600,
-  	perc_so_far = 0;
+  const width = "100%";
+  const height = 45;
+  const goal = 600;
+  let perc_so_far = 0;
+  let bar_x = 0;
 
-  var total_partidos = d3.sum(data);
-  var bar_x = 0;
-  var chart = d3.select("#chart").attr("width", width).attr("height", height);
+  const total_partidos = d3.sum(data);
+  const chart = d3.select("#chart").attr("width", width).attr("height", height);
   
   bar_x = 0;
-
-  var color = d3.scale.category20c();
   
   var bar = chart.selectAll("g").data(data).enter().append("g");
 
   bar.append("rect")
-  	.attr("width", function(d) { return ((d/total_partidos)*100) + "%"; } )
-  	.attr("x", function(d) {
+  	.attr("width", d => (d / total_partidos) * 100 + "%")
+  	.attr("x", d => {
   		var prev_perc = perc_so_far;
   		var this_perc = 100*(d/total_partidos);
   		perc_so_far = perc_so_far + this_perc;
-  		console.log("perc_so_far:" + perc_so_far + "; this_perc:" + this_perc + "; prev_perc:" + prev_perc + ";");
   		return prev_perc + "%";
   	})
   	.attr("height", height)
-  	.attr("fill",  function(d) { return (color(d)) });
-
+  	.attr("fill", (d, i) => color(i));
+  
   perc_so_far = 0;
+
   bar.append("text")
   	.attr("x", function(d) {
   		var prev_perc = perc_so_far;
@@ -101,9 +96,10 @@
   		console.log("perc_so_far:" + perc_so_far + "; this_perc:" + this_perc + "; prev_perc:" + prev_perc + ";");
   		return prev_perc + 1 + "%";
   	})
-  	.attr("y", 0)
-  	.attr("dy", "1.35em")
-  	.text(function(d, i) { return names[i]; });
+    .attr('y', height / 2)
+    .attr('text-anchor', 'start')
+    .attr('alignment-baseline', 'central')
+  	.text((d, i) => `${names[i]} - ${(d / total_partidos) * 100}%`);
 
   d3.select(window).on('resize', resize);
 
