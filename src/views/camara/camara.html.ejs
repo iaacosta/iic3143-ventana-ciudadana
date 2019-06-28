@@ -25,8 +25,32 @@
   <div id="proyectos-aprobados-react"></div>
 </div>
 
+<hr class="hr">
+
+<div class="asistencia">
+  <div class="asistencia__svg">
+    <h2 class="asistencia__titulo">Asistencia por partido político</h2>
+  </div>
+  <div class="asistencia__cifras">
+    <h2 class="asistencia__titulo">Asistencia global</h2>
+    <div class="asistencia__wrapper">
+      <p class="asistencia__cifra asistencia__cifra--asistencia"><%= (totalAssistance.assistances / totalAssistance.total * 100).toFixed(2) %>%</p>
+      <p class="asistencia__label">Asistencias</p>
+    </div>
+    <div class="asistencia__wrapper">
+      <p class="asistencia__cifra asistencia__cifra--inasistencia"><%= (totalAssistance.inassistances / totalAssistance.total * 100).toFixed(2) %>%</p>
+      <p class="asistencia__label">Inasistencias</p>
+    </div>
+    <div class="asistencia__wrapper">
+      <p class="asistencia__cifra asistencia__cifra--justificada"><%= (totalAssistance.inassistancesJust / totalAssistance.total * 100).toFixed(2) %>%</p>
+      <p class="asistencia__label">Inasistencias justificadas</p>
+    </div>
+  </div>
+</div>
+
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 <script>
   var lista_partidos = [];
   var datos_senadores = [];
@@ -113,12 +137,17 @@
 
   function plotPictogramChart(d, id) {
     const active = id === 'svg-senadores';
+    
     let row = 0;
+    
     const chart = d3.select(`svg#${id}`)
       .attr("transform", "translate(0, 0)");
+    
     const icons = chart.selectAll("g")
       .data(d).enter()
-      .append("g");
+      .append("g")
+      .attr('class', 'camara');
+
     let currentRow = 0;
     const positions = [
       [1, 1, 1, 0, 0, 0, 0, 1, 1, 1],
@@ -187,6 +216,149 @@
 
   plotPictogramChart(data, "svg-senadores");
   plotPictogramChart(data, "svg-diputados");
+</script>
+
+<script>
+  const assistances = <%- totalAssistanceByParty %>;
+
+  const colors = {
+    assistances: '#5fad56',
+    inassistancesJust: '#ffd966',
+    inassistances: '#e06666',
+  }
+
+  const margins = { left: 200, right: 20, top: 20, bottom: 100 };
+  const innerMargins = { left: 5, right: 5 };
+  const barHeight = 30;
+  const padding = 10;
+
+  const graphWidth = 1000;
+  const graphHeight = (barHeight + padding) * assistances.length + margins.top + margins.bottom;
+  const barWidth = graphWidth - margins.left - margins.right;
+
+  const y = (d, i) => margins.top + i * (padding + barHeight);
+  const midY = (d, i) => margins.top + i * (padding + barHeight) + barHeight / 2;
+
+  const svg = d3
+    .select('.asistencia__svg')
+    .append('svg')
+    .attr('id', 'asistencias')
+    .attr('width', graphWidth)
+    .attr('height', graphHeight);
+
+  /* g nodes */
+  svg
+    .selectAll('g')
+    .data(assistances)
+    .enter()
+    .append('g')
+
+  /* Assistance rectangles */
+  const assistancesX = margins.left;
+  const assistancesWidth = d => d.assistances / d.total * barWidth;
+
+  svg.selectAll('g')
+    .append('rect')
+    .attr('fill', d => colors.assistances)
+    .attr("x", assistancesX)
+    .attr("y", y)
+    .attr("width", assistancesWidth)
+    .attr("height", barHeight);
+
+  svg.selectAll('g')
+    .append('text')
+    .attr('x', d => assistancesX + innerMargins.left)
+    .attr("y", midY)
+    .attr('font-size', 16)
+    .attr('font-weight', '500')
+    .attr('fill', '#fff')
+    .attr('text-anchor', 'start')
+    .attr('alignment-baseline', 'central')
+    .text(d => `${(d.assistances / d.total * 100).toFixed(1)}%`)
+  
+  /* InassistanceJust rectangles */
+  const inassistancesJustX = d => margins.left + d.assistances / d.total * barWidth;
+
+  svg.selectAll('g')
+    .append('rect')
+    .attr('fill', colors.inassistancesJust)
+    .attr("x", inassistancesJustX)
+    .attr("y", y)
+    .attr("width", d => d.inassistancesJust / d.total * barWidth)
+    .attr("height", barHeight);
+  
+  /* Inassistances rectangles */
+  const inassistancesX = d => 
+    margins.left + (d.assistances + d.inassistancesJust) / d.total * barWidth;
+  const inassistancesWidth = d => d.inassistances / d.total * barWidth;
+
+  svg.selectAll('g')
+    .append('rect')
+    .attr('fill', colors.inassistances)
+    .attr("x", inassistancesX)
+    .attr("y", y)
+    .attr("width", inassistancesWidth)
+    .attr("height", barHeight);
+  
+  svg.selectAll('g')
+    .append('text')
+    .attr('x', d => inassistancesX(d) + inassistancesWidth(d) - innerMargins.right)
+    .attr("y", midY)
+    .attr('font-size', 16)
+    .attr('font-weight', '500')
+    .attr('fill', '#fff')
+    .attr('text-anchor', 'end')
+    .attr('alignment-baseline', 'central')
+    .text(d => `${(d.inassistances / d.total * 100).toFixed(1)}%`)
+
+  /* yAxis */
+  svg.selectAll('g')
+    .append('text')
+    .attr('x', 190)
+    .attr('y', midY)
+    .attr('width', margins.left)
+    .attr('font-size', 18)
+    .attr('text-anchor', 'end')
+    .attr('alignment-baseline', 'central')
+    .text(d => d.partido);
+
+
+  /* Legend */
+  const legendRectWidth = 250;
+  const yLegend = graphHeight - 70;
+  const xLegend = (d, i) => (graphWidth + margins.left - legendRectWidth * 3) / 2 + i * legendRectWidth
+
+  svg
+    .append('g')
+    .selectAll('g')
+    .data([
+      { key: 'assistances', label: 'Asistencias'},
+      { key: 'inassistancesJust', label: 'Inasistencias justificadas'},
+      { key: 'inassistances', label: 'Inasistencias'},
+    ])
+    .enter()
+    .append('g')
+    .attr('class', 'legend')
+
+  svg
+    .selectAll('g.legend')
+    .append('rect')
+    .attr('x', xLegend)
+    .attr('y', yLegend)
+    .attr('height', barHeight)
+    .attr('width', legendRectWidth)
+    .attr('fill', d => colors[d.key])
+
+  svg
+    .selectAll('g.legend')
+    .append('text')
+    .attr('x', xLegend)
+    .attr('y', (d, i) => yLegend + barHeight + 10)
+    .attr('font-size', 18)
+    .attr('text-anchor', 'center')
+    .attr('alignment-baseline', 'hanging')
+    .text(d => d.label)
+
 </script>
 
 

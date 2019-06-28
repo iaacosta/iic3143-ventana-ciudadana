@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 const KoaRouter = require('koa-router');
 const dayjs = require('dayjs');
 
@@ -63,6 +64,7 @@ router.get('proyectos-ley', '/show/:id', async ctx => {
 
   const resumen = proy.resumen ? proy.resumen : 'Este proyecto no tiene descripcion';
 
+  /* Senadores */
   const senadoresId = await ctx.orm.SenadorProyecto.findAll({
     where: { pid: proy.id },
   });
@@ -84,6 +86,7 @@ router.get('proyectos-ley', '/show/:id', async ctx => {
     senadores.push(senador);
   }
 
+  /* Comitions */
   const comId = await ctx.orm.ProjectComition.findOne({
     where: { pid: proy.id },
   });
@@ -91,6 +94,23 @@ router.get('proyectos-ley', '/show/:id', async ctx => {
     where: { id: comId.cid },
   });
 
+  /* Milestones */
+  const { Milestone, Proyecto } = ctx.orm;
+  let milestones = (await Proyecto.findAll({
+    include: {
+      model: Milestone,
+      attributes: ['fecha', 'a_favor', 'en_contra', 'abstencion', 'pareo'],
+    },
+    where: { id: proy.id },
+  }))[0].get('Milestones');
+
+  milestones = milestones.map(milestone => milestone.dataValues);
+  milestones.forEach(
+    // eslint-disable-next-line no-return-assign
+    milestone => (milestone.fecha = dayjs(milestone.fecha).format('DD/MM/YYYY')),
+  );
+
+  /* Render */
   await ctx.render('proyectos-ley/show', {
     fotos,
     proy,
@@ -98,32 +118,42 @@ router.get('proyectos-ley', '/show/:id', async ctx => {
     senadores,
     resumen,
     comition,
+    milestones,
     user: ctx.session ? ctx.session.user : null,
   });
 });
 
-router.get('proyectos-ley', '/show-comition/:com_id', async ctx => {
+router.get('proyectos-ley', '/proyectos-area/:aid', async ctx => {
   let { page } = ctx.request.query;
   if (!ctx.request.query.page) page = 0;
 
-  const com = await ctx.orm.Comition.findOne({
-    where: { id: ctx.params.com_id },
+  const area = await ctx.orm.Area.findOne({
+    where: { id: ctx.params.aid },
   });
 
-  if (!com) {
+  if (!area) {
     ctx.status = 404;
     return;
   }
 
-  const comition = com.nombre;
-  const comId = com.id;
+  const nombreArea = area.name;
+  const aid = area.id;
 
-  const include = {
-    model: ctx.orm.Comition,
-    where: { id: comId },
-    attributes: [],
-    through: { attributes: [] },
-  };
+  const include = [
+    {
+      model: ctx.orm.Comition,
+      attributes: [],
+      include: [
+        {
+          model: ctx.orm.Area,
+          where: { id: aid },
+          attributes: [],
+          through: { attributes: [] },
+        },
+      ],
+      through: { attributes: [] },
+    },
+  ];
 
   const proys = await ctx.orm.Proyecto.findAll({
     include,
@@ -131,26 +161,25 @@ router.get('proyectos-ley', '/show-comition/:com_id', async ctx => {
     ...paginate(page, 15),
   });
 
-  const todosProy = await ctx.orm.ProjectComition.findAll({
-    attributes: [[ctx.orm.Sequelize.fn('count', ctx.orm.Sequelize.col('cid')), 'total']],
-    where: { cid: ctx.params.com_id },
-  });
+  const allProjects = await ctx.orm.sequelize.query(
+    `SELECT COUNT(*) FROM "Proyectos", "ProjectComitions", "Comitions", "AreaComitions", "Areas"WHERE aid = ${aid} AND "AreaComitions".aid = "Areas".id  AND "AreaComitions".cid = "Comitions".id  AND "ProjectComitions".cid = "Comitions".id  AND "ProjectComitions".pid = "Proyectos".id;`,
+  );
+
+  const cant = allProjects[0][0].count;
 
   const fechas = [];
-  const cont = parseInt(todosProy[0].dataValues.total, 10);
-
   for (let i = 0; i < proys.length; i += 1) {
     const proyecto = proys[i];
     const date = dayjs(proyecto.fecha);
     fechas.push(date.format('DD, MMM YYYY'));
   }
 
-  await ctx.render('proyectos-ley/show-comition', {
+  await ctx.render('proyectos-ley/show-area', {
     proys,
     fechas,
-    cont,
-    comition,
-    com_id: comId,
+    cant,
+    nombreArea,
+    aid,
     currPage: parseInt(page, 10) + 1,
     user: ctx.session ? ctx.session.user : null,
   });
