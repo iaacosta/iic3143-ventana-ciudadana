@@ -153,8 +153,11 @@
 }
 
 svg {
-  width: 715px;
-  height: 300px;
+  &#svg-senadores,
+  &#svg-diputados {
+    width: 715px;
+    height: 300px;
+  }
 
   &#asistencias {
     width: auto;
