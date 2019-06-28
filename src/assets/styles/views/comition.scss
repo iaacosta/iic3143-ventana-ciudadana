@@ -132,3 +132,69 @@
     }
   }
 }
+
+.comisiones-index {
+  margin: 2rem;
+  display: grid;
+  grid-template-rows: min-content 1fr;
+
+  &__index-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 2rem;
+    margin: 0 7rem;
+  }
+
+  &__header {
+    grid-column: 1 / -1;
+    margin-bottom: 2rem;
+  }
+
+  &__subtitle {
+    font-size: 3rem;
+    display: inline;
+    width: 30%;
+    padding: 0.2rem 0.2rem;
+    border-bottom: 1px solid $color-primary-darkest;
+  }
+
+  &__mini-index {
+    display: grid;
+    grid-template-rows: min-content 80rem;
+    grid-gap: 2rem;
+  }
+
+  &__list {
+    list-style: none;
+    font-size: 1.8rem;
+    overflow: auto;
+  }
+
+  &__list-item {
+    padding: 2rem 0.5rem;
+    background-color: $color-grey-light-1;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__item-data {
+    flex: 1;
+    padding: 0 1rem;
+  }
+
+  &__item-link {
+    padding: 0 2rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+
+    &:link,
+    &:visited {
+      color: $color-primary-darkest;
+    }
+
+    &:active,
+    &:hover {
+      color: $color-primary-regular;
+    }
+  }
+}

@@ -36,83 +36,12 @@ router.get('comitions', '/show/:id', async ctx => {
     comition.id
   } GROUP BY "partido_politico";`;
 
-  /* Aqui creo un diccionario/objeto de la forma { partido1: total, partido2: total } */
   const partidos = (await ctx.orm.sequelize.query(query))[0].reduce(
     // eslint-disable-next-line camelcase
     (accum, { partido_politico, count }) =>
       Object.assign(accum, { [partido_politico]: parseInt(count, 10) }),
     {},
   );
-
-  /* const senadoresId = await ctx.orm.SenatorComition.findAll({;
-    where: {
-      cid: ctx.params.id,
-    },
-  });
-  const proyectosId = await ctx.orm.ProjectComition.findAll({
-    where: {
-      cid: ctx.params.id,
-    },
-  });
-
-  // Ahora a buscar la info particular de senadores y proyectos
-  const senadores = [];
-  const fotos = [];
-  const partidos = {};
-  const partidosPorcentajes = [];
-
-  for (let i = 0; i < senadoresId.length; i += 1) {
-    const sen = await ctx.orm.Senador.findOne({
-      where: {
-        id: senadoresId[i].sid,
-      },
-    });
-
-    if (sen.url_foto == null)
-      fotos.push(
-        'https://d1nhio0ox7pgb.cloudfront.net/_img/o_collection_png/green_dark_grey/256x256/plain/user.png',
-      );
-    else fotos.push(sen.url_foto);
-    senadores.push(sen);
-
-    // Calcular porcentaje de partidos
-    if (sen.partido_politico != null) {
-      if (!(sen.partido_politico in partidos)) {
-        partidos[sen.partido_politico] = 1;
-      } else {
-        partidos[sen.partido_politico] = 1 + partidos[sen.partido_politico];
-      }
-    }
-  }
-
-  partidos_nombre = Object.keys(partidos);
-
-  var partidos_cantidad = [];
-  for (i = 0; i < partidos_nombre.length; i ++) {
-    const cant = partidos[partidos_nombre[i]];
-    partidos_cantidad.push(cant);
-  }
-
-  partidos_cantidad = JSON.strinfigy(partidos_cantidad);
-
-  for (i = 0; i < partidos_nombre.length; i++) {
-    const total = partidos_nombre.length;
-    porcentaje = partidos[partidos_nombre[i]] / total;
-    porcentaje = porcentaje * 100;
-    partidos_porcentajes.push(porcentaje);
-  }
-
-  var proyectos = [];
-  for (i = 0; i < proyectos_id.length; i++) {
-    const proy = await ctx.orm.Proyecto.findOne({
-      where: {
-        id: proyectosId[i].pid,
-      },
-      order: [['fecha', 'DESC']],
-    });
-    proyectos.push(proy);
-  } */
-
   await ctx.render('comitions/show', {
     comition,
     senadores,
