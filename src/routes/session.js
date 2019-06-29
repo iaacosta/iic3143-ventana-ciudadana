@@ -1,4 +1,5 @@
 const KoaRouter = require('koa-router');
+const sendUpdateEmail = require('../mailers/update');
 
 const router = new KoaRouter();
 
@@ -14,6 +15,7 @@ router.post('/', async ctx => {
     const { username, password } = ctx.request.body;
     const user = await ctx.orm.User.authenticate(username, password);
     ctx.session.user = user;
+    sendUpdateEmail(ctx, {user});
     ctx.redirect('/');
   } catch ({ message }) {
     ctx.session = null;
