@@ -1,5 +1,6 @@
 const KoaRouter = require('koa-router');
 const dayjs = require('dayjs');
+const sendUpdateEmail = require('../mailers/update');
 
 const router = new KoaRouter();
 
@@ -49,9 +50,11 @@ router.get('senadores-show', '/:id', async ctx => {
   } else {
     assistances = {};
   }
-  const isFollowed = await senador.hasFollower(ctx.session.user.id);
-  const followers = await senador.getFollowers();
 
+  /* Following */
+  const userId = ctx.session.user ? ctx.session.user.id : null;
+  const isFollowed = await senador.hasFollower(userId);
+  const followers = await senador.getFollowers();
 
   return ctx.render('senadores/show', {
     senador,
@@ -62,22 +65,51 @@ router.get('senadores-show', '/:id', async ctx => {
       fecha: dayjs(proyecto.fecha).format('DD, MMM YYYY'),
     })),
     user: ctx.session ? ctx.session.user : null,
-    followSenador: ctx.router.url('follow-senador', {id: senador.id, user_id: ctx.session.user.id}),
+    followSenador: userId
+      ? ctx.router.url('follow-senador', {
+          id: senador.id,
+          user_id: userId,
+        })
+      : null,
     isFollowed,
     followers,
   });
 });
 
-router.post('follow-senador', '/:id/add_follower/:user_id', async (ctx, next) => {
+router.post('follow-senador', '/:id/add_follower/:user_id', async ctx => {
   ctx.assert(ctx.session.user, 401);
   try {
-    const user = ctx.session.user;
-    const senador = ctx.state.senador;
+    const { user } = ctx.session;
+    const { senador } = ctx.state;
     await senador.addFollower(user.id);
     return await ctx.redirect(ctx.router.url('senadores-show', senador.id));
   } catch (error) {
     throw error;
-    return await ctx.redirect(ctx.router.url('senadores-show', senador.id));
   }
 });
+
+router.delete('unfollow-senador', '/:id/add_follower/:user_id', async ctx => {
+  ctx.assert(ctx.session.user, 401);
+  try {
+    const { user } = ctx.session;
+    const { senador } = ctx.state;
+    await senador.removeFollower(user.id);
+    return await ctx.redirect(ctx.router.url('senadores-show', senador.id));
+  } catch (error) {
+    throw error;
+  }
+});
+
+router.post('update-followers', '/:id/update_followers', async ctx => {
+  const { senador } = ctx.state;
+  const followers = await senador.getFollowers();
+  followers.forEach(follower => {
+    sendUpdateEmail(ctx, {
+      follower,
+      senador,
+      SenadorPath: ctx.router.url('senadores-show', { id: senador.id }),
+    });
+  });
+});
+
 module.exports = router;
