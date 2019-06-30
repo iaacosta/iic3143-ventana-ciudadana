@@ -107,7 +107,7 @@ router.post('update-followers', '/:id/update_followers', async ctx => {
     sendUpdateEmail(ctx, {
       follower,
       senador,
-      SenadorPath: ctx.router.url('senadores-show', { id: senador.id }),
+      SenadorPath: `https://${ctx.host}${ctx.router.url('senadores-show', { id: senador.id })}`,
     });
   });
 });
