@@ -80,4 +80,22 @@
   </div>
 </div>
 
+<% if (isFollowed) { %>
+  <div class="info-save-button">
+    <p>Ya sigues a este senador</p>
+  </div>
+<% } else { %>
+  <form action="<%= followSenador %>" method="post">
+    <input type="submit" value="Follow Senador">
+  </form>
+<% } %>
+
+<ul>
+  <% followers.forEach((follower) => { %>
+    <li>
+      <p><%=follower.username%></p>
+    </li>
+  <% }) %>
+</ul>
+
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>

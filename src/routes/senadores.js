@@ -49,6 +49,9 @@ router.get('senadores-show', '/:id', async ctx => {
   } else {
     assistances = {};
   }
+  const isFollowed = await senador.hasFollower(ctx.session.user.id);
+  const followers = await senador.getFollowers();
+
 
   return ctx.render('senadores/show', {
     senador,
@@ -59,7 +62,22 @@ router.get('senadores-show', '/:id', async ctx => {
       fecha: dayjs(proyecto.fecha).format('DD, MMM YYYY'),
     })),
     user: ctx.session ? ctx.session.user : null,
+    followSenador: ctx.router.url('follow-senador', {id: senador.id, user_id: ctx.session.user.id}),
+    isFollowed,
+    followers,
   });
 });
 
+router.post('follow-senador', '/:id/add_follower/:user_id', async (ctx, next) => {
+  ctx.assert(ctx.session.user, 401);
+  try {
+    const user = ctx.session.user;
+    const senador = ctx.state.senador;
+    await senador.addFollower(user.id);
+    return await ctx.redirect(ctx.router.url('senadores-show', senador.id));
+  } catch (error) {
+    throw error;
+    return await ctx.redirect(ctx.router.url('senadores-show', senador.id));
+  }
+});
 module.exports = router;

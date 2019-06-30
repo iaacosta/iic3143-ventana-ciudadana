@@ -15,7 +15,14 @@ module.exports = (sequelize, DataTypes) => {
     {},
   );
 
-  User.associate = function(models) {};
+  User.associate = function(models) {
+    User.belongsToMany(models.Senador, {
+      through: models.UserSenador,
+      as: 'Followees',
+      foreignKey: 'uid'
+    });
+  };
+
   User.authenticate = async (username, password) => {
     const user = await User.findOne({
       attributes: ['id', 'nombre_completo', 'email', 'password'],
