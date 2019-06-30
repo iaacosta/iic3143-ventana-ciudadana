@@ -21,6 +21,8 @@ module.exports = (sequelize, DataTypes) => {
       through: models.ProjectComition,
       foreignKey: 'pid',
     });
+
+    Proyecto.hasMany(models.Milestone, { foreignKey: 'pid' });
   };
   return Proyecto;
 };

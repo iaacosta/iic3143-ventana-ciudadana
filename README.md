@@ -38,6 +38,8 @@ createdb your_awesome_name
 DB_NAME=your_awesome_name
 DB_USERNAME=your_psql_name
 DB_PASSWORD=your_psql_pass
+SENDGRID_USER=your_sendgrid_user
+SENDGRID_PASS=your_sendgrid_pass
 
 ```
 

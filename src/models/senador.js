@@ -25,6 +25,11 @@ module.exports = (sequelize, DataTypes) => {
       through: models.SenatorComition,
       foreignKey: 'sid',
     });
+    Senador.belongsToMany(models.User, {
+      through: models.UserSenador,
+      as: 'Followers',
+      foreignKey: 'sid'
+    });
 
     Senador.hasMany(models.Periodo, { foreignKey: 'sid' });
     Senador.hasMany(models.Assistance, { foreignKey: 'sid' });
