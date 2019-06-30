@@ -1,54 +1,79 @@
-.profile-container{
+.profile-container {
   width: 80%;
-  margin: 10px auto auto auto;
+  margin: 2rem auto;
+
   display: grid;
   grid-template-columns: 300px 1fr 1fr;
-  grid-template-rows: 100px 200px auto ;
+  grid-template-rows: min-content 200px 1fr;
   grid-template-areas:
-    "u-img u-name u-name"
-    "u-img u-gallery u-gallery"
-    "u-info u-gallery u-gallery";
-  grid-column-gap: 1.5em;
-  grid-row-gap: 1.5em;
+    'u-img u-name u-name'
+    'u-img u-gallery u-gallery'
+    'u-info u-gallery u-gallery';
+
+  grid-gap: 1.5rem;
 }
 
-.user-pic{
+.user-pic {
   grid-area: u-img;
-  background-color: #ccd1d9;
+
+  & > img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: top;
+  }
 }
 
-.user-name{
+.user-name {
   grid-area: u-name;
-
 }
 
 .user-gallery {
   grid-area: u-gallery;
-
 }
 
 .user-info {
   grid-area: u-info;
 }
 
-.profile-title{
-  font-size: 5.5rem;
-  align-self: end;
-  color: $color-grey-dark-4;
-  text-transform: uppercase;
-}
-
-.user-info h3{
+.user-info h3 {
   font-size: 1.5rem;
-  font-weight: 600;
   margin: 15px;
   text-transform: uppercase;
-
 }
 
-.user-gallery h2{
-  font-size: 2rem;
-  font-weight: 600;
-  margin: 15px;
+.user-gallery h2 {
+  font-size: 2.4rem;
+  margin-bottom: 1.5rem;
+}
 
+.user-suscriptions {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 1rem;
+
+  &__subtitle {
+    width: 50%;
+    padding: 1rem 0.5rem;
+    font-size: 1.8rem;
+    font-weight: 500;
+    background-color: $color-primary-darkest;
+    color: $color-white;
+  }
+
+  &__window {
+    display: grid;
+    grid-template-rows: min-content 1fr;
+    grid-gap: 1rem;
+  }
+
+  &__suscriptions {
+    overflow: auto;
+    height: 40rem;
+    background-color: $color-grey-light-1;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    font-size: 1.6rem;
+  }
 }

@@ -2,17 +2,15 @@ const KoaRouter = require('koa-router');
 
 const router = new KoaRouter();
 
-// async function loadUser(ctx, next) {
-//   ctx.state.user = await ctx.orm.user.findById(ctx.params.id);
-//   return next();
-// }
+router.get('user.profile', '/', async ctx => {
+  ctx.assert(ctx.session.user, 401);
 
-
-router.get('user.profile', '/', async (ctx) => {
-  const { current_user } = ctx.state;
-await ctx.render('users/profile', {
-  user: ctx.session ? ctx.session.user : null,
-});
+  const { User } = ctx.orm;
+  const user = await User.findAll({ where: { id: ctx.session.user.id } });
+  await ctx.render('users/profile', {
+    userObject: user[0].dataValues,
+    user: ctx.session ? ctx.session.user : null,
+  });
 });
 
 module.exports = router;
