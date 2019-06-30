@@ -1,0 +1,68 @@
+<div class="profile-container">
+
+  <div class="user-pic">
+    <img src= "<%= userObject.foto_url %>">
+  </div>
+
+  <div class="user-name">
+    <h1 class="titulos profile-title"><%= userObject.nombre_completo %></h1>
+  </div>
+
+  <div class="user-gallery">
+    <h2>Suscripciones</h2>
+    <div class="user-suscriptions">
+      <div class="user-suscriptions__window">
+        <h3 class="user-suscriptions__subtitle">
+          Senadores
+        </h3>
+        <div class="user-suscriptions__suscriptions">
+          <% if (followees.length > 0) { %>
+            <ul class="user-suscriptions__suscribed-table">
+              <% followees.forEach(senator => { %>
+                <li class="user-suscriptions__suscribed-item">
+                  <p class="user-suscriptions__item-data">
+                    <%= senator.nombre %> <%= senator.apellido_paterno %> <%= senator.apellido_materno %> 
+                  </p>
+                  <a href="/senadores/<%= senator.id %>" class="user-suscriptions__item-link">
+                    <i class="fas fa-arrow-right"></i>
+                  </a>
+                </li>
+              <% }) %>
+            </ul>
+          <% } else { %>
+            No sigues a ningun senador
+          <% } %>
+        </div>
+      </div>
+      <div class="user-suscriptions__window">
+        <h3 class="user-suscriptions__subtitle user-suscriptions__subtitle--disabled">
+          Proyectos de ley
+        </h3>
+        <div class="user-suscriptions__suscriptions user-suscriptions__suscriptions--disabled">
+          No disponible
+        </div>
+      </div>
+      <div class="user-suscriptions__window">
+        <h3 class="user-suscriptions__subtitle user-suscriptions__subtitle--disabled">
+          Comisiones
+        </h3>
+        <div class="user-suscriptions__suscriptions user-suscriptions__suscriptions--disabled">
+          No disponible
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="user-info">
+    <ul class="user-info__datos">
+      <li class="user-info__item">
+        <p class="user-info__label">Nombre de usuario</p>
+        <p class="user-info__value"><%= userObject.username %></p>
+      </li>
+      <li class="user-info__item">
+        <p class="user-info__label">Email</p>
+        <p class="user-info__value"><%= userObject.email %></p>
+      </li>
+    </ul>
+  </div>
+
+</div>

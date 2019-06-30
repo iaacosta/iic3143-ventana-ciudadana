@@ -1,12 +1,36 @@
-<h1> HOLI </h1>
+<% const comisiones_permanentes = coms.filter(com => com.tipo === 'permanente'); %>
+<% const otras_comisiones = coms.filter(com => com.tipo !== 'permanente'); %>
 
-<!-- Contenedor cartas de proyectos -->
-<div class="contenedor-cards contenedor-cards--index">
-<% for (i = 0; i < coms.length; i++) { %>
-  <div class="card-proyectos">
-    <h1 class="card-proyectos__title"><%= coms[i].id %></h1>
-    <h3 class="card-proyectos__estado"><%= coms[i].nombre %></h3>
-    <a href="/comitions/show/<%= coms[i].id%>" class="card-proyectos__button">Ver Comision</a>
+<div class="comisiones-index">
+  <h1 class="titulos titulos--medium comisiones-index__header">Comisiones</h1>
+  
+  <div class="comisiones-index__index-wrapper">
+    <div class="comisiones-index__mini-index">
+      <h2 class="comisiones-index__subtitle">Permanentes</h2>
+      <ul class="comisiones-index__list">
+        <% comisiones_permanentes.forEach(com => { %>
+          <li class="comisiones-index__list-item">
+            <p class="comisiones-index__item-data"><%= com.nombre %></p>
+            <a href="/comitions/show/<%= com.id %>" class="comisiones-index__item-link">
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </li>
+        <% }); %>  
+      </ul>
+    </div>
+
+    <div class="comisiones-index__mini-index">
+      <h2 class="comisiones-index__subtitle">Otras</h2>
+      <ul class="comisiones-index__list">
+        <% otras_comisiones.forEach(com => { %>
+          <li class="comisiones-index__list-item">
+            <p class="comisiones-index__item-data"><%= com.nombre %></p>
+            <a href="/comitions/show/<%= com.id %>" class="comisiones-index__item-link">
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </li>
+        <% }); %>  
+      </ul>
+    </div>
   </div>
-<% } %>
 </div>

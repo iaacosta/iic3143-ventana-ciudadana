@@ -15,17 +15,24 @@ module.exports = (sequelize, DataTypes) => {
     {},
   );
 
-  User.associate = function(models) {};
+  User.associate = function(models) {
+    User.belongsToMany(models.Senador, {
+      through: models.UserSenador,
+      as: 'Followees',
+      foreignKey: 'uid'
+    });
+  };
+
   User.authenticate = async (username, password) => {
     const user = await User.findOne({
-      attributes: ['id', 'nombre_completo', 'password'],
+      attributes: ['id', 'nombre_completo', 'email', 'password'],
       where: { username },
     });
     if (!user) throw new Error('invalidUser');
 
     const valid = await bcrypt.compare(password, user.get('password'));
-    if (valid) return { id: user.get('id'), nombre: user.get('nombre_completo') };
-
+    if (valid) return { id: user.get('id'), nombre: user.get('nombre_completo'),
+                        email: user.get('email')};
     throw new Error('invalidPassword');
   };
 

@@ -1,29 +1,28 @@
-<div class='proyectos'>
+<link href='https://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+
+<div class='proyectos proyectos__comision'>
 
   <h1 class="titulos titulos--medium">Comision de <%= comition.nombre %></h1>
   <div class="proyectos__info">
     <h2 class="contenedor-cards-com__subtitle">Informacion de Contacto</h2>
-    <%= comition.telefono %>
-    <br>
-    <%= comition.email %>
-    <br>
-    <h2 class="contenedor-cards-com__subtitle">Partidos Participantes</h2>
-    <% for (i = 0; i < partidos_nombre.length; i++) { %>
-      <%= partidos_nombre[i] %> : <%= partidos_porcentajes[i] %> %
-      <br>
-    <% } %>
+    <p class="comision-info__data"><%= comition.telefono %></p>
+    <p class="comision-info__data"><%= comition.email %></p>
   </div>
 
+  <div class="comision__partidos">
+    <h2 class="contenedor-cards-com__subtitle">Partidos Participantes</h2>
+    <svg id="chart"></svg>
+  </div>
 
   <!-- Senadores Involucrados -->
   <div class="contenedor-cards-com">
-    <h2 class="contenedor-cards-com__subtitle">Parlamentarios precursores</h2>
+    <h2 class="contenedor-cards-com__subtitle">Integrantes</h2>
     <% if (senadores.length === 0) { %>
       <h3 class="contenedor-cards-com__error">No hay información disponible</h3>
     <% } else { %>
       <% for (i = 0; i < senadores.length; i++) { %>
         <div class="card-senadores">
-          <img src="<%= fotos[i] %>" alt="foto" class="card-senadores__foto">
+          <img src="<%= senadores[i].url_foto %>" alt="foto" class="card-senadores__foto">
           <h2 class="card-senadores__nombre"><%= senadores[i].nombre %> <%= senadores[i].apellido_paterno %></h2>
           <p class="card-senadores__partido"><%= senadores[i].partido_politico %></p>
           <% if (senadores[i].url_twitter) { %>
@@ -53,6 +52,59 @@
     <% } %>
   </div>
 
-
-
 </div>
+
+<script src="https://d3js.org/d3.v3.js"></script>
+<script type="text/javascript">
+  const data = [<%- Object.values(partidos) %>];
+  const names = [<%- Object.keys(partidos).map(nombre => `"${nombre}"`) %>];
+  const color = d3.scale
+    .ordinal()
+    .range(["#f0484d", "#255eab", "#e5b82d", "#5bc973",  "#3f3e60", "#ff932d", "#0088a6",  "#919191"]);
+
+  const width = "100%";
+  const height = 45;
+  const goal = 600;
+  let perc_so_far = 0;
+  let bar_x = 0;
+
+  const total_partidos = d3.sum(data);
+  const chart = d3.select("#chart").attr("width", width).attr("height", height);
+  
+  bar_x = 0;
+  
+  var bar = chart.selectAll("g").data(data).enter().append("g");
+
+  bar.append("rect")
+  	.attr("width", d => (d / total_partidos) * 100 + "%")
+  	.attr("x", d => {
+  		var prev_perc = perc_so_far;
+  		var this_perc = 100*(d/total_partidos);
+  		perc_so_far = perc_so_far + this_perc;
+  		return prev_perc + "%";
+  	})
+  	.attr("height", height)
+  	.attr("fill", (d, i) => color(i));
+  
+  perc_so_far = 0;
+
+  bar.append("text")
+  	.attr("x", function(d) {
+  		var prev_perc = perc_so_far;
+  		var this_perc = 100*(d/total_partidos);
+  		perc_so_far = perc_so_far + this_perc;
+  		console.log("perc_so_far:" + perc_so_far + "; this_perc:" + this_perc + "; prev_perc:" + prev_perc + ";");
+  		return prev_perc + 1 + "%";
+  	})
+    .attr('y', height / 2)
+    .attr('text-anchor', 'start')
+    .attr('alignment-baseline', 'central')
+  	.text((d, i) => `${names[i]} - ${(d / total_partidos) * 100}%`);
+
+  d3.select(window).on('resize', resize);
+
+  function resize () {
+  	var width = parseInt(d3.select("#chart").style("width"));
+  }
+
+</script>

@@ -1,3 +1,9 @@
+<% if (wrongCredentials) { %>
+  <div class="login__status">
+    Credenciales inválidas
+  </div>
+<% } %>
+
 <div class="login">
   <h2 class="titulos titulos--medium">Inicio de sesión</h2>
   <form class="form" action="/session" method="post">
