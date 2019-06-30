@@ -3,7 +3,7 @@ const dayjs = require('dayjs');
 
 const router = new KoaRouter();
 
-router.get('/', async ctx => {
+router.get('home', '/', async ctx => {
   let diff;
   let suffix;
 

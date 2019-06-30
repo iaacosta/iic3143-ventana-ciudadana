@@ -7,7 +7,27 @@
   justify-items: center;
 
   width: 50rem;
+
   .titulos {
     justify-self: start;
+  }
+
+  &__status {
+    background-color: rgba($color-red-dark, 0.2);
+    color: $color-red-darkest;
+    border: 1px solid $color-red-darkest;
+    padding: 1rem;
+    width: 50rem;
+    height: 5rem;
+    font-size: 1.6rem;
+
+    position: absolute;
+    top: 20rem;
+    left: 50%;
+    transform: translateX(-50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
