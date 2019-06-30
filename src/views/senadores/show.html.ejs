@@ -1,6 +1,17 @@
 <div class="grid-container">
   <img id="img-senador" src="<%= senador.url_foto ? senador.url_foto : 'https://d1nhio0ox7pgb.cloudfront.net/_img/o_collection_png/green_dark_grey/256x256/plain/user.png'%>" alt="Foto de senador">
-  <h1 id="nombre-senador"> <%= senador.nombre + " " + senador.apellido_paterno + " " + senador.apellido_materno %> </h1>
+  <h1 id="nombre-senador">
+    <%= senador.nombre + " " + senador.apellido_paterno + " " + senador.apellido_materno %>
+    <% if (user) { %>
+      <button class="senador__follow senador__follow--<%= isFollowed ? 'unfollow' : 'follow' %>" id="js--follow-button">
+        <% if (isFollowed) { %>
+          Dejar de seguir
+        <% } else { %>
+          Seguir
+        <% } %>
+      </button>
+    <% } %>
+  </h1>
   <div id="informacion-personal">
     <% if (senador.url_curriculum) { %>
       <a href="<%= senador.url_curriculum %>" target="_blank">Ver Currículum</a>
@@ -21,20 +32,35 @@
     </p>
   </div>
 
-  <ul class="senador__datos">
-    <li class="senador__list-item">
-      <p class="senador__item-header">Partido político</p>
-      <p class="senador__item-value"><%= senador.partido_politico ? senador.partido_politico : 'No disponible' %></p>
-    </li>
-    <li class="senador__list-item">
-      <p class="senador__item-header">Correo electrónico</p>
-      <p class="senador__item-value"><%= senador.email ? senador.email : 'No disponible' %></p>
-    </li>
-    <li class="senador__list-item">
-      <p class="senador__item-header">Teléfono</p>
-      <p class="senador__item-value"><%= senador.telefono ? senador.telefono : 'No disponible' %></p>
-    </li>
-  </ul>
+  <div class="senador__datos-followers">
+    <ul class="senador__datos">
+      <li class="senador__list-item">
+        <p class="senador__item-header">Partido político</p>
+        <p class="senador__item-value">
+          <%= senador.partido_politico ? senador.partido_politico : 'No disponible' %>
+        </p>
+      </li>
+      <li class="senador__list-item">
+        <p class="senador__item-header">Correo electrónico</p>
+        <p class="senador__item-value"><%= senador.email ? senador.email : 'No disponible' %></p>
+      </li>
+      <li class="senador__list-item">
+        <p class="senador__item-header">Teléfono</p>
+        <p class="senador__item-value"><%= senador.telefono ? senador.telefono : 'No disponible' %></p>
+      </li>
+    </ul>
+
+    <div class="senador__followers">
+      <h2 class="senador__followers-subtitle">Seguidores</h2>
+      <ul class="senador__followers-list">
+        <% followers.forEach((follower) => { %>
+          <li class="senador__followers-list-item">
+            <p><%=follower.username%></p>
+          </li>
+        <% }) %>
+      </ul>
+    </div>
+  </div>
 
   <div class="senador__asistencia">
     <% if (Object.keys(assistances).length !== 0) { %>
@@ -80,22 +106,18 @@
   </div>
 </div>
 
-<% if (isFollowed) { %>
-  <div class="info-save-button">
-    <p>Ya sigues a este senador</p>
-  </div>
-<% } else { %>
-  <form action="<%= followSenador %>" method="post">
-    <input type="submit" value="Follow Senador">
-  </form>
-<% } %>
-
-<ul>
-  <% followers.forEach((follower) => { %>
-    <li>
-      <p><%=follower.username%></p>
-    </li>
-  <% }) %>
-</ul>
-
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<script>
+  const followButton = document.getElementById('js--follow-button');
+  const isFollowed = <%- isFollowed %>;
+  const followSenador = '<%- followSenador %>';
+
+  const handleFollowClick = event => {
+    event.preventDefault();
+    if (!followSenador) return;
+    fetch(followSenador, { method: isFollowed ? 'DELETE' : 'POST' })
+      .then(() => document.location.reload());
+  };
+
+  followButton.addEventListener('click', handleFollowClick);
+</script>

@@ -88,6 +88,18 @@ router.post('follow-senador', '/:id/add_follower/:user_id', async ctx => {
   }
 });
 
+router.delete('unfollow-senador', '/:id/add_follower/:user_id', async ctx => {
+  ctx.assert(ctx.session.user, 401);
+  try {
+    const { user } = ctx.session;
+    const { senador } = ctx.state;
+    await senador.removeFollower(user.id);
+    return await ctx.redirect(ctx.router.url('senadores-show', senador.id));
+  } catch (error) {
+    throw error;
+  }
+});
+
 router.post('update-followers', '/:id/update_followers', async ctx => {
   const { senador } = ctx.state;
   const followers = await senador.getFollowers();
