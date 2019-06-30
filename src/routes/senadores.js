@@ -1,5 +1,7 @@
 const KoaRouter = require('koa-router');
 const dayjs = require('dayjs');
+const sendUpdateEmail = require('../mailers/update');
+
 
 const router = new KoaRouter();
 
@@ -80,4 +82,20 @@ router.post('follow-senador', '/:id/add_follower/:user_id', async (ctx, next) =>
     return await ctx.redirect(ctx.router.url('senadores-show', senador.id));
   }
 });
+
+router.post('update-followers', '/:id/update_followers', async (ctx, next) => {
+  const senador = ctx.state.senador;
+  const followers = await senador.getFollowers();
+  followers.forEach((follower) => {
+    sendUpdateEmail(ctx,
+       {
+         follower,
+         senador,
+         SenadorPath: ctx.router.url('senadores-show', {id: senador.id}),
+       },
+    )
+  });
+});
+
+
 module.exports = router;
