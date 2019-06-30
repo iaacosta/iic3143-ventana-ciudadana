@@ -90,15 +90,19 @@
   &__item-header {
     flex: 1;
     background-color: $color-grey;
-    padding: 1.5rem 1rem;
+    padding: 0 1rem;
     color: $color-white;
     font-weight: 500;
+    display: flex;
+    align-items: center;
   }
 
   &__item-value {
-    background-color: $color-grey-light;
-    padding: 1.5rem 1rem;
     flex: 2;
+    background-color: $color-grey-light;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
   }
 
   &__follow {
@@ -130,11 +134,12 @@
   }
 
   &__followers {
+    display: grid;
+    grid-template-rows: min-content 13rem;
+    grid-gap: 1rem;
+
     &-subtitle {
-      display: grid;
-      grid-template-rows: min-content 1fr;
       font-size: 2.2rem;
-      margin-bottom: 1rem;
     }
 
     &-list {
