@@ -1,9 +1,10 @@
+/* eslint-disable consistent-return */
 const KoaRouter = require('koa-router');
 
 const router = new KoaRouter();
 
 router.get('user.profile', '/', async ctx => {
-  ctx.assert(ctx.session.user, 401);
+  if (!ctx.session.user) return ctx.redirect('/');
 
   const { User } = ctx.orm;
   const user = await User.findOne({ where: { id: ctx.session.user.id } });

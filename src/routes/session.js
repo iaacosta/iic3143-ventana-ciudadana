@@ -2,9 +2,9 @@ const KoaRouter = require('koa-router');
 
 const router = new KoaRouter();
 
-router.get('/', async ctx => {
+router.get('login', '/', async ctx => {
   if (ctx.session.user) ctx.redirect('/');
-  else await ctx.render('login', { user: null });
+  else await ctx.render('login', { user: null, wrongCredentials: false });
 });
 
 router.post('/', async ctx => {
@@ -17,8 +17,10 @@ router.post('/', async ctx => {
     ctx.redirect('/');
   } catch ({ message }) {
     ctx.session = null;
-    if (message) ctx.status = 401;
-    else ctx.status = 500;
+    if (message) {
+      ctx.status = 401;
+      await ctx.render('login', { user: null, wrongCredentials: true });
+    } else ctx.status = 500;
   }
 });
 
@@ -26,7 +28,7 @@ router.delete('/', ctx => {
   ctx.session = null;
   ctx.body = { success: true };
   ctx.status = 303;
-  if (!ctx.request.path === '/') ctx.redirect('back');
+  if (!ctx.request.path === '/') ctx.redirect('/');
 });
 
 module.exports = router;
