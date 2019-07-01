@@ -103,6 +103,7 @@ router.delete('unfollow-senador', '/:id/add_follower/:user_id', async ctx => {
 router.post('update-followers', '/:id/update_followers', async ctx => {
   const { senador } = ctx.state;
   const followers = await senador.getFollowers();
+
   followers.forEach(follower => {
     sendUpdateEmail(ctx, {
       follower,
@@ -110,6 +111,8 @@ router.post('update-followers', '/:id/update_followers', async ctx => {
       SenadorPath: `https://${ctx.host}${ctx.router.url('senadores-show', { id: senador.id })}`,
     });
   });
+
+  ctx.status = 200;
 });
 
 module.exports = router;
